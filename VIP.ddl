@@ -24,7 +24,9 @@ create table ASTA (
      IdAsta int not null auto_increment,
      CodProdotto int not null,
      Stato varchar(5) not null,
-     TimeStamp int not null,
+     OraInizio int not null,
+     OraFine int not null,
+     DataFine varchar(10) not null,
      CodVincitore varchar(20),
      constraint ID_ASTA_ID primary key (IdAsta));
 
@@ -42,6 +44,7 @@ create table PRODOTTO (
      IDProdotto int not null auto_increment,
      Base_asta int,
      Disponibilita int,
+     TimeStamp int not null,
      constraint ID_PRODOTTO_ID primary key (IDProdotto));
 
 create table PUNTATA (
