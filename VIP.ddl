@@ -36,8 +36,8 @@ create table ORDINE (
      constraint ID_ORDINE_ID primary key (IdOrdine));
 
 create table PRODOTTO (
-     Nome varchar(20) not null,
-     Descrizione varchar(140) not null,
+     Nome varchar(50) not null,
+     Descrizione varchar(250) not null,
      Prezzo int not null,
      IDProdotto int not null auto_increment,
      Base_asta int,
@@ -59,8 +59,8 @@ create table RIGA (
      constraint ID_RIGA_ID primary key (IdRiga));
 
 create table USER (
-     Email varchar(20) not null,
-     Password varchar(10) not null,
+     Email varchar(50) not null,
+     Password varchar(20) not null,
      IdVenditore boolean default False not null,
      constraint ID_USER_ID primary key (Email));
 
