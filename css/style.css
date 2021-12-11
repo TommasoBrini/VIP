@@ -1,11 +1,27 @@
 body {
-    /*Grigio chiaro
-    background-color: #BDBDBD;*/
+    /*Grigio chiaro*/
+    background-color: #BDBDBD;
 
-    /*Grigio scuro*/
-    background-color: #303030;
+    /*Grigio scuro
+    background-color: #303030;*/
 }
 
+header > div > button {
+    margin: 0px 0px 5px 0px;
+    padding: 0px;
+    width: 50%;
+    font-weight: bold;
+}
+
+header > div.slider > button.selected{
+    background-color: #707070;
+    color: #FFBF49;
+}
+
+header > div.slider > button.unset{
+    background-color: #BDBDBD;
+    color: #000000;
+}
 
 header, footer{
     width: 100%;
