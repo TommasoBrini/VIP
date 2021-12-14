@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserimento Prodotto</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style1.css" />
 </head>
 <body>
     <header>
@@ -15,23 +15,35 @@
     <main>
         <form action='#' method='POST'>
             <h2>INSERISCI PRODOTTO</h2>
-            <ul>
-                <li>
-                    <label for="name">Name:</label><input type="text" id="name" name="name" />
-                </li>
-                <li>
-                    <label for="descrizione">Descrizione:</label><input type="text" id="descrizione" name="descrizione" />
-                </li>
-                <li>
-                    <label for="prezzo">Prezzo:</label><input type="text" id="prezzo" name="prezzo" />
-                </li>
-                <li>
-                    <label for="base">Base Asta:</label><input type="text" id="base" name="base" />
-                </li>
-                <li>
-                    <label for="disponibilità">Disponibilità:</label><input type="text" id="disponibilità" name="disponibilità" />
-                </li>
-            </ul>
+            <section>
+                <label for="tipoProdotto">METTI ALL'ASTA:</label><input type="checkbox" id="checkbox" name="checkbox" />
+            </section>
+            <div class="inline first">
+                <div>
+                    <section class="inline">
+                        <label for="name">Nome:</label><input type="text" id="name" name="name" />
+                    </section>    
+                    <section class="inline">
+                        <label for="prezzo">Prezzo (€):</label><input type="text" id="prezzo" name="prezzo" />
+                    </section>
+                    <section class="inline">
+                        <label for="base">Base Asta (€):</label><input type="text" id="base" name="base" />
+                    </section>
+                    <!-- <section class="inline">
+                        <label for="disponibilità">Disponibilità:</label><input type="text" id="disponibilità" name="disponibilità" />
+                    </section> -->
+                </div>
+                <section>
+                    <label for="immagine">Immagine Prodotto:</label><input type="file" id="disponibilità" name="disponibilità" />
+                </section>
+            </div>
+            <div class="inline">
+                <img src="./img/VIP_logo.png" alt="Logo" />
+            </div>
+            <section>
+                <label for="descrizione">Descrizione:</label>
+                <textarea type="text" id="descrizione" name="descrizione"></textarea>
+            </section>
         </form>
     </main>
 
