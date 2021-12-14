@@ -2,7 +2,7 @@ const productWin = "<div class='product win'><img class='img' src='./img/occhial
 
 const productLose ="<div class='product lose'><img class='img' src='./img/occhiali.jpg' alt='product photo'/><div class='topright'><button class='timer'>00:00</button><textarea readonly class='description'>Breve descrizione del prodotto</textarea></div><button class='red'>€ 59.500.000,00</button><button class='red'>HAI PERSO!</button><button class='last red'>VEDI IL PRODOTTO</button></div>";
 
-const productBefore ="<div class='product before'><img class='img' src='./img/occhiali.jpg' alt='product photo'/><div class='topright'><button class='timer'>15:00</button><textarea readonly class='description'>Breve descrizione del prodotto</textarea></div><button class='grey'>€ 59.500.000,00</button><button class='grey'>INIZIERA' A BREVE</button><button class='last grey'>VEDI IL PRODOTTO</button></div>";
+const productBefore = "<div class='product before'><img class='img' src='img/occhiali.jpg' alt='product photo'/><div class='topright'><button class='timer'>15:00</button><textarea readonly class='description'>Descrizione del prodotto</textarea></div><button class='grey'>59.000.000</button><button class='grey'>INIZIERA' A BREVE</button><button class='last grey'>VEDI IL PRODOTTO</button></div>";
 
 const productLosing ="<div class='product losing'><img class='img' src='./img/occhiali.jpg' alt='product photo'/><div class='topright'><button class='timer'>02:32</button><textarea readonly class='description'>Breve descrizione del prodotto</textarea></div><button class='yellow'>€ 59.500.000,00</button><button class='red'>PUOI RILANCIARE</button><button class='last1 grey'>RAISE</button><button class='last2 grey'>BUY NOW</button></div>";
 
@@ -12,12 +12,27 @@ const productBuyNow ="<div class='product buy_now'><img class='img' src='./img/o
 
 const productRaise ="<div class='product raise'><img class='img' src='./img/occhiali.jpg' alt='product photo'/><div class='topright'><button class='timer'>04:20</button><textarea readonly class='description'>Breve descrizione del prodotto</textarea></div><button class='yellow'>€ 59.500.000,00</button><select class='raise' name='raise' id='raise'><option value'5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select><button class='last1 grey'>RAISE</button><button class='last2 grey'>BACK</button></div>";
 
+
+
 function hideElement(element){
     element.removeClass("selected");
     element.addClass("unset");
 }
-
-function loadProduct(){
+/*
+function loadProduct(articles){
+    for(let i=0; i < articles.length; i++){
+        switch(articles[i]["Stato"]){
+            case "finit":
+                //$("nav#products").append(productBefore(articles[i]["Immagine"], articles[i]["descrizione"], articles[i]["Base_asta"]));
+                var_dump(articles[i]);
+            case "inizi":
+                var_dump(articles[i]);
+            case "before":
+                $("nav#products").append(productBefore(articles[i]["Immagine"], articles[i]["descrizione"], articles[i]["Base_asta"]));
+            default:
+                var_dump(articles[i]);
+        }
+    }
     for($i=0; $i<5; $i++){
         $("nav#products").append(productWin);
         $("nav#products").append(productLose);
@@ -27,11 +42,9 @@ function loadProduct(){
         $("nav#products").append(productBuyNow);
         $("nav#products").append(productRaise);        
     }
-}
+}*/
 
 $(document).ready(function(){
-    loadProduct();
-
     $("div.slider > button").click(function(){
 
         if($(this).hasClass("unset")){
