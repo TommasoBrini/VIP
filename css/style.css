@@ -24,6 +24,7 @@ header > div.slider > button.unset{
     color: #000000;
 }
 
+
 body > nav.products > div.product {
     margin: 1%;
     width: 200px;
@@ -32,13 +33,18 @@ body > nav.products > div.product {
     border-radius: 5px;
 }
 
-body > nav.products > div.product > button{
+body > nav.products > div.product > button, body > nav.products > div.product > select.raise{
     margin: 5px 25px;
     color: #000000;
     width: 150px;
     height: 35px;
     border-radius: 5px;
     font-weight: bold;
+}
+
+body > nav.products > div.product > select.raise {
+    background-color: #BDBDBD;
+    padding: 0px;
 }
 
 body > nav.products > div.product > div.topright > button.timer {
@@ -52,6 +58,10 @@ body > nav.products > div.product > div.topright {
     
     width: 100px;
     float: right;
+}
+
+body > nav.products > div.product {
+    display: inline-block;
 }
 
 body > nav.products > div.product > img{
@@ -80,18 +90,45 @@ body > nav.products > div.product > div.topright > textarea.description{
 
 body > nav.products > div.product > button.green {
     background-color: #89FF49;
+    pointer-events: none;
 }
 
 body > nav.products > div.product > button.yellow {
     background-color: #E4FF49;
+    pointer-events: none;
 }
 
 body > nav.products > div.product > button.red {
     background-color: #FF6449;
+    pointer-events: none;
+}
+
+body > nav.products > div.product > button.grey {
+    background-color: #BDBDBD;
 }
 
 body > nav.products > div.product > button.last {
     height: 20px;
+}
+
+body > nav.products > div.product > button.last1 {
+    margin-right: 5px;
+}
+
+body > nav.products > div.product > button.last2 {
+    margin-left: 5px;
+}
+
+body > nav.products > div.product > button.last1, body > nav.products > div.product > button.last2 {
+    display: inline-block;
+    height: 20px;
+    width: 70px;
+    padding: 0px;
+}
+
+body > nav.products > div.product > button.unable {
+    opacity: 30%;
+    pointer-events: none;
 }
 
 header, footer{
