@@ -45,6 +45,7 @@ create table PRODOTTO (
      Base_asta int,
      Disponibilita int,
      TimeStamp int not null,
+     Immagine longblob not null,
      constraint ID_PRODOTTO_ID primary key (IDProdotto));
 
 create table PUNTATA (
