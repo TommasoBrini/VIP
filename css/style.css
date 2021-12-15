@@ -1,9 +1,11 @@
-body {
+body.white {
     /*Grigio chiaro*/
     background-color: #BDBDBD;
+}
 
-    /*Grigio scuro
-    background-color: #303030;*/
+body.black{
+    /*Grigio scuro*/
+    background-color: #303030;
 }
 
 header > div > button {
@@ -139,6 +141,47 @@ body > main.products > div.product > button.unable {
 
 body > main.products {
     align-items: center;
+}
+
+/*//**//*/
+/*Tommi*/
+main > form > h2 {
+    text-align: center;
+}
+
+main > form > section, div {
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.inline {
+    display: inline-block;
+}
+
+main > form > div > div > section > label{
+    margin-right: 5%;
+}
+
+main > form > section > #descrizione {
+    width: 95%;
+    height: 180px;
+    resize: none;
+}
+
+main > form > div.first {
+    text-align: center;
+    width: 70%;
+}
+
+.immagine{
+    text-align: center;
+    width: 20%;
+}
+
+main > form > div > img {
+    padding: 15px;
+    max-height: 100px;
+    padding-left: 50%;
 }
 
 header, footer{

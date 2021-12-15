@@ -1,0 +1,1 @@
+<button class="selected"><?php echo $templateParams["button1"] ?></button><button class="unset"><?php echo $templateParams["button2"] ?></button>
