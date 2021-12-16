@@ -16,5 +16,13 @@
             
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
+
+        public function getProducts(){
+            $stmt = $this -> db -> prepare("SELECT p.Nome, p.Descrizione, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotti p WHERE p.Base_asta = null");
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
     }    
 ?>
