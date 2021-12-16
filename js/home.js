@@ -10,6 +10,7 @@ $(document).ready(function(){
             hideElement($("div.slider > button.selected"));
             $(this).removeClass("unset");
             $(this).addClass("selected");
+            
         }
     });
     
