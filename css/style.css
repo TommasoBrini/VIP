@@ -71,6 +71,15 @@ body > main.products > div {
     border-radius: 5px;
 }
 
+body > main.products > div > label {
+    color: #FFBF49;
+    margin: 20px 25px 5px 25px;
+    height: 35px;
+    width: 150px;
+    background-color: #303030;
+
+}
+
 body > main.products > div > button, body > main.products > div.auction > select.raise{
     margin: 5px 25px;
     color: #000000;
@@ -93,7 +102,6 @@ body > main.products > div > div.topright > button.timer {
 }
 
 body > main.products > div > div.topright {
-    
     width: 100px;
     float: right;
 }
@@ -107,13 +115,13 @@ body > main.products > div > img{
     border-radius: 5px;
     width: 70px;
     height: 70px;
-    margin: 10px 0px 5px 25px;
+    margin: 5px 0px 5px 25px;
     float: left;
 }
 
 body > main.products > div > img, body > main.products > div.auction > div.topright {
     display: inline-block;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 body > main.products > div > button.green {
@@ -166,7 +174,7 @@ body > main.products > div.auction > div.topright > textarea.description{
     width: 70px;
     height: 40px;
     border-radius: 5px;
-    margin: 5px 25px 10px 5px;
+    margin: 5px 25px 5px 5px;
     padding: 0px;
     border: 0px;
     resize: none;
