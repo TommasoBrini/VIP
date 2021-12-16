@@ -11,7 +11,7 @@ $templateParams["href2"] = "index_products.php";
 $templateParams["class1"] = TRUE;
 $templateParams["class2"] = FALSE;
 $templateParams["slider"] = TRUE;
-$templateParams["aste"] = $dbh->getAuctions();
+$templateParams["auctions"] = $dbh->getAuctions();
 
 define("JS_DIR", "./js/home.js");
 

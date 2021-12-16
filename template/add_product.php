@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-    
-    <form action='#' method='POST'>
-=======
         <form action='#' method='POST'>
->>>>>>> tommaso
            <h2>INSERT PRODUCT</h2>
             <section>
                 <label for="tipoProdotto">AUCTION:</label><input type="checkbox" id="checkbox" name="checkbox" />

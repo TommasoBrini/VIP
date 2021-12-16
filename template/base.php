@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $templateParams["titolo"] ?></title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css?v=1" />
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -27,7 +27,9 @@
     </header>
     <main class="products" id="products">
         <?php
-        require($templateParams["nome"]);
+            if(isset($templateParams["nome"])){
+                require($templateParams["nome"]);
+            }
         ?>
     </main>
     <footer>

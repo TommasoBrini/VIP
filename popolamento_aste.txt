@@ -1,0 +1,1 @@
+INSERT INTO `asta` (`Data`, `IdAsta`, `CodProdotto`, `Stato`, `OraInizio`, `OraFine`, `DataFine`, `CodVincitore`) VALUES ('16/12/2021', NULL, '1', 'INIZIATA', '08:00', '20:00', '16/12/2021', NULL), ('15/12/2021', NULL, '3', 'FINITA', '20:00', '08:00', '16/12/2021', NULL), ('16/12/2021', NULL, '5', 'BEFORE', '20:00', '08:00', '17/12/2021', NULL); 
