@@ -1,6 +1,6 @@
 
     <h1>REGISTRATION</h1>
-        <form action="/prova.php">
+        <form class="registration" action="/registration.php">
             <label for="Email">Email</label><input type="text" id="email" name="email"><br>
             <label for="Password">Password</label><input type="password" id="password" name="password"><br>
             <label for="Confirm password">Confirm password</label><input type="text" id="confirmPassword" name="confirmPassword"><br>
