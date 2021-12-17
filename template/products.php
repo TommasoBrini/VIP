@@ -1,7 +1,9 @@
 <?php foreach($templateParams["products"] as $product): 
     if($product["Disponibilita"] == 0):?>
         <div class='product soldout'>
-            <label for="title"><?php echo $product["Nome"]?></label>
+            <header>
+                <label for="title"><?php echo $product["Nome"]?></label>
+            </header>
             <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($product["Immagine"]);?>' alt='product photo'/>
             <div class='topright'>
                 <textarea readonly class='description'><?php echo $product["DescrizioneBreve"];?></textarea>
@@ -12,7 +14,9 @@
         </div>
     <?php else: ?>
         <div class='product aviable'>
-            <label for="title"><?php echo $product["Nome"]?></label>
+            <header>
+                <label for="title"><?php echo $product["Nome"]?></label>
+            </header>
             <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($product["Immagine"]);?>' alt='product photo'/>
             <div class='topright'>
                 <textarea readonly class='description'><?php echo $product["DescrizioneBreve"];?></textarea>

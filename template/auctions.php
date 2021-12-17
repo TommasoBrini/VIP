@@ -2,7 +2,9 @@
     switch($asta["Stato"]):
         case "BEFORE":?>
             <div class='auction before'>
-                <label for="title"><?php echo $asta["Nome"]?></label>
+                <header>
+                    <label for="title"><?php echo $asta["Nome"]?></label>
+                </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
                     <button class='timer'>15:00</button>
@@ -18,7 +20,9 @@
         case "FINITA":
             if($asta["OraFine"] == 20):?>
             <div class='auction win'>
-		        <label for="title"><?php echo $asta["Nome"]?></label>
+                <header>
+                    <label for="title"><?php echo $asta["Nome"]?></label>
+                </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
                     <button class='timer'>00:00</button>
@@ -32,7 +36,9 @@
             else:
             ?>
                 <div class='auction lose'>
-		            <label for="title"><?php echo $asta["Nome"]?></label>
+                    <header>
+                        <label for="title"><?php echo $asta["Nome"]?></label>
+                    </header>
                     <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                     <div class='topright'>
                         <button class='timer'>00:00</button>
@@ -47,7 +53,9 @@
             break;
         case "INIZIATA":?>
             <div class='auction losing'>
-		        <label for="title"><?php echo $asta["Nome"]?></label>
+                <header>
+                    <label for="title"><?php echo $asta["Nome"]?></label>
+                </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
                     <button class='timer'>02:32</button>
