@@ -1,11 +1,14 @@
-<?php foreach($templateParams["aste"] as $asta): 
+<?php foreach($templateParams["auctions"] as $asta): 
     switch($asta["Stato"]):
-        case "befor":?>
-            <div class='product before'>
+        case "BEFORE":?>
+            <div class='auction before'>
+                <header>
+                    <label for="title"><?php echo $asta["Nome"]?></label>
+                </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
                     <button class='timer'>15:00</button>
-                    <textarea readonly class='description'><?php echo $asta["Descrizione"];?></textarea>
+                    <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                 </div>
                 <button class='grey'><?php echo number_format($asta["Prezzo"]);?> €</button>
                 <button class='grey'>INIZIERA' A BREVE</button>
@@ -14,13 +17,16 @@
             <?php
             break;
         
-        case "finit":
+        case "FINITA":
             if($asta["OraFine"] == 20):?>
-            <div class='product win'>
+            <div class='auction win'>
+                <header>
+                    <label for="title"><?php echo $asta["Nome"]?></label>
+                </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
                     <button class='timer'>00:00</button>
-                    <textarea readonly class='description'><?php echo $asta["Descrizione"];?></textarea>
+                    <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                 </div>
                 <button class='green'><?php echo number_format($asta["Prezzo"]);?> €</button>
                 <button class='green'>HAI VINTO!</button>
@@ -29,11 +35,14 @@
             <?php
             else:
             ?>
-                <div class='product lose'>
+                <div class='auction lose'>
+                    <header>
+                        <label for="title"><?php echo $asta["Nome"]?></label>
+                    </header>
                     <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                     <div class='topright'>
                         <button class='timer'>00:00</button>
-                        <textarea readonly class='description'><?php echo $asta["Descrizione"];?></textarea>
+                        <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                     </div>
                     <button class='red'><?php echo number_format($asta["Prezzo"]);?> €</button>
                     <button class='red'>HAI PERSO!</button>
@@ -42,12 +51,15 @@
             <?php
             endif;
             break;
-        case "inizi":?>
-            <div class='product losing'>
+        case "INIZIATA":?>
+            <div class='auction losing'>
+                <header>
+                    <label for="title"><?php echo $asta["Nome"]?></label>
+                </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
                     <button class='timer'>02:32</button>
-                    <textarea readonly class='description'><?php echo $asta["Descrizione"];?></textarea>
+                    <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                 </div>
                 <button class='yellow'><?php echo number_format($asta["Prezzo"]);?> €</button>
                 <button class='red'>PUOI RILANCIARE</button>

@@ -39,7 +39,8 @@ create table ORDINE (
 
 create table PRODOTTO (
      Nome varchar(50) not null,
-     Descrizione varchar(250) not null,
+     Descrizione varchar(1000) not null,
+     DescrizioneBreve varchar(150) not null,
      Prezzo int not null,
      IDProdotto int not null auto_increment,
      Base_asta int,
