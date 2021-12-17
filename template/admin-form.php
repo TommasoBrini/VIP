@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <?php
     $prodotto = $templateParams["prodotto"];
+=======
+<?php 
+    foreach($templateParams["prodotto"] as $prodotto): 
+>>>>>>> tommaso
 ?>
 
         <form action='#' method='POST'>
@@ -22,7 +27,11 @@
                     <label for="time">Time:</label><input type="time" id="time" name="time" />
                 </li>
                 <li>
+<<<<<<< HEAD
                     <label for="disponibilità">Disponibilità:</label><input type="text" id="disponibilità" name="disponibilità" value="<?php echo $prodotto["Disponibilità"]; ?> "/>
+=======
+                    <label for="disponibilità">Disponibilità:</label><input type="text" id="disponibilità" name="disponibilità" value="<?php echo $prodotto["Disponibilita"]; ?> "/>
+>>>>>>> tommaso
                 </li>
                 <li>
                     <label for="immagine">Immagine Prodotto:</label><input type="file" id="immagine" name="immagine" accept="image/png , image/jpeg" /> 
@@ -40,6 +49,7 @@
                     <input type="submit" id="insert" name="insert" value="INSERT">
                 </li>
             </ul> 
+<<<<<<< HEAD
            
         <!--    
             <section>
@@ -51,3 +61,9 @@
             </div> -->
         </form>
     
+=======
+        </form>
+    
+<?php
+endforeach; ?>
+>>>>>>> tommaso
