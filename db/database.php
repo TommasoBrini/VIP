@@ -25,21 +25,8 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function checkProduct($id){
-            $stmt = $this -> db -> prepare("SELECT Disponibilita FROM prodotto WHERE IDProdotto=?");
-            $stmt -> bind_param('i', $id);
-            $stmt -> execute();
-            $result = $stmt -> get_result();
-            if(isset($result)){
-                return true;
-            } else{
-                return false;
-            }
-        }
-
         public function getProductById($id){
             $query="";
-            
             $stmt = $this -> db -> prepare("SELECT Disponibilita FROM prodotto WHERE IDProdotto=?");
             $stmt -> bind_param('i', $id);
             $stmt -> execute();
@@ -52,9 +39,9 @@
             $stmt = $this -> db -> prepare($query);
             $stmt -> bind_param('i', $id);
             $stmt -> execute();
-            $result = $stmt -> get_result();
+            $result1 = $stmt -> get_result();
 
-            return $result -> fetch_All(MYSQLI_ASSOC);
+            return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
     }    
 ?>

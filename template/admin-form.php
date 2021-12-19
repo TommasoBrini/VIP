@@ -1,9 +1,9 @@
-<?php 
-    foreach($templateParams["prodotto"] as $prodotto): 
+<?php  
+    $prodotto = $templateParams["prodotto"];
 ?>
 
-        <form action='#' method='POST'>
-            <h2>INSERT PRODUCT</h2>
+        <form action='processa_prodotto.php' method='POST'>
+            <h2>ADMIN SETTING</h2>
             <section>
                 <label for="checkbox">AUCTION:</label><input type="checkbox" id="checkbox" name="checkbox" />
             </section>
@@ -37,10 +37,7 @@
                     <label for="descrizioneBreve">Descrizione Breve:</label><textarea type="text" id="descrizioneBreve" name="descrizioneBreve"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
                 </li>
                 <li>
-                    <input type="submit" id="insert" name="insert" value="INSERT">
+                    <input type="submit" id="insert" name="insert" value="<?php echo $templateParams["azione"]; ?>">
                 </li>
             </ul> 
         </form>
-    
-<?php
-endforeach; ?>
