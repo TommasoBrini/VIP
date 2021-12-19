@@ -1,6 +1,24 @@
 <?php
 
 function getEmptyProduct(){
-    return array("Nome" =>"", "Descrizione" => "", "DescrizioneBreve" => "", "Prezzo" => "", "BaseAsta" => "", "Disponibilità" => "", "Immagine" => "");
+    return array("Nome" =>"", "Descrizione" => "", "DescrizioneBreve" => "", "Prezzo" => "", "BaseAsta" => "", "Disponibilita" => "", "Immagine" => "");
 }
+
+function getAction($action){
+    $result = "";
+    switch($action){
+        case 1:
+            $result = "Inserisci";
+            break;
+        case 2:
+            $result = "Modifica";
+            break;
+        case 3:
+            $result = "Cancella";
+            break;
+    }
+
+    return $result;
+}
+
 ?>
