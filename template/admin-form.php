@@ -22,11 +22,7 @@
                     <label for="time">Time:</label><input type="time" id="time" name="time" />
                 </li>
                 <li>
-<<<<<<< HEAD
                     <label for="Disponibilita">Disponibilità:</label><input type="text" id="Disponibilita" name="Disponibilita" value="<?php echo $prodotto["Disponibilita"]; ?> "/>
-=======
-                    <label for="disponibilità">Disponibilità:</label><input type="text" id="disponibilità" name="disponibilità" value="<?php echo $prodotto["Disponibilita"]; ?> "/>
->>>>>>> 64e690c866c7836797970b72a2ef52aedb8d9623
                 </li>
                 <li>
                     <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" /> 
