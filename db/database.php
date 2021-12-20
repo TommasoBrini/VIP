@@ -44,5 +44,22 @@
             return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
 
+        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $disponibilità, $immagine){
+            $query="";
+            if(isset($disponibilità)){
+                $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine);
+            } else {
+                $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
+            }
+            $stmt->execute();
+        
+        return $stmt->insert_id;
+        }
+
+
     }    
 ?>

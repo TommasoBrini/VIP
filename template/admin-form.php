@@ -37,7 +37,7 @@
                     <label for="DescrizioneBreve">Descrizione Breve:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
                 </li>
                 <li>
-                    <input type="submit" id="insert" name="insert" value="<?php echo $templateParams["azione"]; ?>">
+                    <input type="submit" id="insert" name="insert" value="<?php echo $templateParams["azione"]; ?>"/><a href="index.php">Annulla</a>
                 </li>
             </ul> 
         </form>
