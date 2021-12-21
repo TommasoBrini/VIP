@@ -1,8 +1,9 @@
 <?php  
     $prodotto = $templateParams["prodotto"];
+    $azione = getAction($templateParams["azione"]);
 ?>
 
-        <form action='processa_prodotto.php' method='POST'>
+        <form action='processa_prodotto.php' method='POST' enctype="multipart/form-data">
             <h2>ADMIN SETTING</h2>
             <section>
                 <label for="checkbox">AUCTION:</label><input type="checkbox" id="checkbox" name="checkbox" />
@@ -37,7 +38,8 @@
                     <label for="DescrizioneBreve">Descrizione Breve:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
                 </li>
                 <li>
-                    <input type="submit" id="insert" name="insert" value="<?php echo $templateParams["azione"]; ?>"/><a href="index.php">Annulla</a>
+                    <input type="submit" id="insert" name="insert" value="<?php echo $azione; ?>"/>
                 </li>
-            </ul> 
+            </ul>
+	    <input type="hidden" name="azione" value="<?php echo $templateParams["azione"]; ?>" /> 
         </form>

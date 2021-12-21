@@ -18,7 +18,7 @@ $templateParams["titolo"] = "VIP - Add Product";
 $templateParams["nome"] = "admin-form.php";
 $templateParams["bg"] = "white";
 $templateParams["slider"] = FALSE;
-$templateParams["azione"] = getAction($_GET["action"]);
+$templateParams["azione"] = $_GET["action"];
 
 define("JS_DIR", "./js/add_product.js");
 
