@@ -7,7 +7,7 @@
                 </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
-                    <button class='timer'>15:00</button>
+                    <button class="timer"></button>
                     <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                 </div>
                 <button class='grey'><?php echo number_format($asta["Prezzo"]);?> €</button>
@@ -15,7 +15,7 @@
                 <button class='last grey'>VEDI IL PRODOTTO</button>
             </div>
             <?php
-            break;
+            break; 
         
         case "FINITA":
             if($asta["OraFine"] == 20):?>

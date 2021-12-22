@@ -20,5 +20,5 @@ function getAction($action){
 
     return $result;
 }
-
 ?>
+
