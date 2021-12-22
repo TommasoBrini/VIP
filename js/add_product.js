@@ -1,6 +1,10 @@
 $(document).ready(function(){
-    $("form > ul > li:nth-child(3)").hide();
-    $("form > ul > li:nth-child(4)").hide();
+    if($("#checkbox").is(":checked")){
+        $("form > ul > li:nth-child(5)").hide();
+    } else{
+        $("form > ul > li:nth-child(3)").hide();
+        $("form > ul > li:nth-child(4)").hide();
+    }
 
     $("#checkbox").click(function(e){
         if($("#checkbox").is(":checked")){
