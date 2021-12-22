@@ -62,8 +62,8 @@
                     <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                 </div>
                 <button class='yellow'><?php echo number_format($asta["Prezzo"]);?> €</button>
-                <button class='red'>PUOI RILANCIARE</button>
-                <button class='last1 grey'>RAISE</button><button class='last2 grey'>BUY NOW</button>
+                <button class='red second'>PUOI RILANCIARE</button>
+                <button class='last1 grey raise'>RAISE</button><button class='last2 grey'>BUY NOW</button>
             </div>
             <?php
             break;
