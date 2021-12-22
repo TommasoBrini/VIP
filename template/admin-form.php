@@ -6,7 +6,10 @@
         <form action='processa_prodotto.php' method='POST' enctype="multipart/form-data">
             <h2>ADMIN SETTING</h2>
             <section>
-                <label for="checkbox">AUCTION:</label><input type="checkbox" id="checkbox" name="checkbox" />
+                <label for="checkbox">AUCTION:</label><input type="checkbox" id="checkbox" name="checkbox" 
+                <?php if($templateParams["azione"]!=1 && !isset($prodotto["Disponibilita"])){
+                    echo ' checked="checked" ';
+                } ?>/>
             </section>
             <ul>
                 <li>
@@ -26,10 +29,16 @@
                     <label for="Disponibilita">Disponibilità:</label><input type="text" id="Disponibilita" name="Disponibilita" value="<?php echo $prodotto["Disponibilita"]; ?> "/>
                 </li>
                 <li>
+                    <?php if($templateParams["azione"]!=3): ?>
                     <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" /> 
+                    <?php endif; ?>
                 </li>
                 <li>
+                    <?php if($templateParams["azione"]!=1): ?>
+                        <img src="data:image/jpeg;base64,<?php echo base64_encode($prodotto["Immagine"]);?>" id="imgshow" alt="prodotto"/>
+                    <?php else: ?>
                     <img src="./img/account.png" id="imgshow" alt="prodotto"/>
+                    <?php endif; ?>
                 </li>
                 <li>
                     <label for="Descrizione">Descrizione:</label><textarea type="text" id="Descrizione" name="Descrizione"><?php echo $prodotto["Descrizione"]; ?></textarea>

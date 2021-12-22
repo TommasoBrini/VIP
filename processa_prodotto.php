@@ -14,7 +14,6 @@ if($_POST["azione"]==1){
     $baseAsta = htmlspecialchars($_POST["Base_asta"]);
     $disponibilità = htmlspecialchars($_POST["Disponibilita"]);
     $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $baseAsta, $disponibilità);
-    /*$id = $dbh->insertProduct("Csio", "dfsjewfjknje", "ascjkeva", 123, NULL, 12, 14);*/
     if($id!=false){
         var_dump("Inserimento completato correttamente!");
     }

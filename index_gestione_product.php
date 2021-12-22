@@ -20,7 +20,7 @@ $templateParams["bg"] = "white";
 $templateParams["slider"] = FALSE;
 $templateParams["azione"] = $_GET["action"];
 
-define("JS_DIR", "./js/add_product.js");
+define("JS_DIR", "./js/gestione_product.js");
 
 require("template/base.php");
 ?>
