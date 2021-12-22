@@ -25,36 +25,41 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function checkProduct($id){
-            $stmt = $this -> db -> prepare("SELECT Disponibilita FROM prodotto WHERE IDProdotto=?");
-            $stmt -> bind_param('i', $id);
-            $stmt -> execute();
-            $result = $stmt -> get_result();
-            if(isset($result)){
-                return true;
-            } else{
-                return false;
-            }
-        }
-
         public function getProductById($id){
             $query="";
-            
             $stmt = $this -> db -> prepare("SELECT Disponibilita FROM prodotto WHERE IDProdotto=?");
             $stmt -> bind_param('i', $id);
             $stmt -> execute();
             $result = $stmt -> get_result();
             
             if(isset($result)){
-                $query="SELECT Nome, Descrizione, DescrizioneBreve, Prezzo, Immagine, Disponibilita FROM prodotto WHERE IDProdotto=?";
+                $query="SELECT Nome, Descrizione, DescrizioneBreve, Prezzo, Immagine, Base_asta, Disponibilita FROM prodotto WHERE IDProdotto=?";
             }
             
             $stmt = $this -> db -> prepare($query);
             $stmt -> bind_param('i', $id);
             $stmt -> execute();
-            $result = $stmt -> get_result();
+            $result1 = $stmt -> get_result();
 
-            return $result -> fetch_All(MYSQLI_ASSOC);
+            return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
+
+        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $disponibilità){
+            $query="";
+            if(isset($disponibilità)){
+                $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita) VALUES (?, ?, ?, ?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità);
+            } else {
+                $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
+            }
+            $stmt->execute();
+        
+        return $stmt->insert_id;
+        }
+
+
     }    
 ?>

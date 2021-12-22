@@ -1,46 +1,45 @@
-<?php 
-    foreach($templateParams["prodotto"] as $prodotto): 
+<?php  
+    $prodotto = $templateParams["prodotto"];
+    $azione = getAction($templateParams["azione"]);
 ?>
 
-        <form action='#' method='POST'>
-            <h2>INSERT PRODUCT</h2>
+        <form action='processa_prodotto.php' method='POST' enctype="multipart/form-data">
+            <h2>ADMIN SETTING</h2>
             <section>
                 <label for="checkbox">AUCTION:</label><input type="checkbox" id="checkbox" name="checkbox" />
             </section>
             <ul>
                 <li>
-                    <label for="name">Nome:</label><input type="text" id="name" name="name" value="<?php echo $prodotto["Nome"]; ?> " />
+                    <label for="Nome">Name:</label><input type="text" id="Nome" name="Nome" value="<?php echo $prodotto["Nome"]; ?> " />
                 </li>
                 <li>
-                    <label for="prezzo">Prezzo (€):</label><input type="text" id="prezzo" name="prezzo" value="<?php echo $prodotto["Prezzo"]; ?> "/>
+                    <label for="Prezzo">Price (€):</label><input type="text" id="Prezzo" name="Prezzo" value="<?php echo $prodotto["Prezzo"]; ?> "/>
                 </li>
                 <li>
-                <label for="base">Base Asta (€):</label><input type="text" id="base" name="base" value="<?php echo $prodotto["BaseAsta"]; ?> "/>
+                <label for="Base_asta">Base Price (€):</label><input type="text" id="Base_asta" name="Base_asta" value="<?php echo $prodotto["Base_asta"]; ?> "/>
                 </li>
                 <li>
                     <label for="data">Date:</label><input type="date" id="data" name="data" />
                     <label for="time">Time:</label><input type="time" id="time" name="time" />
                 </li>
                 <li>
-                    <label for="disponibilità">Disponibilità:</label><input type="text" id="disponibilità" name="disponibilità" value="<?php echo $prodotto["Disponibilita"]; ?> "/>
+                    <label for="Disponibilita">Disponibilità:</label><input type="text" id="Disponibilita" name="Disponibilita" value="<?php echo $prodotto["Disponibilita"]; ?> "/>
                 </li>
                 <li>
-                    <label for="immagine">Immagine Prodotto:</label><input type="file" id="immagine" name="immagine" accept="image/png , image/jpeg" /> 
+                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" /> 
                 </li>
                 <li>
                     <img src="./img/account.png" id="imgshow" alt="prodotto"/>
                 </li>
                 <li>
-                    <label for="descrizione">Descrizione:</label><textarea type="text" id="descrizione" name="descrizione"><?php echo $prodotto["Descrizione"]; ?></textarea>
+                    <label for="Descrizione">Descrizione:</label><textarea type="text" id="Descrizione" name="Descrizione"><?php echo $prodotto["Descrizione"]; ?></textarea>
                 </li>
                 <li>
-                    <label for="descrizioneBreve">Descrizione Breve:</label><textarea type="text" id="descrizioneBreve" name="descrizioneBreve"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
+                    <label for="DescrizioneBreve">Descrizione Breve:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
                 </li>
                 <li>
-                    <input type="submit" id="insert" name="insert" value="INSERT">
+                    <input type="submit" id="insert" name="insert" value="<?php echo $azione; ?>"/>
                 </li>
-            </ul> 
+            </ul>
+	    <input type="hidden" name="azione" value="<?php echo $templateParams["azione"]; ?>" /> 
         </form>
-    
-<?php
-endforeach; ?>
