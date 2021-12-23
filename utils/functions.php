@@ -1,7 +1,7 @@
 <?php
 
 function getEmptyProduct(){
-    return array("Nome" =>"", "Descrizione" => "", "DescrizioneBreve" => "", "Prezzo" => "", "Base_asta" => "", "Disponibilita" => "", "Immagine" => "");
+    return array("Nome" => null, "Descrizione" => null, "DescrizioneBreve" => null, "Prezzo" => null, "Base_asta" => null, "Disponibilita" => null, "Immagine" => null);
 }
 
 function getAction($action){

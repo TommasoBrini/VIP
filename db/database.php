@@ -44,22 +44,29 @@
             return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $disponibilità){
-            $query="";
-            if(isset($disponibilità)){
-                $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita) VALUES (?, ?, ?, ?, ?)";
-                $stmt = $this->db->prepare($query);
-                $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità);
-            } else {
-                $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
-                $stmt = $this->db->prepare($query);
-                $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
-            }
-            $stmt->execute();
-        
-        return $stmt->insert_id;
+        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità){
+            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità);
+            $stmt->execute();    
+            return $stmt->insert_id;
         }
 
-
+        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $data, $oraInizio){
+            $query="";
+            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
+            $stmt->execute();
+            $id = $stmt->insert_id;
+            
+            $query="";
+            $query = "INSERT INTO asta (Data, CodProdotto, Stato, OraInizio, OraFine, DataFine) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stato = "INIZIATA";
+            $stmt->bind_param('sissss',$data, $id, $stato, $oraInizio, $oraInizio, $data);
+            $stmt->execute();
+            return $stmt->insert_id;
+        }
     }    
 ?>

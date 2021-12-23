@@ -13,14 +13,21 @@ if($_POST["azione"]==1){
     $prezzo = htmlspecialchars($_POST["Prezzo"]);
     $baseAsta = htmlspecialchars($_POST["Base_asta"]);
     $disponibilità = htmlspecialchars($_POST["Disponibilita"]);
-    $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $baseAsta, $disponibilità);
-    if($id!=false){
-        var_dump("Inserimento completato correttamente!");
-    }
-    else{
+    if($nomeProdotto=="" || $descrizione=="" || $descrizioneBreve=="" || $prezzo=="" || ($baseAsta=="" && $disponibilità=="")){
+        var_dump("Riempire tutti i campi");
+    } else {
+        if(isset($_POST["checkbox"])){
+            $id = $dbh->insertAuction($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $baseAsta, "", "");
+        } else {
+            $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità);
+        }
+        if($id!=false){
+            var_dump("Inserimento completato correttamente!");
+        }
+        else{
         var_dump("qualcosa non va");
+        }
     }
-    //header("location: index.php");
 }
 
 if($_POST["azione"]==2){
