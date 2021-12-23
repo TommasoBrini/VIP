@@ -87,7 +87,7 @@ body > main.products > div > header > label {
 
 }
 
-body > main.products > div > button, body > main.products > div.auction > select.raise{
+body > main.products > div > button, body > main.products > div > select{
     margin: 2.5% 10%;
     color: #000000;
     width: 75%;
@@ -96,7 +96,7 @@ body > main.products > div > button, body > main.products > div.auction > select
     font-weight: bold;
 }
 
-body > main.products > div > select.raise {
+body > main.products > div > select {
     background-color: #BDBDBD;
     padding: 0;
 }
