@@ -10,7 +10,7 @@
         }
 
         public function getAuctions(){
-            $stmt = $this -> db -> prepare("SELECT p.Nome, a.Data, a.OraInizio, a.DataFine, a.OraFine, a.Stato, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.Data, a.OraInizio ASC");
+            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, a.Data, a.OraInizio, a.DataFine, a.OraFine, a.Stato, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.Data, a.OraInizio ASC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             

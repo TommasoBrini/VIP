@@ -7,7 +7,7 @@
                 </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
-                    <button class="timer"></button>
+                    <button class="timer" id="<?php echo $asta["IDProdotto"]?>"></button>
                     <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                 </div>
                 <button class='grey'><?php echo number_format($asta["Prezzo"]);?> €</button>
@@ -25,7 +25,7 @@
                 </header>
                 <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                 <div class='topright'>
-                    <button class='timer'>00:00</button>
+                    <button class='timer' id="<?php echo $asta["IDProdotto"]?>"></button>
                     <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                 </div>
                 <button class='green'><?php echo number_format($asta["Prezzo"]);?> €</button>
@@ -41,7 +41,7 @@
                     </header>
                     <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($asta["Immagine"]);?>' alt='product photo'/>
                     <div class='topright'>
-                        <button class='timer'>00:00</button>
+                        <button class='timer' id="<?php echo $asta["IDProdotto"]?>"></button>
                         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
                     </div>
                     <button class='red'><?php echo number_format($asta["Prezzo"]);?> €</button>
