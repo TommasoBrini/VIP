@@ -20,13 +20,17 @@ use VIP;
 -- _____________ 
 
 create table ASTA (
-     Data varchar(10) not null,
      IdAsta int not null auto_increment,
      CodProdotto int not null,
      Stato varchar(15) not null,
+     AnnoInizio int not null,
+     MeseInizio int not null,
+     GiornoInizio int not null,
      OraInizio varchar(10) not null,
+     AnnoFine int not null,
+     MeseFine int not null,
+     GiornoFine int not null,
      OraFine varchar(10) not null,
-     DataFine varchar(10) not null,
      CodVincitore varchar(20),
      constraint ID_ASTA_ID primary key (IdAsta));
 

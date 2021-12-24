@@ -12,7 +12,8 @@ $templateParams["css"] = "./css/style.css?v=1";
 $templateParams["class1"] = TRUE;
 $templateParams["class2"] = FALSE;
 $templateParams["slider"] = TRUE;
-$templateParams["auctions"] = $dbh->getAuctions();
+//$templateParams["auctions"] = $dbh->getAuctions();
+$templateParams["auctions"] = $dbh->getProducts();
 
 define("JS_DIR", "./js/home.js");
 

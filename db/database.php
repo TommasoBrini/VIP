@@ -9,13 +9,13 @@
             }        
         }
 
-        public function getAuctions(){
+        /*public function getAuctions(){
             $stmt = $this -> db -> prepare("SELECT p.Nome, a.Data, a.OraInizio, a.DataFine, a.OraFine, a.Stato, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.Data, a.OraInizio ASC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
             return $result -> fetch_All(MYSQLI_ASSOC);
-        }
+        }*/
 
         public function getProducts(){
             $stmt = $this -> db -> prepare("SELECT p.Nome, p.Descrizione, p.DescrizioneBreve, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotto p WHERE p.Base_asta IS NULL ORDER BY p.Disponibilita DESC");
@@ -52,7 +52,7 @@
             return $stmt->insert_id;
         }
 
-        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $data, $oraInizio){
+        /*public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $data, $oraInizio){
             $query="";
             $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
@@ -67,6 +67,6 @@
             $stmt->bind_param('sissss',$data, $id, $stato, $oraInizio, $oraInizio, $data);
             $stmt->execute();
             return $stmt->insert_id;
-        }
+        }*/
     }    
 ?>
