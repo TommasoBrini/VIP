@@ -16,6 +16,7 @@ if($_GET["action"]!=1){
 
 $templateParams["titolo"] = "VIP - Add Product";
 $templateParams["nome"] = "admin-form.php";
+$templateParams["css"] = "./css/style.css?v=1";
 $templateParams["bg"] = "white";
 $templateParams["slider"] = FALSE;
 $templateParams["azione"] = $_GET["action"];

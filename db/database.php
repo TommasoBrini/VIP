@@ -61,7 +61,7 @@
             $id = $stmt->insert_id;
             
             $query="";
-            $query = "INSERT INTO asta (Data, CodProdotto, Stato, OraInizio, OraFine, DataFine) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO asta a(a.Data, a.CodProdotto, a.Stato, a.OraInizio, a.OraFine, a.DataFine) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stato = "INIZIATA";
             $stmt->bind_param('sissss',$data, $id, $stato, $oraInizio, $oraInizio, $data);
