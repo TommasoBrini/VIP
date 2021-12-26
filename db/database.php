@@ -52,9 +52,6 @@
             return $stmt->insert_id;
         }
 
-<<<<<<< HEAD
-        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine){
-=======
         function getAviableProducts(){
             $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE Disponibilita IS NOT NULL AND Disponibilita > 0";
             $stmt = $this->db->prepare($query);
@@ -63,10 +60,9 @@
 
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
-
-        /*public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $data, $oraInizio){
->>>>>>> 621f465ecd7f63d7ac9e43203d29987de409ae3f
-            $query="";
+            
+        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine){
+	        $query="";
             $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $base);
