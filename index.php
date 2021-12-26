@@ -12,8 +12,12 @@ $templateParams["css"] = "./css/style.css?v=1";
 $templateParams["class1"] = TRUE;
 $templateParams["class2"] = FALSE;
 $templateParams["slider"] = TRUE;
-//$templateParams["auctions"] = $dbh->getAuctions();
-$templateParams["auctions"] = $dbh->getProducts();
+$templateParams["auctions"] = $dbh->getAuctions();
+$templateParams["auctionBefore"] = "auctionBefore.php";
+$templateParams["auctionWinning"] = "auctionWinning.php";
+$templateParams["auctionLosing"] = "auctionLosing.php";
+$templateParams["auctionLose"] = "auctionLose.php";
+$templateParams["auctionWin"] = "auctionWin.php";
 
 define("JS_DIR", "./js/home.js");
 
