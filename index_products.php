@@ -13,6 +13,10 @@ $templateParams["class1"] = FALSE;
 $templateParams["class2"] = TRUE;
 $templateParams["slider"] = TRUE;
 $templateParams["products"] = $dbh->getProducts();
+$templateParams["aviableProducts"] = $dbh -> getAviableProducts();
+$templateParams["productAviable"] = "productAviable.php";
+$templateParams["productSoldOut"] = "productSoldOut.php";
+
 
 define("JS_DIR", "./js/home.js");
 

@@ -9,16 +9,16 @@
             }        
         }
 
-        /*public function getAuctions(){
-            $stmt = $this -> db -> prepare("SELECT p.Nome, a.Data, a.OraInizio, a.DataFine, a.OraFine, a.Stato, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.Data, a.OraInizio ASC");
+        public function getAuctions(){
+            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, a.Data, a.OraInizio, a.DataFine, a.OraFine, a.Stato, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.Data, a.OraInizio ASC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
             return $result -> fetch_All(MYSQLI_ASSOC);
-        }*/
+        }
 
         public function getProducts(){
-            $stmt = $this -> db -> prepare("SELECT p.Nome, p.Descrizione, p.DescrizioneBreve, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotto p WHERE p.Base_asta IS NULL ORDER BY p.Disponibilita DESC");
+            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, p.Descrizione, p.DescrizioneBreve, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotto p WHERE p.Base_asta IS NULL ORDER BY p.Disponibilita DESC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
@@ -52,7 +52,20 @@
             return $stmt->insert_id;
         }
 
+<<<<<<< HEAD
         public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine){
+=======
+        function getAviableProducts(){
+            $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE Disponibilita IS NOT NULL AND Disponibilita > 0";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt -> get_result();
+
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        /*public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $data, $oraInizio){
+>>>>>>> 621f465ecd7f63d7ac9e43203d29987de409ae3f
             $query="";
             $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);

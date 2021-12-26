@@ -21,6 +21,10 @@ function getAction($action){
     return $result;
 }
 
+function getAviable(){
+    return $templateParam["aviableProducts"];
+}
+
 function getMounth($mese){
     $result = "";
     switch($mese){

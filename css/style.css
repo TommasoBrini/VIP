@@ -87,7 +87,7 @@ body > main.products > div > header > label {
 
 }
 
-body > main.products > div > button, body > main.products > div.auction > select.raise{
+body > main.products > div > button, body > main.products > div > select{
     margin: 2.5% 10%;
     color: #000000;
     width: 75%;
@@ -96,7 +96,7 @@ body > main.products > div > button, body > main.products > div.auction > select
     font-weight: bold;
 }
 
-body > main.products > div > select.raise {
+body > main.products > div > select {
     background-color: #BDBDBD;
     padding: 0;
 }
@@ -133,8 +133,8 @@ body > main.products > div > img, body > main.products > div.auction > div.topri
 
 body > main.products > div > button.green {
     background-color: #89FF49;
-    pointer-events: none;
-}
+    /*pointer-events: none;
+*/}
 
 body > main.products > div > button.yellow {
     background-color: #E4FF49;
