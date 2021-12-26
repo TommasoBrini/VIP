@@ -44,29 +44,35 @@
             return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità){
-            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita) VALUES (?, ?, ?, ?, ?)";
+        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine){
+            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità);
+            $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine);
             $stmt->execute();    
             return $stmt->insert_id;
         }
 
-        /*public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $data, $oraInizio){
+        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine){
             $query="";
-            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
+            $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $base);
             $stmt->execute();
             $id = $stmt->insert_id;
             
             $query="";
-            $query = "INSERT INTO asta a(a.Data, a.CodProdotto, a.Stato, a.OraInizio, a.OraFine, a.DataFine) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO asta (`CodProdotto`, `Stato`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?, 'INIZIATA', ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
             $stmt = $this->db->prepare($query);
             $stato = "INIZIATA";
-            $stmt->bind_param('sissss',$data, $id, $stato, $oraInizio, $oraInizio, $data);
+            $annoI = intval($annoInizio);
+            $meseI = intval($meseInizio);
+            $giornoI = intval($giornoInizio);
+            $annoF = intval($annoFine);
+            $meseF = intval($meseFine);
+            $giornoF = intval($giornofine);
+            $stmt->bind_param('iiiisiiis', $id, $annoI, $meseI,$giornoI, $oraInizio, $annoF, $meseF,$giornoF, $oraFine);
             $stmt->execute();
             return $stmt->insert_id;
-        }*/
+        }
     }    
 ?>

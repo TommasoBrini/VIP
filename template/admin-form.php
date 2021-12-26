@@ -30,7 +30,7 @@
                 </li>
                 <li>
                     <?php if($templateParams["azione"]!=3): ?>
-                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" /> 
+                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" required="required"/> 
                     <?php endif; ?>
                 </li>
                 <li>
