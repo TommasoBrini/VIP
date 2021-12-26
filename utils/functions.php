@@ -20,5 +20,9 @@ function getAction($action){
 
     return $result;
 }
+
+function getAviable(){
+    return $templateParam["aviableProducts"];
+}
 ?>
 

@@ -60,6 +60,15 @@
         return $stmt->insert_id;
         }
 
+        
+        function getAviableProducts(){
+            $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE Disponibilita IS NOT NULL AND Disponibilita > 0";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt -> get_result();
+
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
 
     }    
 ?>

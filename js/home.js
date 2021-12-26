@@ -34,22 +34,25 @@ $("div.losing").ready(function(){
     });
 });
 
+/*
 
 $("div.aviable").ready(function(){
-    var id = $(this).attr("id");
-    alert(id);
-    $("button.addCart").click(function(){
-        var quantity = $("#" + id + " > button.aviable").attr("id");
-        alert(quantity);
+    $("button:nth-child(6)").click(function(){
+        var quantity = $(this).attr("id");
         var select = "<select class='quantity' name='quantity' id='quantity'><option value='"+ quantity +"'>"+ quantity +"</option></select>";
-        /*for(var i = 1; i<=quantity; i++){
+        for(var i = 1; i<=quantity; i++){
             select = select + "<option value='"+ i +"'>"+ i +"</option>";
-        }*/
+        }
         select += "</select>";
-        $("button.aviable").replaceWith(select);
-        $(this).replaceWith("<button class='last1 grey addCart'>ADD CART</button><button class='last2 grey back'>BACK</button>");
+        $(this).replaceWith(select);
+        $("button.last").replaceWith("<button class='last1 grey addCart'>ADD CART</button><button class='last2 grey back'>BACK</button>");
 
 
     })
 });
+
+function getTimer(year, month, day, hour, minute){
+
+}
     
+*/
