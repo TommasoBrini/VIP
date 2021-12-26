@@ -13,20 +13,20 @@
             </section>
             <ul>
                 <li>
-                    <label for="Nome">Name:</label><input type="text" id="Nome" name="Nome" value="<?php echo $prodotto["Nome"]; ?> " />
+                    <label for="Nome">Name:</label><input type="text" id="Nome" name="Nome" value="<?php echo $prodotto["Nome"]; ?>" />
                 </li>
                 <li>
-                    <label for="Prezzo">Price (€):</label><input type="text" id="Prezzo" name="Prezzo" value="<?php echo $prodotto["Prezzo"]; ?> "/>
+                    <label for="Prezzo">Price (€):</label><input type="number" id="Prezzo" name="Prezzo" value="<?php echo floatval($prodotto["Prezzo"]); ?>" required="required"/>
                 </li>
                 <li>
-                <label for="Base_asta">Base Price (€):</label><input type="text" id="Base_asta" name="Base_asta" value="<?php echo $prodotto["Base_asta"]; ?> "/>
+                <label for="Base_asta">Base Price (€):</label><input type="number" id="Base_asta" name="Base_asta" value="<?php echo floatval($prodotto["Base_asta"]); ?>"/>
                 </li>
                 <li>
                     <label for="data">Date:</label><input type="date" id="data" name="data" />
                     <label for="time">Time:</label><input type="time" id="time" name="time" />
                 </li>
                 <li>
-                    <label for="Disponibilita">Disponibilità:</label><input type="text" id="Disponibilita" name="Disponibilita" value="<?php echo $prodotto["Disponibilita"]; ?> "/>
+                    <label for="Disponibilita">Disponibilità:</label><input type="number" id="Disponibilita" name="Disponibilita" value="<?php echo floatval($prodotto["Disponibilita"]); ?>"/>
                 </li>
                 <li>
                     <?php if($templateParams["azione"]!=3): ?>
@@ -41,10 +41,10 @@
                     <?php endif; ?>
                 </li>
                 <li>
-                    <label for="Descrizione">Descrizione:</label><textarea type="text" id="Descrizione" name="Descrizione"><?php echo $prodotto["Descrizione"]; ?></textarea>
+                    <label for="Descrizione">Descrizione:</label><textarea type="text" id="Descrizione" name="Descrizione" required="required"><?php echo $prodotto["Descrizione"]; ?></textarea>
                 </li>
                 <li>
-                    <label for="DescrizioneBreve">Descrizione Breve:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
+                    <label for="DescrizioneBreve">Descrizione Breve:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve" required="required"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
                 </li>
                 <li>
                     <input type="submit" id="insert" name="insert" value="<?php echo $azione; ?>"/>

@@ -11,9 +11,10 @@ $templateParams["href2"] = "index_registration.php";
 $templateParams["class1"] = TRUE;
 $templateParams["class2"] = FALSE;
 $templateParams["slider"] = TRUE;
+$templateParams["css"] = "./css/style.css?v=1";
 
 /*$templateParams["users"] = $dbh->getUsers();*/
-$templateParams["aste"] = $dbh->getAuctions();
+//$templateParams["aste"] = $dbh->getAuctions();
 
 define("JS_DIR", "./js/home.js");
 

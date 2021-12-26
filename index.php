@@ -8,10 +8,12 @@ $templateParams["button1"] = "AUCTIONS";
 $templateParams["button2"] = "PRODUCTS";
 $templateParams["href1"] = "index.php";
 $templateParams["href2"] = "index_products.php";
+$templateParams["css"] = "./css/style.css?v=1";
 $templateParams["class1"] = TRUE;
 $templateParams["class2"] = FALSE;
 $templateParams["slider"] = TRUE;
-$templateParams["auctions"] = $dbh->getAuctions();
+//$templateParams["auctions"] = $dbh->getAuctions();
+$templateParams["auctions"] = $dbh->getProducts();
 
 define("JS_DIR", "./js/home.js");
 
