@@ -11,13 +11,21 @@
     <button class='last grey addCart' id='button<?php echo $product["IDProdotto"]?>' value='<?php echo $product["IDProdotto"]?>'>ADD CART</button>
     <script type="text/javascript">
         document.getElementById("button<?php echo $product["IDProdotto"]?>").onclick = function () {
-            var select = "<select class='quantity' name='quantity' id='quantity'>";
+            var select = "<select class='quantity' name='quantity' id='quantity<?php echo $product["IDProdotto"]?>'>";
             for(var i = 1; i <= <?php echo $product["Disponibilita"] ?>; i++){
                 select = select + "<option value='"+ i +"'>"+ i +"</option>";
             }
             select = select + "</select>";
             $(this).prev().replaceWith(select);
-            $(this).replaceWith("<button class='last1 grey addCart'>ADD CART</button><button class='last2 grey back'>BACK</button>");
+            $(this).replaceWith("<button class='last1 grey addCart' id='addCart<?php echo $product["IDProdotto"]?>'>ADD CART</button><button class='last2 grey back' id='back<?php echo $product["IDProdotto"]?>'>BACK</button>");
+
+            document.getElementById("addCart<?php echo $product["IDProdotto"]?>").onclick = function() {
+                alert(document.getElementById("quantity<?php echo $product["IDProdotto"]?>").value);
+                document.location.reload(true);
+            }
+            document.getElementById("back<?php echo $product["IDProdotto"]?>").onclick = function() {
+                document.location.reload(true);
+            }
         }
     </script>
 </div>
