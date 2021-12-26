@@ -20,7 +20,7 @@
             $(this).replaceWith("<button class='last1 grey addCart' id='addCart<?php echo $product["IDProdotto"]?>'>ADD CART</button><button class='last2 grey back' id='back<?php echo $product["IDProdotto"]?>'>BACK</button>");
 
             document.getElementById("addCart<?php echo $product["IDProdotto"]?>").onclick = function() {
-                alert(document.getElementById("quantity<?php echo $product["IDProdotto"]?>").value);
+                alert("Hai appena aggiunto " + document.getElementById("quantity<?php echo $product["IDProdotto"]?>").value + " <?php echo $product["Nome"];?> al carrello." );
                 document.location.reload(true);
             }
             document.getElementById("back<?php echo $product["IDProdotto"]?>").onclick = function() {
