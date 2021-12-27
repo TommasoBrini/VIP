@@ -22,7 +22,11 @@
                 <label for="Base_asta">Base Price (€):</label><input type="number" id="Base_asta" name="Base_asta" value="<?php echo floatval($prodotto["Base_asta"]); ?>"/>
                 </li>
                 <li>
-                    <label for="data">Date:</label><input type="date" id="data" name="data" />
+                    <label for="data">Date:</label><input type="date" id="data" name="data" value="<?php
+                        if(isset($prodotto["AnnoInizio"])){
+                            echo getData($prodotto["AnnoInizio"], $prodotto["MeseInizio"]. $prodotto["GiornoInizio"]);
+                        }
+                    ?>"/>
                     <label for="time">Time:</label><input type="time" id="time" name="time" />
                 </li>
                 <li>
@@ -35,7 +39,7 @@
                 </li>
                 <li>
                     <?php if($templateParams["azione"]!=1): ?>
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($prodotto["Immagine"]);?>" id="imgshow" alt="prodotto"/>
+                        <img src="data:image/jpeg;base64, '<?php echo base64_encode($prodotto["Immagine"]);?>'" id="imgshow" alt="prodotto"/>
                     <?php else: ?>
                     <img src="./img/account.png" id="imgshow" alt="prodotto"/>
                     <?php endif; ?>
