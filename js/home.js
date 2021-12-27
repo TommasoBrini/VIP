@@ -13,7 +13,7 @@ $(document).ready(function(){
         }
     });   
 });
-
+/*
 $("div.losing").ready(function(){
     $("button.raise").click(function(){
         $("button.second").replaceWith("<select class='raise' name='raise' id='raise'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select>");
@@ -33,7 +33,7 @@ $("div.losing").ready(function(){
         })
     });
 });
-
+*/
 /*
 
 $("div.aviable").ready(function(){

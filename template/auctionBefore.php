@@ -9,7 +9,7 @@
     </div>
     <button class='grey'><?php echo number_format($asta["Prezzo"]);?> €</button>
     <button class='grey'>INIZIERA' A BREVE</button>
-    <button class='last grey'>VEDI IL PRODOTTO</button>
+    <button class='last grey' onclick="<?php echo "window.location.href='single_product.php?id=".$asta["IDProdotto"]."'"; ?>">VEDI IL PRODOTTO</button>
     <script type="text/javascript">
         $( document ).ready(function(){
             var countDownDate = new Date("<?php echo "".getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":00:00"?>").getTime();
