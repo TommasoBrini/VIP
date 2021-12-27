@@ -7,9 +7,9 @@
         <button class='timer' id="timer<?php echo $asta["IDProdotto"]?>">00:00:00</button>
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
-    <button class='yellow'><?php echo number_format($asta["Prezzo"]);?> €</button>
+    <button class='yellow'><?php echo number_format($asta["Base_asta"]);?> €</button>
     <button class='green second'>STAI VINCENDO</button>
-    <button class='last1 grey unable'>RAISE</button><button class='last2 grey'>BUY NOW</button>
+    <button class='last1 grey unable'>RAISE</button><button class='last2 grey' id='addCart<?php echo $asta["IDProdotto"]?>'>BUY NOW</button>
     <script type="text/javascript">
         $( document ).ready(function(){
             var countDownDate = new Date("<?php echo "".getMounth($asta["MeseFine"])." ".$asta["GiornoFine"].", ".$asta["AnnoFine"]." ".$asta["OraFine"].":00:00"?>").getTime();
@@ -39,5 +39,12 @@
             }
         }, 1000);
         });
+
+        document.getElementById('addCart<?php echo $asta["IDProdotto"]?>').onclick = function () {
+            $(this).prev().prev().prev().replaceWith("<button class='yellow'><?php echo number_format($asta["Prezzo"]); ?> €</button>");
+            $(this).prev().prev().replaceWith("<button class='yellow'>SICURO?</button>");
+            $(this).prev().replaceWith("<button class='last1 grey' id='yes<?php echo $asta["IDProdotto"]?>'>YES</button>");
+            $(this).replaceWith("<button class='last2 grey' id='no<?php echo $asta["IDProdotto"]?>'>NO</button>");
+        }
     </script>
 </div>
