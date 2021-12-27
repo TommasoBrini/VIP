@@ -13,7 +13,7 @@
             }
             break;
         case "STARTED":
-            if(isset($templateParams["auctionWinning"])){
+            if(!isset($templateParams["auctionWinning"])){
                 require($templateParams["auctionWinning"]);
             } else {
                 require($templateParams["auctionLosing"]);

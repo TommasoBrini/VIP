@@ -1,4 +1,4 @@
-<div class='auction win'>
+<div class='auction win'  onclick="<?php echo "window.location.href='index_single_product.php?id=".$asta["IDProdotto"]."'"; ?>">
     <header>
         <label for="title"><?php echo $asta["Nome"]?></label>
     </header>
@@ -7,9 +7,9 @@
     <button class='timer' id="timer<?php echo $asta["IDProdotto"]?>">00:00:00</button>
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
-    <button class='green'><?php echo number_format($asta["Prezzo"]);?> €</button>
-    <button class='green'>HAI VINTO!</button>
-    <button class='last green' onclick="<?php echo "window.location.href='single_product.php?id=".$asta["IDProdotto"]."'"; ?>">VEDI IL PRODOTTO</button>
+    <button class='green price'><?php echo number_format($asta["Base_asta"]);?> €</button>
+    <button class='green label'>HAI VINTO!</button>
+    <button class='last green' onclick="<?php echo "window.location.href='index_single_product.php?id=".$asta["IDProdotto"]."'"; ?>">VEDI IL PRODOTTO</button>
     <script type="text/javascript">
         $( document ).ready(function(){
             var countDownDate = new Date("<?php echo "".getMounth($asta["MeseFine"])." ".$asta["GiornoFine"].", ".$asta["AnnoFine"]." ".$asta["OraFine"].":00:00"?>").getTime();

@@ -133,18 +133,22 @@ body > main.products > div > img, body > main.products > div.auction > div.topri
 
 body > main.products > div > button.green {
     background-color: #89FF49;
-    /*pointer-events: none;
-*/}
+}
 
 body > main.products > div > button.yellow {
     background-color: #E4FF49;
-    pointer-events: none;
 }
 
 body > main.products > div > button.red {
     background-color: #FF6449;
+}
+
+
+body > main.products > div > button.price, body > main.products > div > button.label, body > main.products > div > div.topright > button.timer {
     pointer-events: none;
 }
+
+
 
 body > main.products > div > button.grey {
     background-color: #BDBDBD;

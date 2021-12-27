@@ -13,6 +13,11 @@ $(document).ready(function(){
         }
     });   
 });
+
+function selectClick(e) {
+    if (!e) e = window.event;
+    e.stopPropagation();
+}
 /*
 $("div.losing").ready(function(){
     $("button.raise").click(function(){
