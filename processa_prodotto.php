@@ -15,18 +15,13 @@ if($_POST["azione"]==1){
     $disponibilità = htmlspecialchars($_POST["Disponibilita"]);
 
     //RECUPERO L'IMMAGINE
-    $nome_file_temporaneo = $_FILES["Immagine"]["tmp_name"];
-    $nome_file_vero = $_FILES["Immagine"]["name"];
-    $tipo_file = $_FILES["Immagine"]["type"];
-    $dati_file = file_get_contents($nome_file_temporaneo);
-    $dati_file = addslashes($dati_file);
-    
+    $dati_file = addslashes(file_get_contents($_FILES["Immagine"]["tmp_name"]));
 
     if($nomeProdotto=="" || $descrizione=="" || $descrizioneBreve=="" || $prezzo=="" || ($baseAsta=="" && $disponibilità=="")){
         var_dump("Riempire tutti i campi");
     } else {
         if(isset($_POST["checkbox"])){
-            $dataInizio = getData(htmlspecialchars($_POST["data"]));
+            $dataInizio = getAnnoMeseGiorno(htmlspecialchars($_POST["data"]));
             $oraInizio = htmlspecialchars($_POST["time"]);
             $fine = getOraFine($oraInizio, htmlspecialchars($_POST["data"]));
             $dataFine = getData($fine["date"]);

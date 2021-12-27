@@ -68,12 +68,16 @@ function getMounth($mese){
     return $result;
 }
 
-function getData($dataStringa){
+function getAnnoMeseGiorno($dataStringa){
     $anno = substr($dataStringa, 0, 4);
     $mese = substr($dataStringa, 5, 2);
     $giorno = substr($dataStringa, 8, 2);
     $data = array("anno" => "$anno", "mese" => "$mese", "giorno" => "$giorno");
     return $data;
+}
+
+function getData($anno,$mese,$giorno){
+    return "$anno-$mese-$giorno";
 }
 
 function aggiungiGiorno($date){
