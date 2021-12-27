@@ -12,7 +12,7 @@
     <button class='last grey' onclick="<?php echo "window.location.href='index_single_product.php?id=".$asta["IDProdotto"]."'"; ?>">VEDI IL PRODOTTO</button>
     <script type="text/javascript">
         $( document ).ready(function(){
-            var countDownDate = new Date("<?php echo "".getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":00:00"?>").getTime();
+            var countDownDate = new Date("<?php echo "".getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":55:00"?>").getTime();
 
             // Update the count down every 1 second
             var x = setInterval(function() {
@@ -30,12 +30,14 @@
             var id = "<?php echo "timer".$asta["IDProdotto"] ?>";
 
             // Output the result in an element with id="demo"
-            $("<?php echo "button#timer".$asta["IDProdotto"] ?>").replaceWith("<button class='timer' id='" +  id +"'>" + hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds) + "</button>");
+            $(document).getElementById("<?php echo "timer".$asta["IDProdotto"] ?>").replaceWith("<button class='timer' id='" +  id +"'>" + hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds) + "</button>");
                                 
                 // If the count down is over, write some text 
             if (distance < 0) {
                 clearInterval(x);
-                $("<?php echo "button#timer".$asta["IDProdotto"] ?>").replaceWith("<button class='timer' id='" +  id +"'>00:00:00</button>");
+                $(document).getElementById("<?php echo "timer".$asta["IDProdotto"] ?>").replaceWith("<button class='timer' id='" +  id +"'>00:00:00</button>");
+                <?php $dbh->updateAuctionState($asta["IdAsta"], "STARTED"); ?>
+                document.location.reload(true);
             }
         }, 1000);
         });

@@ -10,7 +10,7 @@
         }
 
         public function getAuctions(){
-            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.Stato, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
+            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.Stato, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
@@ -84,6 +84,12 @@
             $stmt->bind_param('iiiisiiis', $id, $annoI, $meseI,$giornoI, $oraInizio, $annoF, $meseF,$giornoF, $oraFine);
             $stmt->execute();
             return $stmt->insert_id;
+        }
+
+        public function updateAuctionState($auctionId, $newState) {
+            $query = "UPDATE `asta` SET `Stato` = '".$newState."' WHERE `asta`.`IdAsta` = ".$auctionId;
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
         }
     }    
 ?>
