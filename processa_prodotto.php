@@ -14,8 +14,7 @@ if($_POST["azione"]==1){
     $baseAsta = htmlspecialchars($_POST["Base_asta"]);
     $disponibilità = htmlspecialchars($_POST["Disponibilita"]);
 
-    //RECUPERO L'IMMAGINE
-    $dati_file = addslashes(file_get_contents($_FILES["Immagine"]["tmp_name"]));
+    list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["Immagine"]);
 
     if($nomeProdotto=="" || $descrizione=="" || $descrizioneBreve=="" || $prezzo=="" || ($baseAsta=="" && $disponibilità=="")){
         var_dump("Riempire tutti i campi");
@@ -24,11 +23,11 @@ if($_POST["azione"]==1){
             $dataInizio = getAnnoMeseGiorno(htmlspecialchars($_POST["data"]));
             $oraInizio = htmlspecialchars($_POST["time"]);
             $fine = getOraFine($oraInizio, htmlspecialchars($_POST["data"]));
-            $dataFine = getData($fine["date"]);
+            $dataFine = getAnnoMeseGiorno($fine["date"]);
             $oraFine = $fine["time"];
-            $id = $dbh->insertAuction($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $baseAsta, $oraInizio, $dataInizio["anno"], $dataInizio["mese"], $dataInizio["giorno"], $oraFine, $dataFine["anno"], $dataFine["mese"], $dataFine["giorno"]);
+            $id = $dbh->insertAuction($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $baseAsta, $oraInizio, $dataInizio["anno"], $dataInizio["mese"], $dataInizio["giorno"], $oraFine, $dataFine["anno"], $dataFine["mese"], $dataFine["giorno"], $msg);
         } else {
-            $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $dati_file);
+            $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg);
         }
         if($id!=false){
             var_dump("Inserimento completato correttamente!");

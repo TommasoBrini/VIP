@@ -25,17 +25,20 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function getProductById($id){
+        public function checkProduct($id){
             $query="";
-            $stmt = $this -> db -> prepare("SELECT Disponibilita FROM prodotto WHERE IDProdotto=?");
+            $stmt = $this -> db -> prepare("SELECT CodProdotto FROM asta WHERE CodProdotto=?");
             $stmt -> bind_param('i', $id);
             $stmt -> execute();
             $result = $stmt -> get_result();
-            
-            if(isset($result)){
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function getProductById($id, $check){
+            if($check==0){
                 $query="SELECT Nome, Descrizione, DescrizioneBreve, Prezzo, Immagine, Base_asta, Disponibilita FROM prodotto WHERE IDProdotto=?";
             } else {
-                $query="SELECT p. IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.Stato, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto WHEN p.IDProdotto=? ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC";
+                $query="SELECT p. IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.Stato, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto WHERE p.IDProdotto=?";
             }
             
             $stmt = $this -> db -> prepare($query);
@@ -63,18 +66,18 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
             
-        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine){
+        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine, $immagine){
 	        $query="";
-            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $base);
+            $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
             $stmt->execute();
             $id = $stmt->insert_id;
             
             $query="";
             $query = "INSERT INTO asta (`CodProdotto`, `Stato`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?, 'INIZIATA', ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
             $stmt = $this->db->prepare($query);
-            $stato = "INIZIATA";
+            $stato = "BEFORE";
             $annoI = intval($annoInizio);
             $meseI = intval($meseInizio);
             $giornoI = intval($giornoInizio);

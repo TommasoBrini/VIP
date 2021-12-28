@@ -6,14 +6,14 @@ if(!isset($_GET["action"]) || ($_GET["action"]!=1&& $_GET["action"]!=2 && $_GET[
 }
 
 if($_GET["action"]!=1){
-    $risultato = $dbh->getProductById($_GET["id"]);
+    $check=count($dbh->checkProduct($_GET["id"]));
+    $risultato = $dbh->getProductById($_GET["id"], $check);
     foreach($risultato as $ris):
         $templateParams["prodotto"] = $ris;
     endforeach;
 } else {
     $templateParams["prodotto"] = getEmptyProduct();
 }
-
 $templateParams["titolo"] = "VIP - Add Product";
 $templateParams["nome"] = "admin-form.php";
 $templateParams["css"] = "./css/style.css?v=1";
