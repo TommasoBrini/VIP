@@ -1,23 +1,6 @@
 <?php
 require_once("bootstrap.php");
 
-if(isset($_POST["email"]) && isset($_POST["password"])){
-    $login_result = dbh->checkLogin($_POST["email"], $_POST["password"], $_POST["idvenditore"]);
-    if(count($login_result)==0) {
-        //Login failed
-        $templateParams["errorLogin"] = "Error! Check email or password!";
-    } else {
-        registerLoggedUser($login_result[0]);
-    }
-}
-
-if(isUserLoggedIn()){
-    $templateParams["nome"] = "index.php";
-}
-else {
-    $templateParams["nome"] = "index_login.php";
-}
-
 $templateParams["titolo"] = "VIP - Login";
 $templateParams["nome"] = "login.php";
 $templateParams["bg"] = "black";

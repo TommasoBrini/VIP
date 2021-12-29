@@ -71,7 +71,7 @@ function getMounth($mese){
 /*Manu*/
 ////////   
 function isUserLoggedIn(){
-    return !empty($_SESSION['email']);
+    return isset($_SESSION['email']);
 }
 
 function registerLoggedUser($user){
