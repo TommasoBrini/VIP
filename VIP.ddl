@@ -50,7 +50,7 @@ create table PRODOTTO (
      Base_asta int,
      Disponibilita int,
      TimeStamp varchar(15) not null,
-     Immagine longblob not null,
+     Immagine varchar(100) not null,
      constraint ID_PRODOTTO_ID primary key (IDProdotto));
 
 create table PUNTATA (

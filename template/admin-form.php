@@ -22,20 +22,28 @@
                 <label for="Base_asta">Base Price (€):</label><input type="number" id="Base_asta" name="Base_asta" value="<?php echo floatval($prodotto["Base_asta"]); ?>"/>
                 </li>
                 <li>
-                    <label for="data">Date:</label><input type="date" id="data" name="data" />
-                    <label for="time">Time:</label><input type="time" id="time" name="time" />
+                    <label for="data">Date:</label><input type="date" id="data" name="data" value="<?php
+                        if(isset($prodotto["AnnoInizio"])){
+                            echo getData(strval($prodotto["AnnoInizio"]), strval($prodotto["MeseInizio"]), strval($prodotto["GiornoInizio"]));
+                        }
+                    ?>"/>
+                    <label for="time">Time:</label><input type="time" id="time" name="time" value="<?php
+                        if(isset($prodotto["AnnoInizio"])){
+                            echo $prodotto["OraInizio"];
+                        }
+                    ?>"/>
                 </li>
                 <li>
                     <label for="Disponibilita">Disponibilità:</label><input type="number" id="Disponibilita" name="Disponibilita" value="<?php echo floatval($prodotto["Disponibilita"]); ?>"/>
                 </li>
                 <li>
                     <?php if($templateParams["azione"]!=3): ?>
-                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" /> 
+                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" required="required"/> 
                     <?php endif; ?>
                 </li>
                 <li>
                     <?php if($templateParams["azione"]!=1): ?>
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($prodotto["Immagine"]);?>" id="imgshow" alt="prodotto"/>
+                        <img src="<?php echo UPLOAD_DIR.$prodotto["Immagine"];?>" id="imgshow" alt="prodotto"/>
                     <?php else: ?>
                     <img src="./img/account.png" id="imgshow" alt="prodotto"/>
                     <?php endif; ?>

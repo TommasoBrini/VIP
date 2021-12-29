@@ -2,7 +2,7 @@
     <header>
         <label for="title"><?php echo $product["Nome"]?></label>
     </header>
-    <img class='img' src='data:image/jpeg;base64,<?php echo base64_encode($product["Immagine"]);?>' alt='product photo'/>
+    <img class='img' src="<?php echo UPLOAD_DIR.$product["Immagine"];?>" alt='product photo'/>
     <div class='topright'>
         <textarea readonly class='description'><?php echo $product["DescrizioneBreve"];?></textarea>
     </div>

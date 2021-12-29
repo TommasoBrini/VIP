@@ -19,7 +19,7 @@
         <img src="<?php echo IMG_DIR?>cart.png" alt="Cart" onclick="window.location.href='index_cart.php'"/>
         <div class="slider">
             <?php
-                if(isset($templateParams["slider"])){
+                if($templateParams["slider"]){
                     require("slider.php");
                 }
             ?>

@@ -10,7 +10,7 @@
         }
 
         public function getAuctions(){
-            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, a.Data, a.OraInizio, a.DataFine, a.OraFine, a.Stato, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.Data, a.OraInizio ASC");
+            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.Stato, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
@@ -25,15 +25,20 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function getProductById($id){
+        public function checkProduct($id){
             $query="";
-            $stmt = $this -> db -> prepare("SELECT Disponibilita FROM prodotto WHERE IDProdotto=?");
+            $stmt = $this -> db -> prepare("SELECT CodProdotto FROM asta WHERE CodProdotto=?");
             $stmt -> bind_param('i', $id);
             $stmt -> execute();
             $result = $stmt -> get_result();
-            
-            if(isset($result)){
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function getProductById($id, $check){
+            if($check==0){
                 $query="SELECT Nome, Descrizione, DescrizioneBreve, Prezzo, Immagine, Base_asta, Disponibilita FROM prodotto WHERE IDProdotto=?";
+            } else {
+                $query="SELECT p. IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.Stato, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto WHERE p.IDProdotto=?";
             }
             
             $stmt = $this -> db -> prepare($query);
@@ -44,10 +49,10 @@
             return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità){
-            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita) VALUES (?, ?, ?, ?, ?)";
+        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine){
+            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('sssii',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità);
+            $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine);
             $stmt->execute();    
             return $stmt->insert_id;
         }
@@ -60,9 +65,9 @@
 
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
-
-        /*public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $data, $oraInizio){
-            $query="";
+            
+        public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine, $immagine){
+	        $query="";
             $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
@@ -70,16 +75,20 @@
             $id = $stmt->insert_id;
             
             $query="";
-            $query = "INSERT INTO asta a(a.Data, a.CodProdotto, a.Stato, a.OraInizio, a.OraFine, a.DataFine) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO asta (`CodProdotto`, `Stato`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?, 'INIZIATA', ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
             $stmt = $this->db->prepare($query);
-            $stato = "INIZIATA";
-            $stmt->bind_param('sissss',$data, $id, $stato, $oraInizio, $oraInizio, $data);
+            $stato = "BEFORE";
+            $annoI = intval($annoInizio);
+            $meseI = intval($meseInizio);
+            $giornoI = intval($giornoInizio);
+            $annoF = intval($annoFine);
+            $meseF = intval($meseFine);
+            $giornoF = intval($giornofine);
+            $stmt->bind_param('iiiisiiis', $id, $annoI, $meseI,$giornoI, $oraInizio, $annoF, $meseF,$giornoF, $oraFine);
             $stmt->execute();
             return $stmt->insert_id;
-        }*/
+        }
 
-        /*Manu*/
-        ////////
         public function checkLogin($email, $password, $idvenditore){
             $query = "SELECT U.email, U.password, U.idvenditore FROM user U WHERE U.email = ? AND U.password = ?";
             $stmt = $this->db->prepare($query);
@@ -89,6 +98,5 @@
             
             return $result->fetch_all(MYSQLI_ASSOC);
         }    
-        ////////
     }    
 ?>
