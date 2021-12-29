@@ -24,9 +24,9 @@
             var distance = countDownDate - now;
 
             // Time calculations for days, hours, minutes and seconds
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            var hours = Math.floor(distance / (1000 * 60 * 60));
+            var minutes = Math.floor((distance / (1000 * 60 * 60) - hours) * 60);
+            var seconds = Math.floor((((distance / (1000 * 60 * 60) - hours) * 60) - minutes) * 60);
             var id = "<?php echo "timer".$asta["IDProdotto"] ?>";
 
             // Output the result in an element with id="demo"

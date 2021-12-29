@@ -7,7 +7,7 @@
         <button class="timer" id="timer<?php echo $asta["IDProdotto"]?>">00:00:00</button>
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
-    <button class='grey'><?php echo number_format($asta["Prezzo"]);?> €</button>
+    <button class='grey'><?php echo number_format($asta["Base_asta"]);?> €</button>
     <button class='grey'>INIZIERA' A BREVE</button>
     <button class='last grey'>VEDI IL PRODOTTO</button>
     <script type="text/javascript">
@@ -23,10 +23,10 @@
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
 
-            // Time calculations for days, hours, minutes and seconds
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Time calculations for hours, minutes and seconds
+            var hours = Math.floor(distance / (1000 * 60 * 60));
+            var minutes = Math.floor((distance / (1000 * 60 * 60) - hours) * 60);
+            var seconds = Math.floor((((distance / (1000 * 60 * 60) - hours) * 60) - minutes) * 60);
             var id = "<?php echo "timer".$asta["IDProdotto"] ?>";
 
             // Output the result in an element with id="demo"

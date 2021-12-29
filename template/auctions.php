@@ -5,15 +5,15 @@
                 require($templateParams["auctionBefore"]);
             }
             break; 
-        case "FINITA":
-            if($asta["CodVincitore"] == NULL){
+        case "AFTER":
+            if($asta["CodVincitore"] != NULL){
                 require($templateParams["auctionLose"]);
             } else {
                 require($templateParams["auctionWin"]);
             }
             break;
-        case "INIZIATA":
-            if(isset($templateParams["auctionWinning"])){
+        case "STARTED":
+            if(!isset($templateParams["auctionWinning"])){
                 require($templateParams["auctionWinning"]);
             } else {
                 require($templateParams["auctionLosing"]);
