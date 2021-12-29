@@ -14,6 +14,34 @@ $(document).ready(function(){
     });   
 });
 
+function timer(year, month, day, time, id){
+    var countDownDate = new Date(month + " " + day + ", " + year + " " + time + ":00").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+                            
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for hours, minutes and seconds
+            var hours = Math.floor(distance / (1000 * 60 * 60));
+            var minutes = Math.floor((distance / (1000 * 60 * 60) - hours) * 60);
+            var seconds = Math.floor((((distance / (1000 * 60 * 60) - hours) * 60) - minutes) * 60);
+
+            // Output the result in an element with id="demo"
+            $("button#timer" + id).replaceWith("<button class='timer' id='timer" +  id +"'>" + hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds) + "</button>");
+                                
+                // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                $("button#timer" + id).replaceWith("<button class='timer' id='timer" +  id +"'>00:00:00</button>");
+            }
+        }, 1000);
+}
+
 $("div.losing").ready(function(){
     $("button.raise").click(function(){
         $("button.second").replaceWith("<select class='raise' name='raise' id='raise'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select>");
