@@ -18,7 +18,7 @@ function selectClick(e) {
     if (!e) e = window.event;
     e.stopPropagation();
 }
-/*
+
 function timer(year, month, day, time, id){
     var countDownDate = new Date(month + " " + day + ", " + year + " " + time + ":00").getTime();
 
@@ -47,6 +47,7 @@ function timer(year, month, day, time, id){
         }, 1000);
 }
 
+/*
 $("div.losing").ready(function(){
     $("button.raise").click(function(){
         $("button.second").replaceWith("<select class='raise' name='raise' id='raise'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select>");
