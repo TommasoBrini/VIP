@@ -89,13 +89,11 @@
             return $stmt->insert_id;
         }
 
-<<<<<<< HEAD
         public function updateAuctionState($auctionId, $newState) {
             $query = "UPDATE `asta` SET `Stato` = '".$newState."' WHERE `asta`.`IdAsta` = ".$auctionId;
             $stmt = $this->db->prepare($query);
             $stmt->execute();
         }
-=======
         public function checkLogin($email, $password, $idvenditore){
             $query = "SELECT U.email, U.password, U.idvenditore FROM user U WHERE U.email = ? AND U.password = ?";
             $stmt = $this->db->prepare($query);
@@ -105,6 +103,5 @@
             
             return $result->fetch_all(MYSQLI_ASSOC);
         }    
->>>>>>> main
     }    
 ?>
