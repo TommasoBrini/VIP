@@ -68,5 +68,21 @@ function getMounth($mese){
 
     return $result;
 }
+
+/*Manu*/
+////////   
+function isUserLoggedIn(){
+    return !empty($_SESSION['email']);
+}
+
+function registerLoggedUser($user){
+    $_SESSION["email"] = $user["email"];
+    $_SESSION["password"] = $user["password"];
+    $_SESSION["idvenditore"] = $user["idvenditore"];
+}
+
+/*Function per vedere se è venditore*/
+
+////////
 ?>
 

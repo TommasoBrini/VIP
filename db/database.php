@@ -77,5 +77,18 @@
             $stmt->execute();
             return $stmt->insert_id;
         }*/
+
+        /*Manu*/
+        ////////
+        public function checkLogin($email, $password, $idvenditore){
+            $query = "SELECT U.email, U.password, U.idvenditore FROM user U WHERE U.email = ? AND U.password = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ss',$email, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }    
+        ////////
     }    
 ?>
