@@ -6,7 +6,7 @@
             }
             break; 
         case "AFTER":
-            if($asta["CodVincitore"] == NULL){
+            if($asta["CodVincitore"] != NULL){
                 require($templateParams["auctionLose"]);
             } else {
                 require($templateParams["auctionWin"]);

@@ -1,10 +1,7 @@
-
-    <h1>REGISTRATION</h1>
-        <form class="registration" action="/registration.php">
-            <label for="Email">Email</label><input type="text" id="email" name="email"><br>
-            <label for="Password">Password</label><input type="password" id="password" name="password"><br>
-            <label for="Confirm password">Confirm password</label><input type="text" id="confirmPassword" name="confirmPassword"><br>
-            <label for="Seller">Seller</label><input type="radio" name="Seller" value="Seller"><br>
-            <input type="CONFIRM REGISTRATION" value="CONFIRM REGISTRATION">
-        </form>
-
+<h1>REGISTRATION</h1>
+    <form method="post" action="#">
+        <label for="email">Email:</label><input type="text" id="email" name="email"><br>
+        <label for="password">Password:</label><input type="password" id="pwd"><img type="button" src="./img/eye.png" id="showHidePwd"/><br>
+        <label for="seller">Seller:</label><input type="checkbox" name="seller"><br>
+        <button type="submit" name="register" id="signIn">SIGN IN</button>
+    </form>
