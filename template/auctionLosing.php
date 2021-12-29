@@ -12,7 +12,7 @@
     <button class='last1 grey raise'>RAISE</button><button class='last2 grey'>BUY NOW</button>
     <script type="text/javascript">
         $( document ).ready(function(){
-            var countDownDate = new Date("<?php echo "".getMounth($asta["MeseFine"])." ".$asta["GiornoFine"].", ".$asta["AnnoFine"]." ".$asta["OraFine"].":00:00"?>").getTime();
+            var countDownDate = new Date("<?php echo "".getMounth($asta["MeseFine"])." ".$asta["GiornoFine"].", ".$asta["AnnoFine"]." ".$asta["OraFine"].":00"?>").getTime();
 
             // Update the count down every 1 second
             var x = setInterval(function() {

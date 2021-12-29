@@ -12,7 +12,7 @@
     <button class='last grey'>VEDI IL PRODOTTO</button>
     <script type="text/javascript">
         $( document ).ready(function(){
-            var countDownDate = new Date("<?php echo "".getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":00:00"?>").getTime();
+            var countDownDate = new Date("<?php echo "".getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":00"?>").getTime();
 
             // Update the count down every 1 second
             var x = setInterval(function() {
