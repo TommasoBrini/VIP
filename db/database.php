@@ -1,19 +1,7 @@
 <?php
     class DatabaseHelper{
         private $db;
-/*
-        private $validFunctions = array("updateAuctionState");
-        private $functName = $_REQUEST['f'];
-        private $id = $_POST["id"];
-        private $state = $_POST["state"];
 
-        if(in_array($functName,$validFunctions)) {
-            $functName();
-        }else{
-            echo "You don't have permission to call that function so back off!";
-            exit();
-        }
-*/
         public function __construct($servername, $username, $password, $dbname, $port){
             $this->db = new mysqli($servername, $username, $password, $dbname, $port);
             if ($this->db->connect_error) {
