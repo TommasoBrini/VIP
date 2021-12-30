@@ -11,19 +11,6 @@
     <button class='grey'>INIZIERA' A BREVE</button>
     <button class='last grey'>VEDI IL PRODOTTO</button>
     <script type="text/javascript">
-        $( document ).ready(function(){
-            timer(<?php echo $asta["AnnoInizio"].", '".getMounth($asta["MeseInizio"])."', ".$asta["GiornoInizio"].", '".$asta["OraInizio"]."', ".$asta["IDProdotto"].", '".$asta["Stato"]."'"?>);
-            var_dump($("button#timer"+id).val)
-            if($("button#timer"+id).val == '00:00:00'){
-                <?php if($asta["stato"] == 'BEFORE'){
-                        $state = 'STARTED';
-                    } else {
-                        $state = 'AFTER';
-                    }
-                    $dbh->updateAuctionState($asta["IdProdotto"], $state);
-                ?>
-                document.location.reload(true);
-            }
-        });
+        
     </script>
 </div>
