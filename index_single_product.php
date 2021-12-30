@@ -15,7 +15,5 @@ foreach($risultato as $ris):
     $templateParams["prodotto"] = $ris;
 endforeach;
 
-define("JS_DIR", "./js/add_product.js");
-
 require("template/base.php");
 ?>

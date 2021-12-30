@@ -22,7 +22,7 @@ function selectClick(e) {
 function timer(year, month, day, time, id, state){
     var countDownDate = new Date(month + " " + day + ", " + year + " " + time + ":00").getTime();
         if(state == 'FINISHED'){
-            $("button#timer" + id).replaceWith("<button class='timer' id='timer" +  id +"'>00:00:00</button>");
+            
         } else {
             // Update the count down every 1 second
             var x = setInterval(function() {
@@ -40,69 +40,11 @@ function timer(year, month, day, time, id, state){
     
                 // Output the result in an element with id="demo"
                 $("button#timer" + id).replaceWith("<button class='timer' id='timer" +  id +"'>" + hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds) + "</button>");
-                /*  
                     // If the count down is over, write some text 
                 if (distance < 0) {
                     clearInterval(x);
-                    if(state == 'BEFORE'){
-                        newState = 'STARTED';
-                    } else {
-                        newState = 'AFTER';
-                    }
-                    $.ajax({
-                        url: "js/home.php&f=updateAuctionState?id=" + id + "&state=" + newState,
-                        type: "GET",
-                        success: function(data){
-    
-                        }
-                     });
-    
-                    document.location.reload(true);
-                }*/
+                    $("button#timer" + id).replaceWith("<button class='timer' id='timer" +  id +"'>00:00:00</button>");
+                }
             }, 1000);
         }
 }
-
-/*
-$("div.losing").ready(function(){
-    $("button.raise").click(function(){
-        $("button.second").replaceWith("<select class='raise' name='raise' id='raise'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select>");
-        $("button.last1").replaceWith("<button class='last1 grey raise'>RAISE</button>");
-        $("button.last2").replaceWith("<button class='last2 grey back'>BACK</button>");
-
-        $("button.raise").click(function(){
-            $("select.raise").replaceWith("<button class='green'>STAI VINCENDO</button>");
-            $("button.last1").replaceWith("<button class='last1 grey raise'>RAISE</button>");
-            $("button.last2").replaceWith("<button class='last2 grey'>BUY NOW</button>");
-        });
-        
-        $("button.back").click(function(){
-            $("select.raise").replaceWith("<button class='red second'>STAI PERDENDO</button>");
-            $("button.last1").replaceWith("<button class='last1 grey raise'>RAISE</button>");
-            $("button.last2").replaceWith("<button class='last2 grey'>BUY NOW</button>");
-        })
-    });
-});
-*/
-/*
-
-$("div.aviable").ready(function(){
-    $("button:nth-child(6)").click(function(){
-        var quantity = $(this).attr("id");
-        var select = "<select class='quantity' name='quantity' id='quantity'><option value='"+ quantity +"'>"+ quantity +"</option></select>";
-        for(var i = 1; i<=quantity; i++){
-            select = select + "<option value='"+ i +"'>"+ i +"</option>";
-        }
-        select += "</select>";
-        $(this).replaceWith(select);
-        $("button.last").replaceWith("<button class='last1 grey addCart'>ADD CART</button><button class='last2 grey back'>BACK</button>");
-
-
-    })
-});
-
-function getTimer(year, month, day, hour, minute){
-
-}
-    
-*/
