@@ -12,11 +12,9 @@ $templateParams["class1"] = FALSE;
 $templateParams["class2"] = TRUE;
 $templateParams["slider"] = TRUE;
 $templateParams["css"] = "./css/style_Login_Registration.css";
-
-/*$templateParams["users"] = $dbh->getUsers();*/
+$templateParams["js"] = "./js/login_registration.js";
+//$templateParams["users"] = $dbh->getUsers();
 //$templateParams["aste"] = $dbh->getAuctions();
-
-define("JS_DIR", "./js/login_registration.js");
 
 require("template/base.php");
 ?>

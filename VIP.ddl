@@ -68,10 +68,10 @@ create table RIGA (
      constraint ID_RIGA_ID primary key (IdRiga));
 
 create table USER (
-     Email varchar(50) not null,
-     Password varchar(20) not null,
-     IdVenditore boolean default False not null,
-     constraint ID_USER_ID primary key (Email));
+     email varchar(50) not null,
+     password varchar(20) not null,
+     idvenditore boolean default False not null,
+     constraint ID_USER_ID primary key (email));
 
 
 -- Constraints Section
@@ -83,11 +83,11 @@ alter table ASTA add constraint EQU_ASTA_PRODO_FK
 
 alter table ASTA add constraint REF_ASTA_USER_FK
      foreign key (CodVincitore)
-     references USER (Email);
+     references USER (email);
 
 alter table ORDINE add constraint REF_ORDIN_USER_FK
      foreign key (CodCliente)
-     references USER (Email);
+     references USER (email);
 
 -- Not implemented
 -- alter table PRODOTTO add constraint ID_PRODOTTO_CHK
@@ -104,7 +104,7 @@ alter table PUNTATA add constraint REF_PUNTA_ASTA_FK
 
 alter table PUNTATA add constraint REF_PUNTA_USER_FK
      foreign key (CodCliente)
-     references USER (Email);
+     references USER (email);
 
 alter table RIGA add constraint REF_RIGA_PRODO_FK
      foreign key (CodProdotto)
@@ -152,5 +152,5 @@ create index REF_RIGA_PRODO_IND
      on RIGA (CodProdotto);
 
 create unique index ID_USER_IND
-     on USER (Email);
+     on USER (email);
 
