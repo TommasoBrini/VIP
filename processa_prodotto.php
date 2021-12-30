@@ -30,7 +30,8 @@ if($_POST["azione"]==1){
             $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg);
         }
         if($id!=false){
-            var_dump("Inserimento completato correttamente!");
+            mex = "Inserimento completato correttamente!";
+            header("location: index.php?$mex")
         }
         else{
         var_dump("qualcosa non va");

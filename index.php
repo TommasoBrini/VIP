@@ -18,8 +18,7 @@ $templateParams["auctionWinning"] = "auctionWinning.php";
 $templateParams["auctionLosing"] = "auctionLosing.php";
 $templateParams["auctionLose"] = "auctionLose.php";
 $templateParams["auctionWin"] = "auctionWin.php";
-
-define("JS_DIR", "./js/home.js");
+$templateParams["js"] = "./js/home.js";
 
 require("template/base.php");
 ?>
