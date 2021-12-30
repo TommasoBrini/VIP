@@ -16,9 +16,7 @@ $templateParams["products"] = $dbh->getProducts();
 $templateParams["aviableProducts"] = $dbh -> getAviableProducts();
 $templateParams["productAviable"] = "productAviable.php";
 $templateParams["productSoldOut"] = "productSoldOut.php";
-
-
-define("JS_DIR", "./js/home.js");
+$templateParams["js"] = "./js/home.js";
 
 require("template/base.php");
 ?>
