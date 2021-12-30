@@ -100,7 +100,7 @@ input[type=button]{
 
 #signIn{
     background-color: #707070;
-    margin-top: 15px;
+    margin-top: 20px;
     margin-left: 18px;
     color: #FFBF49;
     font-weight: bold;
@@ -120,7 +120,7 @@ input[type=button]{
 }
 
 #showHidePwd {
-    margin-left: 3px;
+    margin-left: 9px;
 }
 
 ul {
