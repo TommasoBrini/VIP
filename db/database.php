@@ -75,9 +75,8 @@
             $id = $stmt->insert_id;
             
             $query="";
-            $query = "INSERT INTO asta (`CodProdotto`, `Stato`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?, 'INIZIATA', ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
+            $query = "INSERT INTO asta (`CodProdotto`, `Stato`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?, 'BEFORE', ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
             $stmt = $this->db->prepare($query);
-            $stato = "BEFORE";
             $annoI = intval($annoInizio);
             $meseI = intval($meseInizio);
             $giornoI = intval($giornoInizio);
