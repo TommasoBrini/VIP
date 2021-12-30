@@ -8,6 +8,7 @@ if(!isset($_GET["action"]) || ($_GET["action"]!=1&& $_GET["action"]!=2 && $_GET[
 if($_GET["action"]!=1){
     $check=count($dbh->checkProduct($_GET["id"]));
     $risultato = $dbh->getProductById($_GET["id"], $check);
+    $templateParams["id"]=$_GET["id"];
     foreach($risultato as $ris):
         $templateParams["prodotto"] = $ris;
     endforeach;
