@@ -7,13 +7,17 @@
             <h2>ADMIN SETTING</h2>
             <section>
                 <label for="checkbox">AUCTION:</label><input type="checkbox" id="checkbox" name="checkbox" 
-                <?php if($templateParams["azione"]!=1 && !isset($prodotto["Disponibilita"])){
-                    echo ' checked="checked" ';
-                } ?>/>
+                <?php if($templateParams["azione"]!=1){
+                    echo 'disabled';
+                    if(!isset($prodotto["Disponibilita"])){
+                        echo ' checked="checked" ';
+                    } 
+                }
+                ?>/>
             </section>
             <ul>
                 <li>
-                    <label for="Nome">Name:</label><input type="text" id="Nome" name="Nome" value="<?php echo $prodotto["Nome"]; ?>" />
+                    <label for="Nome">Name:</label><input type="text" id="Nome" name="Nome" value="<?php echo $prodotto["Nome"]; ?>" required="required"/>
                 </li>
                 <li>
                     <label for="Prezzo">Price (€):</label><input type="number" id="Prezzo" name="Prezzo" value="<?php echo floatval($prodotto["Prezzo"]); ?>" required="required"/>
@@ -59,4 +63,7 @@
                 </li>
             </ul>
 	    <input type="hidden" name="azione" value="<?php echo $templateParams["azione"]; ?>" /> 
+        <?php if($templateParams["azione"]!=1): ?>
+        <input type="hidden" name="id" value="<?php echo $templateParams["id"]; ?>"/>
+        <?php endif; ?>
         </form>

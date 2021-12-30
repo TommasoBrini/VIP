@@ -49,14 +49,6 @@
             return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine){
-            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
-            $stmt = $this->db->prepare($query);
-            $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine);
-            $stmt->execute();    
-            return $stmt->insert_id;
-        }
-
         function getAviableProducts(){
             $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE Disponibilita IS NOT NULL AND Disponibilita > 0";
             $stmt = $this->db->prepare($query);
@@ -65,7 +57,15 @@
 
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
-            
+        
+        public function insertProduct($nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine){
+            $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Disponibilita, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine);
+            $stmt->execute();    
+            return $stmt->insert_id;
+        }
+
         public function insertAuction($nome, $descrizione, $descrizioneBreve, $prezzo, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine, $immagine){
 	        $query="";
             $query = "INSERT INTO prodotto (Nome, Descrizione, DescrizioneBreve, Prezzo, Base_asta, Immagine) VALUES (?, ?, ?, ?, ?, ?)";
@@ -73,7 +73,6 @@
             $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
             $stmt->execute();
             $id = $stmt->insert_id;
-            
             $query="";
             $query = "INSERT INTO asta (`CodProdotto`, `Stato`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?, 'BEFORE', ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
             $stmt = $this->db->prepare($query);
@@ -87,6 +86,22 @@
             $stmt->execute();
             return $stmt->insert_id;
         }
+
+        public function deleteProduct($idProdotto, $isAsta){
+            if($isAsta==1){
+                $query="DELETE FROM asta WHERE asta.CodProdotto=?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('i',$idProdotto);
+                $stmt->execute();
+            }
+            
+            $query="DELETE FROM prodotto WHERE prodotto.IDProdotto=?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt->execute();
+            return true;
+        }
+        
 
         public function updateAuctionState($auctionId, $newState) {
             $query = "UPDATE `asta` SET `Stato` = '".$newState."' WHERE `asta`.`IdAsta` = ".$auctionId;

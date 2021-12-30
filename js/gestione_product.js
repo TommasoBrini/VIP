@@ -28,5 +28,10 @@ $(document).ready(function(){
         }
     });
 
-    
+    if($("input[type=hidden]").val() == 3){
+        $("input[type!=submit]").attr("disabled", true);
+        $("input[type=hidden]").attr("disabled", false);
+        $("textarea").attr("disabled", true);
+    }
+
 });
