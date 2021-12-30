@@ -10,11 +10,8 @@
     <button class='yellow price'><?php echo number_format($asta["Base_asta"]);?> €</button>
     <button class='red second label'>PUOI RILANCIARE</button>
     <button class='last1 grey raise' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button><button class='last2 grey' id='buyNow<?php echo $asta["IDProdotto"]?>'>BUY NOW</button>
+    <?php require_once("template/timer.php") ?>
     <script type="text/javascript">
-        $( document ).ready(function(){
-            timer(<?php echo $asta["AnnoInizio"].", '".getMounth($asta["MeseInizio"])."', ".$asta["GiornoInizio"].", '".$asta["OraInizio"]."', ".$asta["IDProdotto"]?>);
-        });
-
         document.getElementById('buyNow<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();

@@ -10,7 +10,5 @@
     <button class='grey'><?php echo number_format($asta["Base_asta"]);?> €</button>
     <button class='grey'>INIZIERA' A BREVE</button>
     <button class='last grey'>VEDI IL PRODOTTO</button>
-    <script type="text/javascript">
-        
-    </script>
+    <?php require("template/timer.php") ?>
 </div>

@@ -1,9 +1,22 @@
 <script type='text/javascript'>
-    $( document ).ready(function(){
-        
-        if(<?php echo $asta["Stato"] ?> == 'FINISHED'){
-            $("button#timer" + <?php echo $asta["IdProdotto"] ?>).replaceWith("<button class='timer' id='timer" +  id +"'>00:00:00</button>");
+        if("<?php echo $asta["Stato"] ?>" == "AFTER"){
+            $("button#timer" + <?php echo $asta["IDProdotto"] ?>).replaceWith("<button class='timer' id='timer" +  <?php echo $asta["IDProdotto"] ?> +"'>00:00:00</button>");
         } else {
+            var countDownDate = null;
+            <?php $nextState = "";?>
+
+            if("<?php echo $asta["Stato"] ?>" == "BEFORE") {
+                countDownDate = new Date("<?php echo getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":00" ?>").getTime();
+            } else if("<?php echo $asta["Stato"] ?>" == "STARTED"){
+                countDownDate = new Date("<?php echo getMounth($asta["MeseFine"])." ".$asta["GiornoFine"].", ".$asta["AnnoFine"]." ".$asta["OraFine"].":00" ?>").getTime();
+            }
+            
+            <?php if($asta["Stato"] == "BEFORE"){
+                    $nextState = "STARTED";
+            } 
+            if($asta["Stato"] == "STARTED") {
+                $nextState = "AFTER";
+            }   ?>
             // Update the count down every 1 second
             var x = setInterval(function() {
 
@@ -17,42 +30,22 @@
                 var hours = Math.floor(distance / (1000 * 60 * 60));
                 var minutes = Math.floor((distance / (1000 * 60 * 60) - hours) * 60);
                 var seconds = Math.floor((((distance / (1000 * 60 * 60) - hours) * 60) - minutes) * 60);
-    
+
+                hours < 10 ? hours = '0'+hours : hours = hours;
+                minutes < 10 ? minutes = '0'+minutes : minutes = minutes;
+                seconds < 10 ? seconds = '0'+seconds : seconds = seconds;
+
                 // Output the result in an element with id="demo"
-                $("button#timer" + id).replaceWith("<button class='timer' id='timer" +  id +"'>" + hours + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds) + "</button>");  
+                $("<?php echo "button#timer".$asta["IDProdotto"] ?>").replaceWith("<?php echo "<button class='timer' id='timer".$asta["IDProdotto"]."'>" ?>" + hours + ":" + minutes + ":" + seconds + "</button>");  
 
                 // If the count down is over, write some text 
                 if (distance < 0) {
                     clearInterval(x);
-                    if(state == 'BEFORE'){
-                        newState = 'STARTED';
-                    } else {
-                        newState = 'AFTER';
-                    }
-                    $.ajax({
-                        url: "js/home.php&f=updateAuctionState?id=" + id + "&state=" + newState,
-                        type: "GET",
-                        success: function(data){
-    
-                        }
-                     });
-    
+                    <?php
+                        $dbh->updateAuctionState($asta["IDProdotto"], $nextState);
+                    ?>
                     document.location.reload(true);
                 }
             }, 1000);
         }
-        
-        timer(<?php echo $asta["AnnoInizio"].", '".getMounth($asta["MeseInizio"])."', ".$asta["GiornoInizio"].", '".$asta["OraInizio"]."', ".$asta["IDProdotto"].", '".$asta["Stato"]."'"?>);
-            var_dump($("button#timer"+id).val)
-            if($("button#timer"+id).val == '00:00:00'){
-                <?php if($asta["stato"] == 'BEFORE'){
-                        $state = 'STARTED';
-                    } else {
-                        $state = 'AFTER';
-                    }
-                    $dbh->updateAuctionState($asta["IdProdotto"], $state);
-                ?>
-                document.location.reload(true);
-            }
-        });
 </script>
