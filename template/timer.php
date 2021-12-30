@@ -9,7 +9,7 @@
         var endDistance = endDate - now;
 
         if(endDistance <= 0){
-            $("button#timer" + <?php echo $asta["IDProdotto"] ?>).replaceWith("<button class='timer' id='timer" +  <?php echo $asta["IDProdotto"] ?> +"'>00:00:00</button>");
+            $("<?php echo "button#timer".$asta["IDProdotto"] ?>").replaceWith("<?php echo "<button class='timer' id='timer".$asta["IDProdotto"] ?>'>00:00:00</button>");
         } else {            
             // Update the count down every 1 second
             var x = setInterval(function() {                             
