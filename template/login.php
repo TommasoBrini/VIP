@@ -1,5 +1,5 @@
 <h1>LOGIN</h1>
-    <form action="processa_login.php" method="POST">
+    <form action="processToLogin.php" method="POST">
     <?php if(isset($templateParams["errorLogin"])): ?>
     <p><?php echo $templateParams["errorLogin"]; ?></p>
     <?php endif; ?>

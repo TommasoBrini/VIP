@@ -1,5 +1,5 @@
 <h1>REGISTRATION</h1>
-    <form action="#" method="POST">
+    <form action="processToRegistration.php" method="POST">
     <ul>
         <li>
             <label for="email">Email:</label><input type="text" id="email" name="email"/><br>
