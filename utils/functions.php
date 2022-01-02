@@ -81,6 +81,7 @@ function registerLoggedUser($user){
 }
 
 /*Function per vedere se è venditore*/
+/*Function logout*/
 
 ////////
 function getAnnoMeseGiorno($dataStringa){
