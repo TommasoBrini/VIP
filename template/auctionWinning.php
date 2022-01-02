@@ -12,7 +12,7 @@
     <button class='last1 grey unable' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button><button class='last2 grey' id='buyNow<?php echo $asta["IDProdotto"]?>'>BUY NOW</button>
     <script type="text/javascript">
         $( document ).ready(function(){
-            timer(<?php echo $asta["AnnoInizio"].", '".getMounth($asta["MeseInizio"])."', ".$asta["GiornoInizio"].", '".$asta["OraInizio"]."', ".$asta["IDProdotto"]?>);
+            timer(<?php echo $asta["AnnoFine"].", '".getMounth($asta["MeseFine"])."', ".$asta["GiornoFine"].", '".$asta["OraFine"]."', ".$asta["IDProdotto"]?>);
         });
 
         document.getElementById('buyNow<?php echo $asta["IDProdotto"]?>').onclick = function (event) {
