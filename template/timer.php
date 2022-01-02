@@ -4,13 +4,12 @@
         
         var endDate = new Date("<?php echo getMounth($asta["MeseFine"])." ".$asta["GiornoFine"].", ".$asta["AnnoFine"]." ".$asta["OraFine"].":00" ?>").getTime();
         
-        var now = new Date().getTime();
-        var startDistance = startDate - now;
-        var endDistance = endDate - now;
+        var startDistance = startDate - new Date().getTime();
+        var endDistance = endDate - new Date().getTime();
 
         if(endDistance <= 0){
             $("<?php echo "button#timer".$asta["IDProdotto"] ?>").replaceWith("<?php echo "<button class='timer' id='timer".$asta["IDProdotto"] ?>'>00:00:00</button>");
-        } else {            
+        } else {
             // Update the count down every 1 second
             var x = setInterval(function() {                             
                 // Find the distance between now and the count down date
