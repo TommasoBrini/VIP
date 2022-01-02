@@ -92,6 +92,15 @@ function getAnnoMeseGiorno($dataStringa){
 }
 
 function getData($anno,$mese,$giorno){
+    if(strlen($mese)==1){
+        if(strlen($giorno)==1){
+            return "$anno-0$mese-0$giorno";
+        }else{
+            return "$anno-0$mese-$giorno";
+        }
+    } elseif(strlen($giorno)==1) {
+        return "$anno-$mese-0$giorno";
+    }
     return "$anno-$mese-$giorno";
 }
 
