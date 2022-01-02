@@ -42,7 +42,11 @@
                 </li>
                 <li>
                     <?php if($templateParams["azione"]!=3): ?>
-                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" required="required"/> 
+                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" value="<?php echo $prodotto["Immagine"] ?>" 
+                    <?php if($templateParams["azione"]!=2){
+                        echo "required='required'";
+                    }
+                    ?> /> 
                     <?php endif; ?>
                 </li>
                 <li>
@@ -66,4 +70,5 @@
         <?php if($templateParams["azione"]!=1): ?>
         <input type="hidden" name="id" value="<?php echo $templateParams["id"]; ?>"/>
         <?php endif; ?>
+        <input type="hidden" name="ImmagineDefault" value="<?php echo $prodotto["Immagine"]; ?>" /> 
         </form>
