@@ -1,5 +1,5 @@
 <script type='text/javascript'>
-
+    $( document ).ready(function(){
         var startDate = new Date("<?php echo getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":00" ?>").getTime();
         
         var endDate = new Date("<?php echo getMounth($asta["MeseFine"])." ".$asta["GiornoFine"].", ".$asta["AnnoFine"]." ".$asta["OraFine"].":00" ?>").getTime();
@@ -39,4 +39,5 @@
                 }
             }, 1000);
         }
+    });
 </script>
