@@ -80,9 +80,12 @@ body > main.products > div {
 /*HEADER*/
 /********/
 body > main.products > div > header {
-    margin: 2.5% 10% 0 10%;
-    width: 75%;
+    margin: 2.5% 5% 0 5%;
+    width: 90%;
     height: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -90,11 +93,9 @@ body > main.products > div > header {
 /**HEADER*/
 /**LABEL**/
 /*********/
-body > main.products > div > header > label {
+body > main.products > div > header > label, body > main.products > div > header > div.title {
     color: #FFBF49;
     margin: 0;
-    height: 14%;
-    width: 75%;
     background-color: #303030;
 }
 
