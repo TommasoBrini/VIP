@@ -11,12 +11,7 @@
     <button class='green second label'>STAI VINCENDO</button>
     <button class='last1 grey unable' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button><button class='last2 grey' id='buyNow<?php echo $asta["IDProdotto"]?>'>BUY NOW</button>
     <?php require("template/timer.php");?>
-    
     <script type='text/javascript'>
-        $( document ).ready(function(){
-            timer(<?php echo $asta["AnnoInizio"].", '".getMounth($asta["MeseInizio"])."', ".$asta["GiornoInizio"].", '".$asta["OraInizio"]."', ".$asta["IDProdotto"]?>);
-        });
-
         document.getElementById('buyNow<?php echo $asta["IDProdotto"]?>').onclick = function (event) {
             if (!event) event = window.event;
             event.stopPropagation();
