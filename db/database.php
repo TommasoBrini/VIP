@@ -136,8 +136,9 @@
             $stmt = $this->db->prepare($query);
             $stmt->execute();
         }
-        public function checkLogin($email, $password, $idvenditore){
-            $query = "SELECT U.email, U.password, U.idvenditore FROM user U WHERE U.email = ? AND U.password = ?";
+        
+        public function checkLogin($email, $password){
+            $query = "SELECT * FROM `user` WHERE email=? AND password=?";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ss',$email, $password);
             $stmt->execute();

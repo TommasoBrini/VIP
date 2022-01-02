@@ -1,11 +1,11 @@
-<h1>LOGIN</h1>
-    <form action="processToLogin.php" method="POST">
+<form action="processToLogin.php" method="POST">
+    <h1>LOGIN</h1>
     <?php if(isset($templateParams["errorLogin"])): ?>
     <p><?php echo $templateParams["errorLogin"]; ?></p>
     <?php endif; ?>
     <ul>
         <li>
-            <label for="email">Email:</label><input type="text" id="email" name="email"/><br>
+            <label for="email">Email:</label><input type="text" id="email" name="email" /><br>
         </li>
     </ul>
     <ul>
@@ -13,11 +13,11 @@
             <label for="password">Password:</label>
         </li>
         <li>
-            <input type="password" id="pwd">
+            <input type="password" id="password" name="password" />
         </li>
         <li>
-            <img type="button" src="./img/eye.png" id="showHidePwd"/><br>
+            <img type="button" src="./img/eye.png" id="showHidePwd" /><br>
         </li>
     </ul>
-    <button type="submit" name="login" id="login" onclick="login()">LOGIN</button>
-    </form>
+    <button type="submit" name="login" id="login">LOGIN</button>
+</form>
