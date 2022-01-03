@@ -36,7 +36,7 @@
         ?>
     </main>
     <footer>
-        <h3>QUESTO E' IL FOOTER DELLA PAGINA, AVRA' BISOGNO DI UN TESTO LUNGO PER POTER METTERE IL TESTO A CAPO.</h3>
+        <h3><?php echo $_SESSION["email"];?></h3>
     </footer>
 </body>
 </html>

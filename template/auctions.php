@@ -1,4 +1,4 @@
-<?php foreach($templateParams["auctions"] as $asta){ 
+<?php foreach($templateParams["auctions"] as $asta){
     $date = new DateTime();
     $start = $asta["AnnoInizio"]."-".$asta["MeseInizio"]."-".$asta["GiornoInizio"]." ".$asta["OraInizio"].":00";
     $startDate = new DateTime($start);
@@ -20,29 +20,5 @@
             require($templateParams["auctionWin"]);
         }
     }
-    /*
-    switch($asta["Stato"]){
-        case "BEFORE":
-            if(isset($templateParams["auctionBefore"])){
-                require($templateParams["auctionBefore"]);
-            }
-            break; 
-        case "AFTER":
-            if($asta["CodVincitore"] != NULL){
-                require($templateParams["auctionLose"]);
-            } else {
-                require($templateParams["auctionWin"]);
-            }
-            break;
-        case "STARTED":
-            if(!isset($templateParams["auctionWinning"])){
-                require($templateParams["auctionWinning"]);
-            } else {
-                require($templateParams["auctionLosing"]);
-            }
-        default:
-            break;
-    }
-    */
 }
 
