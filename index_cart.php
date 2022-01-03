@@ -5,7 +5,7 @@ $templateParams["titolo"] = "VIP - Cart";
 $templateParams["nome"] = "cart.php";
 $templateParams["bg"] = "black";
 $templateParams["slider"] = FALSE;
-$templateParams["css"] = "./css/style.css?v=1";
+$templateParams["css"] = "./css/styleCart.css";
 
 define("JS_DIR", "./js/home.js");
 

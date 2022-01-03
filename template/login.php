@@ -1,8 +1,5 @@
 <form action="processToLogin.php" method="POST">
     <h1>LOGIN</h1>
-    <?php if(isset($templateParams["errorLogin"])): ?>
-    <p><?php echo $templateParams["errorLogin"]; ?></p>
-    <?php endif; ?>
     <ul>
         <li>
             <label for="email">Email:</label><input type="text" id="email" name="email" /><br>
