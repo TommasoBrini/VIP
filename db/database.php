@@ -10,7 +10,7 @@
         }
 
         public function getAuctions(){
-            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.Stato, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
+            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
@@ -38,7 +38,7 @@
             if($check==0){
                 $query="SELECT Nome, Descrizione, DescrizioneBreve, Prezzo, Immagine, Base_asta, Disponibilita FROM prodotto WHERE IDProdotto=?";
             } else {
-                $query="SELECT p. IDProdotto, p.Nome, a.Stato, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto WHERE p.IDProdotto=?";
+                $query="SELECT p. IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto WHERE p.IDProdotto=?";
             }
             
             $stmt = $this -> db -> prepare($query);
@@ -74,7 +74,7 @@
             $stmt->execute();
             $id = $stmt->insert_id;
             $query="";
-            $query = "INSERT INTO asta (`CodProdotto`,`Stato`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?,'BEFORE', ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
+            $query = "INSERT INTO asta (`CodProdotto`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES (?, ?, ?, ?, ? , ?, ?, ?, ?, NULL)";
             $stmt = $this->db->prepare($query);
             $annoI = intval($annoInizio);
             $meseI = intval($meseInizio);
@@ -131,11 +131,11 @@
 
         
 
-        public function updateAuctionState($auctionId, $newState) {
+        /*public function updateAuctionState($auctionId, $newState) {
             $query = "UPDATE `asta` SET `Stato` = '".$newState."' WHERE `asta`.`IdAsta` = ".$auctionId;
             $stmt = $this->db->prepare($query);
             $stmt->execute();
-        }
+        }*/
         
         public function checkLogin($email, $password){
             $query = "SELECT * FROM `user` WHERE email=? AND password=?";

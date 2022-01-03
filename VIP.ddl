@@ -22,7 +22,6 @@ use VIP;
 create table ASTA (
      IdAsta int not null auto_increment,
      CodProdotto int not null,
-     Stato varchar(15) not null,
      AnnoInizio int not null,
      MeseInizio int not null,
      GiornoInizio int not null,
@@ -49,7 +48,6 @@ create table PRODOTTO (
      IDProdotto int not null auto_increment,
      Base_asta int,
      Disponibilita int,
-     TimeStamp varchar(15) not null,
      Immagine varchar(100) not null,
      constraint ID_PRODOTTO_ID primary key (IDProdotto));
 
