@@ -15,6 +15,13 @@ if($_GET["action"]!=1){
 } else {
     $templateParams["prodotto"] = getEmptyProduct();
 }
+
+if(isUserLoggedIn()){
+    $result = $dbh->checkVenditore();
+    $templateParams["venditore"]=$result;
+}
+
+
 $templateParams["titolo"] = "VIP - Add Product";
 $templateParams["nome"] = "admin-form.php";
 $templateParams["css"] = "./css/style.css?v=1";

@@ -145,6 +145,23 @@
             $result = $stmt->get_result();
             
             return $result->fetch_all(MYSQLI_ASSOC);
-        }    
+        }
+        
+        public function checkVenditore(){
+            $query = "SELECT `email` FROM `user` WHERE idvenditore=1";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $result->fetch_all(MYSQLI_ASSOC);
+            foreach($result as $res){
+                if($res["email"]==$_SESSION["email"]){
+                    return true;
+                } else{
+                    return false;
+                }
+            }
+            
+            
+        }
     }    
 ?>
