@@ -128,14 +128,6 @@
             $stmt->execute();
             return true;
         }
-
-        
-
-        /*public function updateAuctionState($auctionId, $newState) {
-            $query = "UPDATE `asta` SET `Stato` = '".$newState."' WHERE `asta`.`IdAsta` = ".$auctionId;
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-        }*/
         
         public function checkLogin($email, $password){
             $query = "SELECT * FROM `user` WHERE email=? AND password=?";
@@ -146,22 +138,20 @@
             
             return $result->fetch_all(MYSQLI_ASSOC);
         }
-        
-        public function checkVenditore(){
-            $query = "SELECT `email` FROM `user` WHERE idvenditore=1";
+     
+        public function checkSeller(){
+            $query = "SELECT * FROM user WHERE idvenditore=1 LIMIT 1";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
-            $result = $stmt->get_result();
-            $result->fetch_all(MYSQLI_ASSOC);
-            foreach($result as $res){
-                if($res["email"]==$_SESSION["email"]){
-                    return true;
-                } else{
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            foreach($result as $user){
+                if(isset($_SESSION['email'])){
+                    return $user['email'] == $_SESSION['email'];
+                } else {
                     return false;
                 }
             }
-            
-            
+        
         }
     }    
 ?>
