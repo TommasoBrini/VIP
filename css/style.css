@@ -264,7 +264,7 @@ body > main.products > div.product > div.topright > textarea.description{
 }
 
 /*******/
-/*Tommi*/
+/*ADMIN FORM*/
 /*******/
 main > form > h2 {
     text-align: center;
@@ -308,6 +308,7 @@ form > ul > li > input[type="checkbox"]{
 form > ul > li > textarea{
     width: 100%;
     height: 150px;
+    resize: none;
 }
 
 form > ul > li > img{

@@ -17,7 +17,7 @@ if($_GET["action"]!=1){
 }
 
 if(isUserLoggedIn()){
-    $result = $dbh->checkVenditore();
+    $result = $dbh->checkSeller();
     $templateParams["venditore"]=$result;
 }
 
