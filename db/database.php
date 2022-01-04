@@ -145,6 +145,21 @@
             $result = $stmt->get_result();
             
             return $result->fetch_all(MYSQLI_ASSOC);
-        }    
+        }
+
+        public function checkSeller(){
+            $query = "SELECT * FROM user WHERE idvenditore=1 LIMIT 1";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            foreach($result as $user){
+                if(isset($_SESSION['email'])){
+                    return $user['email'] == $_SESSION['email'];
+                } else {
+                    return false;
+                }
+            }
+            
+        }
     }    
 ?>

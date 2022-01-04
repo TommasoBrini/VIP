@@ -19,7 +19,11 @@
     <header>
         <img src="<?php echo IMG_DIR?>VIP_logo.png" alt="Logo" onclick="window.location.href='index.php'"/>
         <img src="<?php echo IMG_DIR?>account.png" alt="Account" onclick="window.location.href='index_login.php'"/>
-        <img src="<?php echo IMG_DIR?>cart.png" alt="Cart" onclick="window.location.href='index_cart.php'"/>
+        <?php if($dbh->checkSeller()){
+            echo "<img src='".IMG_DIR."add.png' alt='Add product' onclick='window.location.href='index_gestione_product.php?action=1'/>";
+        } else {
+            echo "<img src='".IMG_DIR."cart.png' alt='Cart' onclick='window.location.href='index_cart.php'/>";
+        }?>
         <div class="slider">
             <?php
                 if($templateParams["slider"]){
