@@ -22,11 +22,7 @@ if(isUserLoggedIn()){
 }
 
 
-<<<<<<< HEAD
 $templateParams["titolo"] = "VIP - Admin";
-=======
-$templateParams["titolo"] = "VIP - Add Product";
->>>>>>> 470385d31a69a95e09d9375c14fb0640d1db8cc4
 $templateParams["nome"] = "admin-form.php";
 $templateParams["css"] = "./css/style.css?v=1";
 $templateParams["bg"] = "white";
