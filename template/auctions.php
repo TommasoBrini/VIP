@@ -14,7 +14,7 @@
             require($templateParams["auctionWinning"]);
         }
     } else {
-        if($asta["CodVincitore"] != NULL){
+        if($asta["CodVincitore"] != $_SESSION["email"]){
             require($templateParams["auctionLose"]);
         } else {
             require($templateParams["auctionWin"]);
