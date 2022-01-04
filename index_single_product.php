@@ -5,6 +5,11 @@ if(!isset($_GET["id"])){
     header("location: index.php");
 }
 
+if(isUserLoggedIn()){
+    $result = $dbh->checkVenditore();
+    $templateParams["venditore"]=$result;
+}
+
 $templateParams["titolo"] = "VIP - Single Product";
 $templateParams["nome"] = "single_product.php";
 $templateParams["bg"] = "white";
