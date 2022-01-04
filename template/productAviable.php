@@ -1,4 +1,4 @@
-<div class='product aviable' id='product<?php echo $product["IDProdotto"]?>'>
+<div class='product aviable' id='product<?php echo $product["IDProdotto"]?>' onclick="<?php echo "window.location.href='index_single_product.php?id=".$product["IDProdotto"]."'"; ?>">
     <header>
         <label for="title"><?php echo $product["Nome"];?></label>
     </header>
@@ -11,6 +11,8 @@
     <button class='last grey addCart' id='button<?php echo $product["IDProdotto"]?>' value='<?php echo $product["IDProdotto"]?>'>ADD CART</button>
     <script type="text/javascript">
         document.getElementById("button<?php echo $product["IDProdotto"]?>").onclick = function () {
+            if (!event) event = window.event;
+            event.stopPropagation();
             var select = "<select class='quantity' name='quantity' id='quantity<?php echo $product["IDProdotto"]?>'>";
             for(var i = 1; i <= <?php echo $product["Disponibilita"] ?>; i++){
                 select = select + "<option value='"+ i +"'>"+ i +"</option>";
@@ -20,10 +22,14 @@
             $(this).replaceWith("<button class='last1 grey addCart' id='addCart<?php echo $product["IDProdotto"]?>'>ADD CART</button><button class='last2 grey back' id='back<?php echo $product["IDProdotto"]?>'>BACK</button>");
 
             document.getElementById("addCart<?php echo $product["IDProdotto"]?>").onclick = function() {
+                if (!event) event = window.event;
+                event.stopPropagation();
                 alert("Hai appena aggiunto " + document.getElementById("quantity<?php echo $product["IDProdotto"]?>").value + " <?php echo $product["Nome"];?> al carrello." );
                 document.location.reload(true);
             }
             document.getElementById("back<?php echo $product["IDProdotto"]?>").onclick = function() {
+                if (!event) event = window.event;
+                event.stopPropagation();
                 document.location.reload(true);
             }
         }

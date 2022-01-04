@@ -1,4 +1,4 @@
-<div class='product soldout' id='product<?php echo $product["IDProdotto"]?>'>
+<div class='product soldout' id='product<?php echo $product["IDProdotto"]?>' onclick="<?php echo "window.location.href='index_single_product.php?id=".$product["IDProdotto"]."'"; ?>">
     <header>
         <label for="title"><?php echo $product["Nome"]?></label>
     </header>
