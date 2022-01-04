@@ -6,16 +6,18 @@ if(!isset($_GET["id"])){
 }
 
 if(isUserLoggedIn()){
-    $result = $dbh->checkVenditore();
+    $result = $dbh->checkSeller();
     $templateParams["venditore"]=$result;
 }
 
 $templateParams["titolo"] = "VIP - Single Product";
 $templateParams["nome"] = "single_product.php";
 $templateParams["bg"] = "white";
-$templateParams["css"] = "./css/style.css?v=1";
+$templateParams["css"] = "./css/styleSingleProduct.css";
 $templateParams["slider"] = FALSE;
-$risultato = $dbh->getProductById($_GET["id"], $_GET["check"]);
+
+$check=count($dbh->checkProduct($_GET["id"]));
+$risultato = $dbh->getProductById($_GET["id"], $check);
 foreach($risultato as $ris):
     $templateParams["prodotto"] = $ris;
 endforeach;
