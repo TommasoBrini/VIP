@@ -161,6 +161,7 @@
             $stmt->execute();
             $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             $oldBid = true;
+            echo $auctionid." ".$bet." ".$user;
             foreach($result as $last){
                 $oldBid = false;
                 if($last['quantita'] < $bet){
@@ -168,9 +169,9 @@
                 }
             }        
             if($oldBid){
-                $query = "INSERT INTO puntata (quantita, IdAsta, CodCliente) VALUES ( ?, ?, ?)";
+                $query = "INSERT INTO puntata (quantita, IdAsta, CodCliente) VALUES ( ".$bet.", ".$auctionid.", '".$user."')";
+                echo $query;
                 $stmt = $this->db->prepare($query);
-                $stmt->bind_param('iis', $bet, $auctionid, $user);
                 $stmt->execute();
                 return true;
             } else {

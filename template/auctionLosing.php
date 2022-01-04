@@ -7,7 +7,7 @@
         <button class='timer' id="<?php echo "timer".$asta["IDProdotto"]?>">00:00:00</button>
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
-    <button class='yellow price'><?php echo number_format($asta["Base_asta"]);?> €</button>
+    <button class='yellow price'><?php echo $asta["quantita"] == NULL ? number_format($asta["Base_asta"]) : number_format($asta["quantita"]);?> €</button>
     <button class='red second label'>PUOI RILANCIARE</button>
     <button class='last1 grey raise' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button><button class='last2 grey' id='buyNow<?php echo $asta["IDProdotto"]?>'>BUY NOW</button>
     <?php require("template/timer.php");?>
@@ -36,7 +36,7 @@
         document.getElementById('raise<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();
-            $(this).prev().replaceWith("<form action='raise.php?id=<?php echo $asta["IdAsta"]."&base=".$asta["Base_asta"]?>' method='POST' enctype='multipart/form-data'><select class='raise' name='raise' id='select<?php echo $asta["IDProdotto"]?>' onclick='selectClick(event)'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select><input type='submit' value='raise'/>");
+            $(this).prev().replaceWith("<form action='raise.php?id=<?php echo $asta["IdAsta"]?>&base=<?php echo $asta["quantita"] == NULL ? $asta["Base_asta"] : $asta["quantita"]?>' method='POST' enctype='multipart/form-data'><select class='raise' name='raise' id='select<?php echo $asta["IDProdotto"]?>' onclick='selectClick(event)'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select><input type='submit' value='raise'/>");
             $(this).next().replaceWith("<button class='last2 grey back' id='back<?php echo $asta["IDProdotto"]?>'>BACK</button></form>");
             $(this).replaceWith("<input type='submit' class='last1 grey raise' id='raise<?php echo $asta["IDProdotto"]?>'/>");
 

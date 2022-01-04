@@ -14,10 +14,10 @@
             require($templateParams["auctionWinning"]);
         }
     } else {
-        if($asta["CodVincitore"] != $_SESSION["email"]){
-            require($templateParams["auctionLose"]);
-        } else {
+        if($asta["CodVincitore"] == $_SESSION["email"]){
             require($templateParams["auctionWin"]);
+        } else {
+            require($templateParams["auctionLose"]);
         }
     }
 }
