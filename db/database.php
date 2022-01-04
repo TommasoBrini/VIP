@@ -153,5 +153,29 @@
             }
         
         }
+
+        public function raise($auctionid, $bet, $user){
+            $query = "SELECT * FROM puntata WHERE IdPuntata=? ORDER BY quantita DESC LIMIT 1";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i',$auctionid);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            $oldBid = true;
+            foreach($result as $last){
+                $oldBid = false;
+                if($last['quantita'] < $bet){
+                    $oldBid = true;
+                }
+            }        
+            if($oldBid){
+                $query = "INSERT INTO puntata (quantita, IdAsta, CodCliente) VALUES ( ?, ?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('iis', $bet, $auctionid, $user);
+                $stmt->execute();
+                return true;
+            } else {
+                return false;
+            }
+        }
     }    
 ?>

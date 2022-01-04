@@ -36,9 +36,9 @@
         document.getElementById('raise<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();
-            $(this).prev().replaceWith("<select class='raise' name='raise' id='select<?php echo $asta["IDProdotto"]?>' onclick='selectClick(event)'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select>");
-            $(this).next().replaceWith("<button class='last2 grey back' id='back<?php echo $asta["IDProdotto"]?>'>BACK</button>");
-            $(this).replaceWith("<button class='last1 grey raise' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button>");
+            $(this).prev().replaceWith("<form action='raise.php?id=<?php echo $asta["IdAsta"]."&base=".$asta["Base_asta"]?>' method='POST' enctype='multipart/form-data'><select class='raise' name='raise' id='select<?php echo $asta["IDProdotto"]?>' onclick='selectClick(event)'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select><input type='submit' value='raise'/>");
+            $(this).next().replaceWith("<button class='last2 grey back' id='back<?php echo $asta["IDProdotto"]?>'>BACK</button></form>");
+            $(this).replaceWith("<input type='submit' class='last1 grey raise' id='raise<?php echo $asta["IDProdotto"]?>'/>");
 
             document.getElementById('back<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
                 if (!event) event = window.event;
@@ -50,7 +50,7 @@
                 if (!event) event = window.event;
                 event.stopPropagation();
                 alert("Hai rilanciato " + document.getElementById("select<?php echo $asta["IDProdotto"]?>").value + " € per <?php echo $asta["Nome"];?>");
-                document.location.reload(true);
+                //document.location.reload(true);
             }
         }
     </script>

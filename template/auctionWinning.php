@@ -12,7 +12,7 @@
     <button class='last1 grey unable' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button><button class='last2 grey' id='buyNow<?php echo $asta["IDProdotto"]?>'>BUY NOW</button>
     <?php require("template/timer.php");?>
     <script type='text/javascript'>
-        document.getElementById('buyNow<?php echo $asta["IDProdotto"]?>').onclick = function (event) {
+        document.getElementById('buyNow<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();
             $(this).prev().prev().prev().replaceWith("<button class='yellow price'><?php echo number_format($asta["Prezzo"]); ?> €</button>");
@@ -25,7 +25,6 @@
                 event.stopPropagation();
                 document.location.reload(true);
             }
-
             document.getElementById("yes<?php echo $asta["IDProdotto"]?>").onclick = function(event) {
                 if (!event) event = window.event;
                 event.stopPropagation();
@@ -37,9 +36,9 @@
         document.getElementById('raise<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();
-            $(this).prev().replaceWith("<select class='raise' name='raise' id='select<?php echo $asta["IDProdotto"]?>' onclick='selectClick(event)'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select>");
+            $(this).prev().replaceWith("<form action='raise.php' method='POST' enctype='multipart/form-data'><select class='raise' name='raise' id='select<?php echo $asta["IDProdotto"]?>' onclick='selectClick(event)'><option value='5'>5</option><option value='10'>10</option><option value='50'>50</option><option value='100'>100</option></select>");
             $(this).next().replaceWith("<button class='last2 grey back' id='back<?php echo $asta["IDProdotto"]?>'>BACK</button>");
-            $(this).replaceWith("<button class='last1 grey raise' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button>");
+            $(this).replaceWith("<button type='submit' class='last1 grey raise' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button></form>");
 
             document.getElementById('back<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
                 if (!event) event = window.event;
@@ -51,7 +50,7 @@
                 if (!event) event = window.event;
                 event.stopPropagation();
                 alert("Hai rilanciato " + document.getElementById("select<?php echo $asta["IDProdotto"]?>").value + " € per <?php echo $asta["Nome"];?>");
-                document.location.reload(true);
+                //document.location.reload(true);
             }
         }
     </script>
