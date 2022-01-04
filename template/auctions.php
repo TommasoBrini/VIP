@@ -8,10 +8,10 @@
     if($date->getTimeStamp() < $startDate->getTimeStamp()){
         require($templateParams["auctionBefore"]);
     } else if($date->getTimeStamp() < $endDate->getTimeStamp()){
-        if(!isset($templateParams["auctionWinning"])){
-            require($templateParams["auctionWinning"]);
-        } else {
+        if($asta["CodCliente"] == NULL || $asta["CodCliente"] != $_SESSION["email"]){
             require($templateParams["auctionLosing"]);
+        } else {
+            require($templateParams["auctionWinning"]);
         }
     } else {
         if($asta["CodVincitore"] != NULL){
@@ -21,4 +21,4 @@
         }
     }
 }
-
+?>

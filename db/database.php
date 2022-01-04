@@ -10,7 +10,7 @@
         }
 
         public function getAuctions(){
-            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
+            $stmt = $this -> db -> prepare("SELECT a.IDProdotto, a.IdAsta, a.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, a.Descrizione, a.DescrizioneBreve, a.Base_asta, a.Prezzo, a.Immagine, b.CodCliente, b.IdAsta, b.quantita FROM (SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, MAX(quantita) AS quantita FROM puntata GROUP BY IdAsta) AS b ON a.IdAsta=b.IdAsta ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
