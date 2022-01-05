@@ -22,7 +22,7 @@
         <?php if($dbh->checkSeller()){
             echo '<img src="'.IMG_DIR.'add.png" alt="Add product" onclick="window.location.href='."'index_gestione_product.php?action=1'".'"/>';
         } else {
-            echo "<img src='".IMG_DIR."cart.png' alt='Cart' onclick='window.location.href='index_cart.php'/>";
+            echo '<img src="'.IMG_DIR.'cart.png" alt="Cart" onclick="window.location.href='."'index_cart.php'".'"/>';
         }?>
         <div class="slider">
             <?php
