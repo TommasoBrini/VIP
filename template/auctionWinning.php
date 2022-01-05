@@ -7,7 +7,7 @@
         <button class='timer' id="<?php echo "timer".$asta["IDProdotto"]?>">00:00:00</button>
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
-    <button class='yellow price'><?php echo $asta["quantita"] == NULL ? number_format($asta["Base_asta"]) : number_format($asta["quantita"]);?> €</button>
+    <button id="<?php echo "price".$asta["IDProdotto"]?>" class='yellow price'><?php echo $asta["quantita"] == NULL ? number_format($asta["Base_asta"]) : number_format($asta["quantita"]);?> €</button>
     <button class='green second label'>STAI VINCENDO</button>
     <button class='last1 grey unable' id='raise<?php echo $asta["IDProdotto"]?>'>RAISE</button><button class='last2 grey' id='buyNow<?php echo $asta["IDProdotto"]?>'>BUY NOW</button>
     <?php require("template/timer.php");?>
@@ -15,7 +15,7 @@
         document.getElementById('buyNow<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();
-            $(this).prev().prev().prev().replaceWith("<button class='yellow price'><?php echo number_format($asta["Prezzo"]); ?> €</button>");
+            $(this).prev().prev().prev().replaceWith("<button id='<?php echo "price".$asta["IDProdotto"]?>' class='yellow price'><?php echo number_format($asta["Prezzo"]); ?> €</button>");
             $(this).prev().prev().replaceWith("<button class='yellow label'>SICURO?</button>");
             $(this).prev().replaceWith("<button class='last1 grey' id='yes<?php echo $asta["IDProdotto"]?>'>YES</button>");
             $(this).replaceWith("<button class='last2 grey' id='no<?php echo $asta["IDProdotto"]?>'>NO</button>");
@@ -54,4 +54,7 @@
             }
         }
     </script>
+    <?php
+    require("checkUpdate.php");
+    ?>
 </div>

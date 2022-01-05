@@ -11,7 +11,7 @@
             $("<?php echo "button#timer".$asta["IDProdotto"] ?>").replaceWith("<?php echo "<button class='timer' id='timer".$asta["IDProdotto"] ?>'>00:00:00</button>");
         } else {
             // Update the count down every 1 second
-            var x = setInterval(function() {                             
+            var x = setInterval(function() {           
                 // Find the distance between now and the count down date
 
                 now = new Date().getTime();

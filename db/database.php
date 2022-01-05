@@ -17,6 +17,20 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
+        public function getAuctionPrice($auctionId){
+            $stmt = $this -> db -> prepare("SELECT a.IdAsta, a.Base_asta, b.CodCliente, b.IdAsta, b.quantita FROM (SELECT a.IdAsta, p.Base_asta FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, quantita FROM puntata ORDER BY quantita DESC LIMIT 1) AS b ON a.IdAsta=b.IdAsta WHERE a.IdAsta = ".$auctionId) ;
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $res){
+                if($res["quantita"] == NULL){
+                    return $res["Base_asta"];
+                } else {
+                    return $res["quantita"];
+                }
+            }
+
+        }
+
         public function getProducts(){
             $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, p.Descrizione, p.DescrizioneBreve, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotto p WHERE p.Base_asta IS NULL ORDER BY p.Disponibilita DESC");
             $stmt -> execute();
@@ -151,7 +165,6 @@
                     return false;
                 }
             }
-        
         }
 
         public function raise($auctionid, $bet, $user){
