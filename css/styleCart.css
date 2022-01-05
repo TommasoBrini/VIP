@@ -61,17 +61,19 @@ body > main > h1 {
     color: #FFBF49;
 }
 
-input[type='checkbox'] {
-position: absolute;
-background-color: #BDBDBD;
-margin-left: 4px;
-margin-top: 3px;
+input[type=number]{
+    width: 50%;
+    margin-left: 20%;
 }
 
 input[type=button]{
     background-color: #BDBDBD;
     margin-left: 10px;
     margin-top: 20px;
+}
+
+#trash {
+    margin-left: 30%;
 }
 
 #checkOut{
@@ -82,9 +84,8 @@ input[type=button]{
     font-weight: bold;
 }
 
-#foo img[src="./img/garbage.png"] {
-    background-color: #707070;
-    color:#FFBF49;
+#foo img[src="./img/trash.png"] {
+    background-image: #707070;
 }
 
 ul {
@@ -97,11 +98,55 @@ ul > li {
 }
 
 table {
-    border: medium solid #00f;
+    background-color: #BDBDBD;
+    font-weight: bold;
+    border-spacing: 0;
 }
+
+tr.border_bottom td {
+    border-bottom:1px dashed #707070;
+  }
   
-th, td, tr {
-    border: medium solid #00f;
+th {
+    background-color: #707070;
+    border: thin #707070 ;
+    color: #FFBF49;
+}
+
+td {
+    color: #303030;
+    text-align: center;
+}
+
+td.cell_selected {
+    width: 2%;
+}
+
+td.cell_photo {
+    width: 10%;
+}
+td.cell_description {
+    width: 55%;
+}
+
+td.cell_unitPrice {
+    width: 10%;
+}
+
+td.cell_quantity {
+    width: 3%;
+}
+
+td.cell_total {
+    width: 10%;
+}
+
+td.cell_trash {
+    
+}
+
+#checkOut {
+    margin-bottom: 15%;
 }
 
 /*******/
