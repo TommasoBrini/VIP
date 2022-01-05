@@ -50,7 +50,7 @@
                 if (!event) event = window.event;
                 event.stopPropagation();
                 alert("Hai rilanciato " + document.getElementById("select<?php echo $asta["IDProdotto"]?>").value + " € per <?php echo $asta["Nome"];?>");
-                //document.location.reload(true);
+                document.location.reload(true);
             }
         }
     </script>

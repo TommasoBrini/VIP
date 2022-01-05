@@ -4,6 +4,7 @@
     $startDate = new DateTime($start);
     $end = $asta["AnnoFine"]."-".$asta["MeseFine"]."-".$asta["GiornoFine"]." ".$asta["OraFine"].":00";
     $endDate = new DateTime($end);
+    
 
     if($date->getTimeStamp() < $startDate->getTimeStamp()){
         require($templateParams["auctionBefore"]);
