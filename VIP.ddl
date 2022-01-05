@@ -55,7 +55,7 @@ create table PUNTATA (
      quantita int not null,
      IdPuntata int not null auto_increment,
      IdAsta int not null,
-     CodCliente varchar(20) not null,
+     CodCliente varchar(50) not null,
      constraint ID_PUNTATA_ID primary key (IdPuntata));
 
 create table RIGA (
