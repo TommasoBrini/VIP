@@ -1,6 +1,7 @@
 <?php  
     $prodotto = $templateParams["prodotto"];
     $id = $prodotto["IDProdotto"];
+    $check = $templateParams["check"];
 ?>
 
 <form action='#' method='POST' enctype="multipart/form-data">
@@ -11,16 +12,25 @@
             <img src="<?php echo UPLOAD_DIR.$prodotto["Immagine"];?>" id="imgshow" alt="prodotto"/>
             </li>
             <li>
-                <button>bottone1</button>
+                <?php if($check): ?>
+                <button disabled><?php echo number_format($prodotto["Prezzo"])."€"; ?> </button>
+                <?php else: ?>
+                <button disabled><?php echo number_format($prodotto["Base_asta"])."€"; ?></button>
+                <?php endif; ?>
             </li>            
             <li>
-                <button>bottone2</button>
+                <?php if($check): ?>
+                <button disabled><?php echo "AVAIABLE: ".$prodotto["Disponibilita"]; ?> </button>
+                <?php else: ?>
+                <button type="button" onclick="window.location.href='index.php'">PARTECIPA ALL'ASTA!</button>
+                <?php endif; ?>
             </li>
             <li>
-                <button>bottone3</button>
-            </li>
-            <li>
-                <button>bottone4</button>
+                <?php if($check): ?>
+                <button type="button" onclick="window.location.href='index_cart.php'">AGGIUNGI AL CARRELLO</button>
+                <?php else: ?>
+                <button><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"]); ?></button>
+                <?php endif; ?>
             </li>
         </ul>
         
@@ -29,15 +39,7 @@
         <h2>DESCRIZIONE</h2>
         <textarea name="descrizione" id="descrizione" cols="30" rows="10" readonly><?php echo $prodotto["Descrizione"]; ?></textarea>
     </section>
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     <?php if($templateParams["venditore"]): ?>
     <div>
         <button type="button" onclick="window.location.href='index_gestione_product.php?action=2&id=<?php echo $id?>'">Modifica</button>
@@ -46,3 +48,4 @@
         
     <?php endif; ?>
 </form>
+<!--"window.location.href='index_cart.php'"-->
