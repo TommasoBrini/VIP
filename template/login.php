@@ -8,12 +8,8 @@
     <ul>
         <li>
             <label for="password">Password:</label>
-        </li>
-        <li>
-            <input type="password" id="password" name="password" />
-        </li>
-        <li>
-            <img type="button" src="./img/eye.png" id="showHidePwd" /><br>
+            <input type="password" id="password" name="password"/>
+            <img type="button" src="./img/eye.png" id="showHidePwd"/>
         </li>
     </ul>
     <button type="submit" name="login" id="login">LOGIN</button>

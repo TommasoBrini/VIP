@@ -114,19 +114,20 @@ th {
 }
 
 td {
+    height: 60px;
     color: #303030;
     text-align: center;
 }
 
 td.cell_selected {
-    width: 2%;
+    width: 1%;
 }
 
 td.cell_photo {
-    width: 10%;
+    width: 15%;
 }
-td.cell_description {
-    width: 55%;
+td.cell_name {
+    width: 50%;
 }
 
 td.cell_unitPrice {
@@ -134,19 +135,29 @@ td.cell_unitPrice {
 }
 
 td.cell_quantity {
-    width: 3%;
+    width: 4%;
 }
 
 td.cell_total {
-    width: 10%;
+    width: 15%;
 }
 
 td.cell_trash {
-    
+    width: 5%;
+}
+
+.flex {
+    max-width: 80%;
+    margin-top:4%;
+}
+
+#trash {
+    margin-right: 15px;
 }
 
 #checkOut {
     margin-bottom: 15%;
+    margin-right: 20%;
 }
 
 /*******/
