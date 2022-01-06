@@ -4,7 +4,6 @@
     $startDate = new DateTime($start);
     $end = $asta["AnnoFine"]."-".$asta["MeseFine"]."-".$asta["GiornoFine"]." ".$asta["OraFine"].":00";
     $endDate = new DateTime($end);
-    
 
     if($date->getTimeStamp() < $startDate->getTimeStamp()){
         require($templateParams["auctionBefore"]);
@@ -15,6 +14,13 @@
             require($templateParams["auctionWinning"]);
         }
     } else {
+        if($asta["CodVincitore"] == NULL){
+            $vincitore = $dbh->setWinner($asta["IdAsta"]);
+            if($vincitore != NULL){
+                $asta["CodVincitore"]=$vincitore;
+            }
+        }
+        
         if($asta["CodVincitore"] == $_SESSION["email"]){
             require($templateParams["auctionWin"]);
         } else {

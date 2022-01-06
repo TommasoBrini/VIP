@@ -36,6 +36,7 @@
                 if (distance <= 0) {
                     clearInterval(x);
                     document.location.reload(true);
+
                 }
             }, 1000);
         }

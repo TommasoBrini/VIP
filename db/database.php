@@ -10,7 +10,8 @@
         }
 
         public function getAuctions(){
-            $stmt = $this -> db -> prepare("SELECT a.IDProdotto, a.IdAsta, a.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, a.Descrizione, a.DescrizioneBreve, a.Base_asta, a.Prezzo, a.Immagine, b.CodCliente, b.IdAsta, b.quantita FROM (SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, quantita FROM puntata ORDER BY quantita DESC LIMIT 1) AS b ON a.IdAsta=b.IdAsta ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC");
+            $query = "SELECT a.IDProdotto, a.IdAsta, a.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, a.Descrizione, a.DescrizioneBreve, a.Base_asta, a.Prezzo, a.Immagine, b.CodCliente, b.quantita FROM (SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, quantita FROM puntata ORDER BY quantita DESC LIMIT 1) AS b ON a.IdAsta=b.IdAsta ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC";
+            $stmt = $this -> db -> prepare($query);
             $stmt -> execute();
             $result = $stmt -> get_result();
             
@@ -18,7 +19,7 @@
         }
 
         public function getAuctionPrice($auctionId){
-            $stmt = $this -> db -> prepare("SELECT a.IdAsta, a.Base_asta, b.CodCliente, b.IdAsta, b.quantita FROM (SELECT a.IdAsta, p.Base_asta FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, quantita FROM puntata ORDER BY quantita DESC LIMIT 1) AS b ON a.IdAsta=b.IdAsta WHERE a.IdAsta = ".$auctionId) ;
+            $stmt = $this -> db -> prepare("SELECT a.IdAsta, a.Base_asta, b.CodCliente, b.quantita FROM (SELECT a.IdAsta, p.Base_asta FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, quantita FROM puntata ORDER BY quantita DESC LIMIT 1) AS b ON a.IdAsta=b.IdAsta WHERE a.IdAsta = ".$auctionId) ;
             $stmt -> execute();
             $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
             foreach($result as $res){
@@ -31,6 +32,23 @@
 
         }
 
+        public function setWinner($auctionId){
+            $query = "SELECT * FROM puntata WHERE IdAsta=".$auctionId." ORDER BY quantita DESC LIMIT 1";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            $vincitore = NULL;
+            foreach($result as $res){
+                $vincitore = $res['CodCliente'];
+            }
+            if($vincitore != NULL){
+                $query = "UPDATE asta SET CodVincitore='".$vincitore."' WHERE IdAsta=".$auctionId;
+                $stmt = $this->db->prepare($query);
+                $stmt->execute();
+            }
+            return $vincitore;
+        }
+
         public function getProducts(){
             $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, p.Descrizione, p.DescrizioneBreve, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotto p WHERE p.Base_asta IS NULL ORDER BY p.Disponibilita DESC");
             $stmt -> execute();
@@ -40,7 +58,6 @@
         }
 
         public function checkProduct($id){
-            $query="";
             $stmt = $this -> db -> prepare("SELECT CodProdotto FROM asta WHERE CodProdotto=?");
             $stmt -> bind_param('i', $id);
             $stmt -> execute();
