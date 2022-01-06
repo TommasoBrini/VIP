@@ -11,11 +11,9 @@
         </li>
         <li>
             <input type="password" id="password" name="password" />
-        </li>
-        <li>
-            <img type="button" src="./img/eye.png" id="showHidePwd" /><br>
+            <img type="button" src="./img/eye.png" id="showHidePwd" />
         </li>
     </ul>
-    <label for="seller">Seller:</label><input type="checkbox" name="seller" /><br>
+    <label for="seller" id="seller">Seller:</label><input type="checkbox" name="seller" /><br>
     <button type="submit" name="register" id="signIn" name="signIn">SIGN IN</button>
 </form>

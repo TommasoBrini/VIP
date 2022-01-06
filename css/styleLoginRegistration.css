@@ -66,11 +66,10 @@ input[type=text] {
     text-align: left;
     background-color: #BDBDBD;
     box-sizing: border-box;
-    margin-left: 13px;
-    margin-top: 20px;
-    margin-right: 2px;
-    margin-bottom: 10px;
-    width: 230px;
+    margin-left: 1%;
+    margin-right: 5%;
+    margin-bottom: 8%;
+    width: 60%;
 }
 
 input[type=password] {
@@ -78,38 +77,30 @@ input[type=password] {
     background-color: #BDBDBD;
     box-sizing: border-box;
     text-align: left;
-    margin-left: 13px;
-    margin-top: 20px;
-    margin-right: 2px;
-    margin-bottom: 10px;
-    width: 230px;
+    margin-left: 1%;
+    margin-right: 5%;
+    margin-bottom: 8%;
+    width: 50%;
 }
 
 input[type='checkbox'] {
-position: absolute;
-background-color: #BDBDBD;
-margin-left: 4px;
-margin-top: 3px;
-}
-
-input[type=button]{
+    position: absolute;
     background-color: #BDBDBD;
-    margin-left: 10px;
-    margin-top: 20px;
+    margin-top: 0.5%;
 }
 
 #signIn{
     background-color: #707070;
-    margin-top: 20px;
-    margin-left: 18px;
+    margin-top: 3%;
+    margin-left: 2.5%;
     color: #FFBF49;
     font-weight: bold;
 }
 
 #login{
     background-color: #707070;
-    margin-top: 15px;
-    margin-left: 18px;
+    margin-top: 3%;
+    margin-left: 2.5%;
     color: #FFBF49;
     font-weight: bold;
 }
@@ -120,7 +111,7 @@ input[type=button]{
 }
 
 #showHidePwd {
-    margin-left: 9px;
+    margin-left: 0.1%;
 }
 
 ul {
