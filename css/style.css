@@ -177,7 +177,7 @@ body > main.products > div > button.price, body > main.products > div > button.l
 /*BUTTON*/
 /**GREY**/
 /********/
-body > main.products > div > button.grey, , body > main.products > div > form > input.last1 {
+body > main.products > div > button.grey, body > main.products > div > form > input.last1 {
     background-color: #BDBDBD;
 }
 
