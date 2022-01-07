@@ -22,7 +22,7 @@
             }
         }
         if($endDate->getTimeStamp() > $oneWeekAgo->getTimeStamp()){
-            if((isset($_SESSION["email"]) ? $asta["CodVincitore"] == $_SESSION["email"] : FALSE)){
+            if(((isset($_SESSION["email"]) ? $asta["CodVincitore"] == $_SESSION["email"] : FALSE)) || ($asta['CodVincitore'] == NULL && $dbh->checkSeller())){
                 require($templateParams["auctionWin"]);
             } else {
                 require($templateParams["auctionLose"]);
