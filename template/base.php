@@ -40,7 +40,7 @@
         ?>
     </main>
     <footer>
-        <h3><?php echo $_SESSION["email"];?></h3>
+        <h3><?php echo isset($_SESSION["email"]) ? $_SESSION["email"] : "Effettua l'accesso per poter acquistare o rilanciare.";?></h3>
     </footer>
 </body>
 </html>
