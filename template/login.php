@@ -2,7 +2,7 @@
     <h1>LOGIN</h1>
     <ul>
         <li>
-            <label for="email">Email:</label><input type="text" id="email" name="email" /><br>
+            <label for="email">Email: </label><input type="text" id="email" name="email" /><br>
         </li>
     </ul>
     <ul>
