@@ -108,7 +108,7 @@ body > main.products > div > header > label, body > main.products > div > header
 /*BUTTON*/
 /*SELECT*/
 /********/
-body > main.products > div > button, body > main.products > div > select{
+body > main.products > div > button, body > main.products > div > form > select, body > main.products > div > form > input.last1 {
     margin: 2.5% 10%;
     color: #000000;
     width: 75%;
@@ -177,7 +177,7 @@ body > main.products > div > button.price, body > main.products > div > button.l
 /*BUTTON*/
 /**GREY**/
 /********/
-body > main.products > div > button.grey {
+body > main.products > div > button.grey, , body > main.products > div > form > input.last1 {
     background-color: #BDBDBD;
 }
 
@@ -213,7 +213,7 @@ body > main.products > div > button.last {
     height: 8%;
 }
 
-body > main.products > div > button.last1 {
+body > main.products > div > button.last1, body > main.products > div > form > input.last1 {
     margin-right: 2%;
 }
 
@@ -221,7 +221,7 @@ body > main.products > div > button.last2 {
     margin-left: 2%;
 }
 
-body > main.products > div > button.last1, body > main.products > div > button.last2 {
+body > main.products > div > button.last1, body > main.products > div > button.last2, body > main.products > div > form > input.last1 {
     display: inline-block;
     height: 8%;
     width: 35%;
