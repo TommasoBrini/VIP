@@ -14,4 +14,5 @@
     <?php require("template/raise.php");?>
     <?php require("template/buyNow.php");?>
     <?php require("checkUpdate.php");?>
+    <?php require("checkSeller.php");?>
 </div>
