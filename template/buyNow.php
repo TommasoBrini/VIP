@@ -21,7 +21,7 @@
                     url: "confirmBuyNow.php",
                     data: { id: <?php echo $asta['IdAsta'] ?> }
                 }).done(function( msg ) {
-                    alert( "Hai acquistato");
+                    alert("Hai acquistato <?php echo $asta["Nome"]?> al prezzo di <?php echo number_format($asta["Prezzo"]); ?> €.");
                     document.location.reload(true);
                 });
             }
