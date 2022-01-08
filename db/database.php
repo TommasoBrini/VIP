@@ -58,7 +58,7 @@
         }
 
         public function getProducts(){
-            $stmt = $this -> db -> prepare("SELECT p. IDProdotto, p.Nome, p.Descrizione, p.DescrizioneBreve, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotto p WHERE p.Base_asta IS NULL ORDER BY p.Disponibilita DESC");
+            $stmt = $this -> db -> prepare("SELECT p.IDProdotto, p.Nome, p.Descrizione, p.DescrizioneBreve, p.Prezzo, p.Immagine, p.Disponibilita FROM prodotto p WHERE p.Base_asta IS NULL ORDER BY p.Disponibilita DESC");
             $stmt -> execute();
             $result = $stmt -> get_result();
             
@@ -77,7 +77,7 @@
             if($check==0){
                 $query="SELECT IDProdotto, Nome, Descrizione, DescrizioneBreve, Prezzo, Immagine, Base_asta, Disponibilita FROM prodotto WHERE IDProdotto=?";
             } else {
-                $query="SELECT p. IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto WHERE p.IDProdotto=?";
+                $query="SELECT p.IDProdotto, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto WHERE p.IDProdotto=?";
             }
             
             $stmt = $this -> db -> prepare($query);
@@ -229,6 +229,56 @@
             } else {
                 return false;
             }
+        }
+
+        public function getRows(){
+            $query = "SELECT * FROM riga R, ordine O WHERE O.IdOrdine = R.CodOrdine AND O.CodCliente=? AND O.Pagato=0";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$SESSION_EMAIL);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function getPhoto($idProdotto){
+            $query = "SELECT P.Immagine FROM prodotto P WHERE P.IDProdotto = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function getName($idProdotto){
+            $query = "SELECT P.Nome FROM prodotto P WHERE P.IDProdotto = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function getUnitPrice($idProdotto){
+            $query = "SELECT P.Prezzo FROM prodotto P WHERE P.IDProdotto = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function getQuantity($idProdotto){
+            $query = "SELECT P.Prezzo FROM prodotto P WHERE P.IDProdotto = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
         }
     }    
 ?>
