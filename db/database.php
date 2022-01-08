@@ -29,7 +29,6 @@
                     return $res["quantita"];
                 }
             }
-
         }
 
         public function setWinner($auctionId){
@@ -182,6 +181,22 @@
                     return false;
                 }
             }
+        }
+
+        public function getBuyNowPrice($auctionId){
+            $stmt = $this -> db -> prepare("SELECT a.IdAsta, a.CodProdotto, p.Prezzo FROM asta AS a JOIN prodotto AS p ON a.CodProdotto=p.IDProdotto WHERE a.IdAsta=".$auctionId) ;
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $res){
+                return $res['Prezzo'];
+            }
+        }
+
+        public function buyNow($auctionId, $user){
+            $price = $this->getBuyNowPrice($auctionId);
+            $this->raise($auctionId, $price , $user);
+            $this->setWinner($auctionId);
+
         }
 
         public function raise($auctionid, $bet, $user){

@@ -12,11 +12,18 @@
                 event.stopPropagation();
                 document.location.reload(true);
             }
+
             document.getElementById("yes<?php echo $asta["IDProdotto"]?>").onclick = function(event) {
                 if (!event) event = window.event;
                 event.stopPropagation();
-                alert("Hai acquistato <?php echo $asta["Nome"]?> al prezzo di <?php echo number_format($asta["Prezzo"]); ?> €.");
-                document.location.reload(true);
+                $.ajax({
+                    type: "POST",
+                    url: "confirmBuyNow.php",
+                    data: { id: <?php echo $asta['IdAsta'] ?> }
+                }).done(function( msg ) {
+                    alert( "Hai acquistato");
+                    document.location.reload(true);
+                });
             }
         }
 </script>

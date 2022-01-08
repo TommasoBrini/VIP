@@ -8,7 +8,7 @@
     $endDate = new DateTime($end);
     if($date->getTimeStamp() < $startDate->getTimeStamp()){
         require($templateParams["auctionBefore"]);
-    } else if($date->getTimeStamp() < $endDate->getTimeStamp()){
+    } else if(($date->getTimeStamp() < $endDate->getTimeStamp()) && $asta['CodVincitore'] == NULL){
         if($asta["CodCliente"] == NULL || (isset($_SESSION["email"]) ? $asta["CodCliente"] != $_SESSION["email"] : TRUE)){
             require($templateParams["auctionLosing"]);
         } else {
