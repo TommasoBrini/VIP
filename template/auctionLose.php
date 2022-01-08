@@ -1,4 +1,4 @@
-<div class='auction lose'  onclick="<?php echo "window.location.href='index_single_product.php?id=".$asta["IDProdotto"]."'"; ?>">
+<div id='auction<?php echo $asta['IdAsta']?>' class='auction lose'  onclick="<?php echo "window.location.href='index_single_product.php?id=".$asta["IDProdotto"]."'"; ?>">
     <header>
         <label for="title"><?php echo $asta["Nome"]?></label>
     </header>

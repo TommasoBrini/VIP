@@ -31,6 +31,15 @@
             }
         }
 
+        public function getAuctionWinner($auctionId){
+            $stmt = $this -> db -> prepare("SELECT * FROM asta WHERE IdAsta = ".$auctionId) ;
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $res){
+                return $res['CodVincitore']==NULL ? "" : $res['CodVincitore'];
+            }
+        }
+
         public function setWinner($auctionId){
             $query = "SELECT * FROM puntata WHERE IdAsta=".$auctionId." ORDER BY quantita DESC LIMIT 1";
             $stmt = $this->db->prepare($query);
