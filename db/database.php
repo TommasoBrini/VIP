@@ -231,6 +231,29 @@
             }
         }
 
+        //Registration
+
+        public function checkSellerExist() {
+            $query = "SELECT COUNT(*) FROM user U WHERE U.IdVenditore=1";
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        //Cart
+
+        public function getQuantity($idProdotto){
+            $query = "SELECT P.Prezzo FROM prodotto P WHERE P.IDProdotto = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
         public function getRows(){
             $query = "SELECT * FROM riga R, ordine O WHERE O.IdOrdine = R.CodOrdine AND O.CodCliente=? AND O.Pagato=0";
             $stmt = $this -> db -> prepare($query);
@@ -271,14 +294,15 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
-        public function getQuantity($idProdotto){
-            $query = "SELECT P.Prezzo FROM prodotto P WHERE P.IDProdotto = ?";
+        public function deleteRow($idRow) {
+            $query = "DELETE FROM riga WHERE IdRiga = ?";
             $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('i',$idProdotto);
+            $stmt->bind_param('i',$idRow);
             $stmt -> execute();
             $result = $stmt -> get_result();
             
             return $result -> fetch_All(MYSQLI_ASSOC);
+
         }
     }    
 ?>

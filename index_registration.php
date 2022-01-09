@@ -13,6 +13,7 @@ $templateParams["class2"] = TRUE;
 $templateParams["slider"] = TRUE;
 $templateParams["css"] = "./css/styleLoginRegistration.css";
 $templateParams["js"] = "./js/login_registration.js";
+$templateParams["checkSellerExist"] = $dbh->checkSellerExist();
 //$templateParams["users"] = $dbh->getUsers();
 //$templateParams["aste"] = $dbh->getAuctions();
 
