@@ -18,16 +18,16 @@
         $unitPrice = getUnitPrice($row["CodProdotto"]);
         $quantity = $row["Quantità"];
         $total = $quantity*$unitPrice;
+    ?>
         <tr class="border_bottom">
             <td id="selected" class="cell_selected"><input type='checkbox' id='selected'></td>
-            <td id="photo" class="cell_photo"><img class="flex" src="./img/occhiali.jpg"></td>
-            <td id="name" class="cell_name">Name</td>
-            <td id="unitPrice" class="cell_unitPrice">30€</td>
+            <td id="photo" class="cell_photo"><img class="flex" src="<?php echo UPLOAD_DIR.$photo;?>"></td>
+            <td id="name" class="cell_name"><?php echo $name?></td>
+            <td id="unitPrice" class="cell_unitPrice"><?php echo $unitPrice?></td>
             <td id="quantity" class="cell_quantity"><input type='number' id='quantity' name='quantity'></td>
             <td id="total" class="cell_total">€</td>
-            <td id="trash"><img type="button" src="./img/trash.png" id="trash" /><br>
+            <td id="trash"><img type="button" src="./img/trash.png" id="trash" onClick="deleteRow(<?php echo $row["IdRiga"]?>)"/><br>
         </tr>
-    ?>
     </tbody>
     <tfoot>
         <tr>
