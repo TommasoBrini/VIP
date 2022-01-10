@@ -67,7 +67,7 @@ create table RIGA (
 
 create table USER (
      email varchar(50) not null,
-     password varchar(20) not null,
+     password varchar(65) not null,
      idvenditore boolean default False not null,
      constraint ID_USER_ID primary key (email));
 

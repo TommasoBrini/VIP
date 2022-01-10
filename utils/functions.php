@@ -80,8 +80,7 @@ function registerLoggedUser($user){
     $_SESSION["idvenditore"] = $user["idvenditore"];
 }
 
-/*Function per vedere se è venditore*/
-/*Function logout*/
+
 
 ////////
 function getAnnoMeseGiorno($dataStringa){

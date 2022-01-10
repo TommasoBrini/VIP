@@ -242,6 +242,23 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
+        public function checkUserExist($email){
+            $query = "SELECT email FROM `user` WHERE email=?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('s',$email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function echoMessage($msg, $redirect) {
+			echo '<script type="text/javascript">
+			alert("' . $msg . '")
+			window.location.href = "'.$redirect.'"
+			</script>';
+		}
+
         //Cart
 
         public function getQuantity($idProdotto){
