@@ -259,6 +259,13 @@
 			</script>';
 		}
 
+        public function userInput($email, $password, $idVenditore) {
+            $query = "INSERT INTO user (Email, Password, IdVenditore) VALUES (?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ssi',$email, $password, $idVenditore);
+            $stmt->execute();  
+        }
+
         //Cart
 
         public function getQuantity($idProdotto){

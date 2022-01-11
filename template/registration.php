@@ -25,7 +25,7 @@
     <?php if($templateParams["checkSellerExist"]==1): ?>
     <br>
     <?php else: ?>
-    <label for="seller" id="seller">Seller:</label><input type="checkbox" name="seller" /><br>
+    <label for="seller" id="seller">Seller:</label><input type="checkbox" name="seller"/><br>
     <?php endif; ?>
     <button type="submit" name="register" id="signIn" name="signIn">SIGN IN</button>
 </form>
