@@ -30,14 +30,14 @@ create table ASTA (
      MeseFine int not null,
      GiornoFine int not null,
      OraFine varchar(10) not null,
-     CodVincitore varchar(20),
+     CodVincitore varchar(50),
      constraint ID_ASTA_ID primary key (IdAsta));
 
 create table ORDINE (
      IdOrdine int not null auto_increment,
      Pagato boolean not null,
      Data varchar(10) not null,
-     CodCliente varchar(20) not null,
+     CodCliente varchar(50) not null,
      constraint ID_ORDINE_ID primary key (IdOrdine));
 
 create table PRODOTTO (
