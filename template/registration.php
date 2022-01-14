@@ -2,7 +2,7 @@
     <h1>REGISTRATION</h1>
     <ul>
         <li>
-            <label for="email">Email: </label><input type="text" id="email" name="email" /><br>
+            <label for="email">Email: </label><input type="text" id="email" name="email" placeholder="Email"/><br>
         </li>
     </ul>
     <ul>
@@ -10,16 +10,16 @@
             <label for="password">Password:</label>
         </li>
         <li>
-            <input type="password" id="password" name="password"/>
+            <input type="password" id="password" name="password" placeholder="Password"/>
             <img type="button" src="./img/eye.png" id="showHidePwd"/><br>
         </li>
     </ul>
     <ul>
         <li>
-            <label for="confirmPassword">Confirm password:</label>
+            <label for="confirmPassword">Confirm:</label>
         </li>
         <li>
-            <input type="password" id="confirmPassword" name="confirmPassword"/>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Password"/>
         </li>
     </ul>
     <?php if($templateParams["checkSellerExist"]==1): ?>
