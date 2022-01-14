@@ -78,8 +78,6 @@ function registerLoggedUser($email){
     $_SESSION["email"] = $email;
 }
 
-
-
 ////////
 function getAnnoMeseGiorno($dataStringa){
     $anno = substr($dataStringa, 0, 4);
