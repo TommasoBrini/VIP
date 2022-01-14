@@ -40,7 +40,7 @@
         <textarea name="descrizione" id="descrizione" cols="30" rows="10" readonly><?php echo $prodotto["Descrizione"]; ?></textarea>
     </section>
 
-    <?php if($templateParams["venditore"]): ?>
+    <?php if(isset($templateParams["venditore"])): ?>
     <div>
         <button type="button" onclick="window.location.href='index_gestione_product.php?action=2&id=<?php echo $id?>'">Modifica</button>
         <button type="button" onclick="window.location.href='index_gestione_product.php?action=3&id=<?php echo $id?>'">Elimina</button>
