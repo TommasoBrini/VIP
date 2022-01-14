@@ -2,12 +2,12 @@
 require_once("bootstrap.php");
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
-    $login_result = $dbh->checkLogin($_POST["email"], $passwordCrypt);
-    if(count($login_result)==0){
+    $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
+    if(!$login_result){
         //Login failed and I stay on login
     }
     else{
-        registerLoggedUser($login_result[0]);
+        registerLoggedUser($_POST["email"]);
     }
 }
 
