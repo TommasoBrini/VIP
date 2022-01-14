@@ -47,8 +47,11 @@ if($_POST["azione"]==2){
     $nomeProdotto = htmlspecialchars($_POST["Nome"]);
     $descrizione = htmlspecialchars($_POST["Descrizione"]);
     $descrizioneBreve = htmlspecialchars($_POST["DescrizioneBreve"]);
-    $prezzo = htmlspecialchars($_POST["Prezzo"]);
-    $baseAsta = htmlspecialchars($_POST["Base_asta"]);
+    if(isset($_POST["Prezzo"])){
+        $prezzo = htmlspecialchars($_POST["Prezzo"]);
+    } else {
+        $prezzo = htmlspecialchars($_POST["PrezzoDefault"]);
+    }
     $disponibilità = htmlspecialchars($_POST["Disponibilita"]);
     if(isset($_FILES["Immagine"]) && strlen($_FILES["Immagine"]["name"])>0){
         list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["Immagine"]);
@@ -57,17 +60,7 @@ if($_POST["azione"]==2){
     }
     
     $check=count($dbh->checkProduct($id));
-    
-    if($check!=0){
-        $dataInizio = getAnnoMeseGiorno(htmlspecialchars($_POST["data"]));
-        $oraInizio = htmlspecialchars($_POST["time"]);
-        $fine = getOraFine($oraInizio, htmlspecialchars($_POST["data"]));
-        $dataFine = getAnnoMeseGiorno($fine["date"]);
-        $oraFine = $fine["time"];
-        $dbh->updateProduct($id, $nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $baseAsta, $oraInizio, $dataInizio["anno"], $dataInizio["mese"], $dataInizio["giorno"], $oraFine, $dataFine["anno"], $dataFine["mese"], $dataFine["giorno"], $msg, $check);
-    } else {
-        $dbh->updateProduct($id, $nomeProdotto, $descrizione, $descrizioneBreve, $prezzo,$disponibilità, $baseAsta, "", "", "", "", "", "", "", "", $msg, $check);
-    }
+    $dbh->updateProduct($id, $nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg, $check);
     $mex="Modifica Completata";
     header("location: index.php?$mex");
 }

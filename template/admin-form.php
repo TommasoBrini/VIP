@@ -20,22 +20,37 @@
                     <label for="Nome">Name:</label><input type="text" id="Nome" name="Nome" value="<?php echo $prodotto["Nome"]; ?>" required="required"/>
                 </li>
                 <li>
-                    <label for="Prezzo">Price (€):</label><input type="number" id="Prezzo" name="Prezzo" value="<?php echo floatval($prodotto["Prezzo"]); ?>" required="required"/>
+                    <label for="Prezzo">Price (€):</label><input type="number" id="Prezzo" name="Prezzo" value="<?php echo floatval($prodotto["Prezzo"]); ?>" required="required" 
+                    <?php if($templateParams["azione"]==2 && isset($prodotto["AnnoInizio"])){
+                        echo "disabled";
+                    }
+                    ?>/>
                 </li>
                 <li>
-                <label for="Base_asta">Base Price (€):</label><input type="number" id="Base_asta" name="Base_asta" value="<?php echo floatval($prodotto["Base_asta"]); ?>"/>
+                <label for="Base_asta">Base Price (€):</label><input type="number" id="Base_asta" name="Base_asta" value="<?php echo floatval($prodotto["Base_asta"]); ?>" 
+                <?php 
+                    if($templateParams["azione"]==2){
+                        echo "disabled";
+                    }
+                ?>/>
                 </li>
                 <li>
                     <label for="data">Date:</label><input type="date" id="data" name="data" value="<?php
                         if(isset($prodotto["AnnoInizio"])){
                             echo getData(strval($prodotto["AnnoInizio"]), strval($prodotto["MeseInizio"]), strval($prodotto["GiornoInizio"]));
                         }
-                    ?>"/>
+                    ?>" <?php if($templateParams["azione"]==2){
+                        echo "disabled";
+                    }
+                    ?>/>
                     <label for="time">Time:</label><input type="time" id="time" name="time" value="<?php
                         if(isset($prodotto["AnnoInizio"])){
                             echo $prodotto["OraInizio"];
                         }
-                    ?>"/>
+                    ?>" <?php if($templateParams["azione"]==2){
+                        echo "disabled";
+                    }
+                    ?>/>
                 </li>
                 <li>
                     <label for="Disponibilita">Disponibilità:</label><input type="number" id="Disponibilita" name="Disponibilita" value="<?php echo floatval($prodotto["Disponibilita"]); ?>"/>
@@ -71,4 +86,5 @@
         <input type="hidden" name="id" value="<?php echo $templateParams["id"]; ?>"/>
         <?php endif; ?>
         <input type="hidden" name="ImmagineDefault" value="<?php echo $prodotto["Immagine"]; ?>" /> 
+        <input type="hidden" name="PrezzoDefault" value="<?php echo $prodotto["Prezzo"];?>" />
         </form>

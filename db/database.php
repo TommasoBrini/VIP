@@ -126,27 +126,16 @@
             return $stmt->insert_id;
         }
 
-        public function updateProduct($idProdotto, $nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $base, $oraInizio, $annoInizio, $meseInizio, $giornoInizio, $oraFine, $annoFine, $meseFine, $giornofine, $immagine, $check){
+        public function updateProduct($idProdotto, $nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine, $check){
             if($check!=0){
-                $query = "UPDATE asta SET AnnoInizio = ?, MeseInizio = ?, GiornoInizio = ?, OraInizio = ?, AnnoFine = ?, MeseFine = ?, GiornoFine = ?, OraFine = ? WHERE codProdotto=".$idProdotto;
+                $query = "UPDATE prodotto SET Nome=?, Descrizione=?, DescrizioneBreve=?, Prezzo=?, Immagine=? WHERE idProdotto=".$idProdotto;
                 $stmt = $this->db->prepare($query);
-                $annoI = intval($annoInizio);
-                $meseI = intval($meseInizio);
-                $giornoI = intval($giornoInizio);
-                $annoF = intval($annoFine);
-                $meseF = intval($meseFine);
-                $giornoF = intval($giornofine);
-                $stmt->bind_param('iiisiiis', $annoI, $meseI,$giornoI, $oraInizio, $annoF, $meseF,$giornoF, $oraFine);
-                $stmt->execute();
-                
-                $query = "UPDATE prodotto SET Nome=?, Descrizione=?, DescrizioneBreve=?, Prezzo=?, Base_Asta=?, Immagine=? WHERE idProdotto=".$idProdotto;
-                $stmt = $this->db->prepare($query);
-                $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $base, $immagine);
+                $stmt->bind_param('sssis',$nome, $descrizione, $descrizioneBreve, $prezzo, $immagine);
                 $stmt->execute();
             } else{
                 $query = "UPDATE prodotto SET Nome=?, Descrizione=?, DescrizioneBreve=?, Prezzo=?, Disponibilita=?, Immagine=? WHERE idProdotto=".$idProdotto;
                 $stmt = $this->db->prepare($query);
-                $stmt->bind_param('sssiis',$nome, $descrizione,     $descrizioneBreve, $prezzo, $disponibilità, $immagine);
+                $stmt->bind_param('sssiis',$nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine);
                 $stmt->execute();
             }
             
