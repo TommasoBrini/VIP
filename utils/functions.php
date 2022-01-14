@@ -78,12 +78,6 @@ function registerLoggedUser($email){
     $_SESSION["email"] = $email;
 }
 
-function logout() {
-    unset($_SESSION['email']);
-    windows.location.reload(true);
-}
-
-
 ////////
 function getAnnoMeseGiorno($dataStringa){
     $anno = substr($dataStringa, 0, 4);

@@ -49,3 +49,12 @@
     </footer>
 </body>
 </html>
+<script type="text/javascript">
+    function logout(){
+        $.ajax({
+            url: "logout.php"
+        }).done(function( msg ) {
+            document.location.reload(true);
+        });
+    }
+</script>
