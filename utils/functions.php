@@ -80,6 +80,7 @@ function registerLoggedUser($email){
 
 function logout() {
     unset($_SESSION['email']);
+    windows.location.reload(true);
 }
 
 
