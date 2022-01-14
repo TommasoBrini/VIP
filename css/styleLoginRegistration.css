@@ -124,7 +124,7 @@ input[type=button]{
 }
 
 #confirmPassword {
-    margin-right: 93px;
+    margin-right: 26px;
 }
 
 #email {
@@ -205,7 +205,7 @@ footer > h3 {
         margin-top: 20px;
         margin-right: 2px;
         margin-bottom: 10px;
-        width: 230px;
+        width: 150px;
     }
     
     input[type=password] {
@@ -217,7 +217,7 @@ footer > h3 {
         margin-top: 20px;
         margin-right: 2px;
         margin-bottom: 10px;
-        width: 230px;
+        width: 150px;
     }
     
     input[type='checkbox'] {
@@ -259,7 +259,7 @@ footer > h3 {
     }
     
     #confirmPassword {
-        margin-right: 99px;
+        margin-right: 27px;
     }
     
     #email {
@@ -317,10 +317,10 @@ footer > h3 {
     }
     
     input[type='checkbox'] {
-    position: absolute;
-    background-color: #BDBDBD;
-    margin-left: 4px;
-    margin-top: 3px;
+        position: absolute;
+        background-color: #BDBDBD;
+        margin-left: 4px;
+        margin-top: 3px;
     }
     
     input[type=button]{
@@ -356,7 +356,7 @@ footer > h3 {
     }
     
     #confirmPassword {
-        margin-right:1px;
+        margin-right:44px;
     }
     
     #email {
