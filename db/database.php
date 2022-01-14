@@ -169,13 +169,16 @@
         }
         
         public function checkLogin($email, $password){
-            $query = "SELECT * FROM `user` WHERE email=? AND password=?";
+            $query = "SELECT password FROM `user` WHERE email=?";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('ss',$email, $password);
+            $stmt->bind_param('s',$email);
             $stmt->execute();
-            $result = $stmt->get_result();
             
-            return $result->fetch_all(MYSQLI_ASSOC);
+            $result = $stmt->get_result()->fetch_All(MYSQLI_ASSOC);
+            foreach($result as $pwd) {
+                return password_verify($password,$pwd["password"]); 
+            }
+            return false;
         }
      
         public function checkSeller(){
@@ -234,12 +237,13 @@
         //Registration
 
         public function checkSellerExist() {
-            $query = "SELECT COUNT(*) FROM user U WHERE U.IdVenditore=1";
+            $query = "SELECT COUNT(*) as cont FROM user U WHERE U.IdVenditore=1";
             $stmt = $this -> db -> prepare($query);
             $stmt -> execute();
-            $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
+            $result = $stmt -> get_result()->fetch_All(MYSQLI_ASSOC);
+            foreach($result as $cont) {
+                return $cont['cont'];
+            }
         }
 
         public function checkUserExist($email){
@@ -251,13 +255,6 @@
             
             return $result->fetch_all(MYSQLI_ASSOC);
         }
-
-        public function echoMessage($msg, $redirect) {
-			echo '<script type="text/javascript">
-			alert("' . $msg . '")
-			window.location.href = "'.$redirect.'"
-			</script>';
-		}
 
         public function userInput($email, $password, $idVenditore) {
             $query = "INSERT INTO user (Email, Password, IdVenditore) VALUES (?, ?, ?)";

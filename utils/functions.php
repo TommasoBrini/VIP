@@ -74,10 +74,8 @@ function isUserLoggedIn(){
     return !empty($_SESSION['email']);
 }
 
-function registerLoggedUser($user){
-    $_SESSION["email"] = $user["email"];
-    $_SESSION["password"] = $user["password"];
-    $_SESSION["idvenditore"] = $user["idvenditore"];
+function registerLoggedUser($email){
+    $_SESSION["email"] = $email;
 }
 
 
@@ -178,6 +176,13 @@ function uploadImage($path, $image){
         }
     }
     return array($result, $msg);
+}
+
+function echoMessage($msg, $redirect) {
+    echo '<script type="text/javascript">
+    alert("' . $msg . '")
+    window.location.href = "'.$redirect.'"
+    </script>';
 }
 ?>
 
