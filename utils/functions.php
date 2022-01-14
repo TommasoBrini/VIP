@@ -78,6 +78,9 @@ function registerLoggedUser($email){
     $_SESSION["email"] = $email;
 }
 
+function logout() {
+    unset($_SESSION['email']);
+}
 
 
 ////////
