@@ -88,6 +88,47 @@
             return $result1 -> fetch_All(MYSQLI_ASSOC);
         }
 
+        function getLastOrder($user){
+            $query = "SELECT * FROM ordine WHERE CodCliente = '".$user."' AND Pagato = 0";
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_all(MYSQLI_ASSOC);
+            foreach($result as $res){
+                if($res['Pagato'] == 0){
+                    return $res['IdOrdine'];
+                }
+            }
+            $query = "INSERT INTO ordine (Pagato, CodCliente) VALUES (0, '".$user."')";
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+            return $stmt->insert_id;
+        }
+
+
+        function addCart($productId, $quantity, $user){
+            $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE IDProdotto = ".$productId."";
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_all(MYSQLI_ASSOC);
+            $disp = 0;
+            foreach($result as $res){
+                if($quantity <= $res['Disponibilita']){
+                    $disp = $res['Disponibilita'];
+                } else {
+                    return false;
+                }
+            }
+            if($disp == 0){
+                return false;
+            } else {
+                $order = $this -> getLastOrder($user);
+                $query = "INSERT INTO riga (CodOrdine, CodProdotto, Quantita) VALUES (".$order.", ".$productId.", ".$quantity.")";
+                $stmt = $this -> db -> prepare($query);
+                $stmt -> execute();
+                return true;
+            }
+        }
+
         function getAviableProducts(){
             $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE Disponibilita IS NOT NULL AND Disponibilita > 0";
             $stmt = $this->db->prepare($query);
