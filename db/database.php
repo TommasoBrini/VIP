@@ -197,19 +197,6 @@
             $stmt->execute();
             return true;
         }
-        
-        public function checkLogin($email, $password){
-            $query = "SELECT password FROM `user` WHERE email=?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bind_param('s',$email);
-            $stmt->execute();
-            
-            $result = $stmt->get_result()->fetch_All(MYSQLI_ASSOC);
-            foreach($result as $pwd) {
-                return password_verify($password,$pwd["password"]); 
-            }
-            return false;
-        }
      
         public function checkSeller(){
             $query = "SELECT * FROM user WHERE idvenditore=1 LIMIT 1";
@@ -264,7 +251,7 @@
             }
         }
 
-        //Registration
+        //Registration and Login
 
         public function checkSellerExist() {
             $query = "SELECT COUNT(*) as cont FROM user U WHERE U.IdVenditore=1";
@@ -293,12 +280,36 @@
             $stmt->execute();  
         }
 
+        public function checkLogin($email, $password){
+            $query = "SELECT password FROM `user` WHERE email=?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('s',$email);
+            $stmt->execute();
+            
+            $result = $stmt->get_result()->fetch_All(MYSQLI_ASSOC);
+            foreach($result as $pwd) {
+                return password_verify($password,$pwd["password"]); 
+            }
+            return false;
+        }
+
+        //End
         //Cart
 
-        public function getQuantity($idProdotto){
-            $query = "SELECT P.Prezzo FROM prodotto P WHERE P.IDProdotto = ?";
+        public function getQuantityAvailable($idProdotto){
+            $query = "SELECT P.Disponibilita FROM prodotto P WHERE P.IDProdotto = ?";
             $stmt = $this -> db -> prepare($query);
             $stmt->bind_param('i',$idProdotto);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function getQuantity($idProdotto, $idOrdine){
+            $query = "SELECT R.Quantita FROM riga R WHERE R.CodProdotto = ? AND R.CodOrdine = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('ii',$idProdotto, $idOrdine);
             $stmt -> execute();
             $result = $stmt -> get_result();
             
@@ -353,7 +364,8 @@
             $result = $stmt -> get_result();
             
             return $result -> fetch_All(MYSQLI_ASSOC);
-
         }
     }    
+
+    //End
 ?>
