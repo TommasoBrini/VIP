@@ -9,8 +9,8 @@
     <button class='yellow'><?php echo number_format($product["Prezzo"]);?> €</button>
     <button class='green aviable' id='aviable<?php echo $product["IDProdotto"]?>' value='<?php echo $product["Disponibilita"] ?>'><?php echo "AVIABLE: ".$product["Disponibilita"] ?></button>
     <button class='last grey addCart' id='addCart<?php echo $product["IDProdotto"]?>' value='<?php echo $product["IDProdotto"]?>'>ADD CART</button>
-    <?php require("template/addCart.php");?>
-    <?php require("checkSellerProd.php");?>
+    <?php require($templateParams['addCart']);?>
+    <?php require($templateParams['checkSeller']);?>
 </div>
 
 

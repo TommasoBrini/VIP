@@ -10,12 +10,29 @@
         }
 
         public function getAuctions(){
-            $query = "SELECT a.IDProdotto, a.IdAsta, a.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, a.Descrizione, a.DescrizioneBreve, a.Base_asta, a.Prezzo, a.Immagine, b.CodCliente, b.quantita FROM (SELECT p. IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, quantita FROM puntata ORDER BY quantita DESC LIMIT 1) AS b ON a.IdAsta=b.IdAsta ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC";
+            $query = "SELECT a.IDProdotto, a.IdAsta, a.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, a.Descrizione, a.DescrizioneBreve, a.Base_asta, a.Prezzo, a.Immagine FROM (SELECT p.IDProdotto, a.IdAsta, p.Nome, a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio, a.AnnoFine, a.MeseFine, a.GiornoFine, a.OraFine, a.CodVincitore, p.Descrizione, p.DescrizioneBreve, p.Base_asta, p.Prezzo, p.Immagine FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a ORDER BY a.AnnoInizio, a.MeseInizio, a.GiornoInizio, a.OraInizio ASC";
             $stmt = $this -> db -> prepare($query);
             $stmt -> execute();
-            $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            $auctions = $result;
+            $cont = 0;
+            $tuple;
+            foreach($auctions as $auction){
+                $tuple[$cont] = $auction;
+                $query = "SELECT IdAsta, CodCliente, quantita FROM puntata WHERE IdAsta = ".$auction['IdAsta']." ORDER BY quantita DESC LIMIT 1";
+                $stmt = $this -> db -> prepare($query);
+                $stmt -> execute();
+                $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+                $tuple[$cont]['CodCliente'] = NULL;
+                $tuple[$cont]['quantita'] = NULL;
+                foreach($result as $res){
+                    $tuple[$cont]['IdAsta'] = $res['IdAsta'];
+                    $tuple[$cont]['CodCliente'] = $res['CodCliente'];
+                    $tuple[$cont]['quantita'] = $res['quantita'];
+                }
+                $cont++;
+            }
+            return $tuple;
         }
 
         public function getAuctionPrice($auctionId){

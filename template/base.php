@@ -52,9 +52,9 @@
 <script type="text/javascript">
     function logout(){
         $.ajax({
-            url: "logout.php"
+            url: "<?php echo $templateParams['logout']?>"
         }).done(function( msg ) {
-            document.location.reload(true);
+            window.location.href = "index.php";
         });
     }
 </script>
