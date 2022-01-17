@@ -8,6 +8,8 @@ if(!isset($_GET["id"])){
 if(isUserLoggedIn()){
     $result = $dbh->checkSeller();
     $templateParams["venditore"]=$result;
+} else {
+    $templateParams["js"] = "./js/single_product.js";
 }
 
 $templateParams["titolo"] = "VIP - Single Product";
@@ -15,6 +17,8 @@ $templateParams["nome"] = "single_product.php";
 $templateParams["bg"] = "white";
 $templateParams["css"] = "./css/styleSingleProduct.css";
 $templateParams["slider"] = FALSE;
+
+
 
 $check=count($dbh->checkProduct($_GET["id"]));
 if($check == 0){

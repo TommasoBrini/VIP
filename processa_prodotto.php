@@ -78,3 +78,4 @@ if($_POST["azione"]==3){
     header("location: index.php?formmsg=".$msg);
 }
 
+?>
