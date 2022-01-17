@@ -18,7 +18,7 @@
                 event.stopPropagation();
                 $.ajax({
                     type: "POST",
-                    url: "confirmBuyNow.php",
+                    url: "<?php echo $templateParams['confirmBuyNow']?>",
                     data: { id: <?php echo $asta['IdAsta'] ?> }
                 }).done(function( msg ) {
                     alert("Hai acquistato <?php echo $asta["Nome"]?> al prezzo di <?php echo number_format($asta["Prezzo"]); ?> €.");

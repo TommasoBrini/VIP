@@ -14,8 +14,12 @@ $templateParams["class2"] = TRUE;
 $templateParams["slider"] = TRUE;
 $templateParams["products"] = $dbh->getProducts();
 $templateParams["aviableProducts"] = $dbh -> getAviableProducts();
-$templateParams["productAviable"] = "productAviable.php";
-$templateParams["productSoldOut"] = "productSoldOut.php";
+$templateParams["productAviable"] = "product/productAviable.php";
+$templateParams["productSoldOut"] = "product/productSoldOut.php";
+$templateParams["back"] = "ajax/backProduct.php";
+$templateParams["confirmAddCart"] = "ajax/addCart.php";
+$templateParams["addCart"] = "js/addCart.php";
+$templateParams["checkSeller"] = "js/checkSellerProd.php";
 $templateParams["js"] = "./js/home.js";
 
 require("template/base.php");
