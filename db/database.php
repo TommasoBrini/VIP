@@ -16,7 +16,7 @@
             $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
             $auctions = $result;
             $cont = 0;
-            $tuple;
+            $tuple = NULL;
             foreach($auctions as $auction){
                 $tuple[$cont] = $auction;
                 $query = "SELECT IdAsta, CodCliente, quantita FROM puntata WHERE IdAsta = ".$auction['IdAsta']." ORDER BY quantita DESC LIMIT 1";
@@ -123,13 +123,22 @@
 
 
         function addCart($productId, $quantity, $user){
-            $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE IDProdotto = ".$productId."";
+            $order = $this -> getLastOrder($user);
+            $query = "SELECT quantita FROM riga WHERE CodOrdine = ".$order." AND CodProdotto = ".$productId;
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_all(MYSQLI_ASSOC);
+            $oldQ = 0;
+            foreach($result as $res){
+                $oldQ =$res['quantita'];
+            }
+            $query = "SELECT IDProdotto, Disponibilita FROM prodotto WHERE IDProdotto = ".$productId;
             $stmt = $this -> db -> prepare($query);
             $stmt -> execute();
             $result = $stmt -> get_result() -> fetch_all(MYSQLI_ASSOC);
             $disp = 0;
             foreach($result as $res){
-                if($quantity <= $res['Disponibilita']){
+                if($quantity + $oldQ <= $res['Disponibilita']){
                     $disp = $res['Disponibilita'];
                 } else {
                     return false;
@@ -138,8 +147,12 @@
             if($disp == 0){
                 return false;
             } else {
-                $order = $this -> getLastOrder($user);
-                $query = "INSERT INTO riga (CodOrdine, CodProdotto, Quantita) VALUES (".$order.", ".$productId.", ".$quantity.")";
+                if($oldQ > 0){
+                    $query = "DELETE FROM riga WHERE CodOrdine = ".$order." AND CodProdotto = ".$productId;
+                    $stmt = $this -> db -> prepare($query);
+                    $stmt -> execute();
+                }
+                $query = "INSERT INTO riga (CodOrdine, CodProdotto, Quantita) VALUES (".$order.", ".$productId.", ".$quantity + $oldQ.")";
                 $stmt = $this -> db -> prepare($query);
                 $stmt -> execute();
                 return true;

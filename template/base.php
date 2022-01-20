@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $templateParams["titolo"] ?></title>
     <link rel="stylesheet" type="text/css" href="<?php echo $templateParams["css"] ?>" />
-    <?php 
-    if(isset($templateParams["js"])): ?>
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+    <?php if(isset($templateParams["js"])): ?>
     <script src="<?php echo $templateParams["js"]?>" type="text/javascript"></script>
     <?php endif; ?> 
 </head>
@@ -47,14 +46,6 @@
     <footer>
         <h3><?php echo isset($_SESSION["email"]) ? $_SESSION["email"] : "Registrati o accedi per poter acquistare o rilanciare.";?></h3>
     </footer>
+    <?php require($templateParams["logout"]);?>
 </body>
 </html>
-<script type="text/javascript">
-    function logout(){
-        $.ajax({
-            url: "<?php echo $templateParams['logout']?>"
-        }).done(function( msg ) {
-            window.location.href = "index.php";
-        });
-    }
-</script>
