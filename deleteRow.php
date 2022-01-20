@@ -1,5 +1,6 @@
 <?php
     require_once("bootstrap.php");
-    $dbh->deleteRow($_GET['id']);
+    $idDelete = $_GET['id'];
+    $dbh->deleteRow($idDelete);
     header("Location: index_cart.php");
 ?>
