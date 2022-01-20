@@ -313,63 +313,12 @@
         //End
         //Cart
 
-        public function getQuantityAvailable($idProdotto){
-            $query = "SELECT P.Disponibilita FROM prodotto P WHERE P.IDProdotto = ?";
-            $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('i',$idProdotto);
-            $stmt -> execute();
-            $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
-        }
-
-        public function getQuantity($idProdotto, $idOrdine){
-            $query = "SELECT R.Quantita FROM riga R WHERE R.CodProdotto = ? AND R.CodOrdine = ?";
-            $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('ii',$idProdotto, $idOrdine);
-            $stmt -> execute();
-            $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
-        }
-
         public function getRows(){
-            $query = "SELECT * FROM riga R, ordine O WHERE O.IdOrdine = R.CodOrdine AND O.CodCliente=? AND O.Pagato=0";
+            $query = "SELECT * FROM riga R, ordine O, prodotto P WHERE O.IdOrdine = R.CodOrdine AND P.IDProdotto = R.CodProdotto AND O.CodCliente= ? AND O.Pagato=0";
             $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('s',$SESSION_EMAIL);
+            $stmt->bind_param('s',$_SESSION['email']);
             $stmt -> execute();
             $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
-        }
-
-        public function getPhoto($idProdotto){
-            $query = "SELECT P.Immagine FROM prodotto P WHERE P.IDProdotto = ?";
-            $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('i',$idProdotto);
-            $stmt -> execute();
-            $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
-        }
-
-        public function getName($idProdotto){
-            $query = "SELECT P.Nome FROM prodotto P WHERE P.IDProdotto = ?";
-            $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('i',$idProdotto);
-            $stmt -> execute();
-            $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
-        }
-
-        public function getUnitPrice($idProdotto){
-            $query = "SELECT P.Prezzo FROM prodotto P WHERE P.IDProdotto = ?";
-            $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('i',$idProdotto);
-            $stmt -> execute();
-            $result = $stmt -> get_result();
-            
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
