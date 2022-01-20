@@ -136,7 +136,9 @@ form > div{
 }
 
 form > div > button{
-    margin: 10% 10% 5% 10%;
+    margin: 5% 10% 5% 10%;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 /********/
