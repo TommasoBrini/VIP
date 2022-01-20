@@ -124,7 +124,8 @@ td.cell_selected {
 }
 
 td.cell_photo {
-    width: 15%;
+    max-width:90px;
+    max-height:90px;
 }
 td.cell_name {
     width: 50%;
@@ -193,7 +194,7 @@ footer > h3 {
 /***************/
 /*SCHERMO MEDIO*/
 /***************/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     header {
         width: 100%;
         height: 3%;
