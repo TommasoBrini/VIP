@@ -36,15 +36,19 @@
         }
 
         public function getAuctionPrice($auctionId){
-            $stmt = $this -> db -> prepare("SELECT a.IdAsta, a.Base_asta, b.CodCliente, b.quantita FROM (SELECT a.IdAsta, p.Base_asta FROM asta a JOIN prodotto p ON a.CodProdotto = p.IDProdotto ) AS a LEFT JOIN (SELECT CodCliente, IdAsta, quantita FROM puntata ORDER BY quantita DESC LIMIT 1) AS b ON a.IdAsta=b.IdAsta WHERE a.IdAsta = ".$auctionId) ;
+            $query = "SELECT quantita FROM puntata WHERE IdAsta = ".$auctionId." ORDER BY quantita DESC LIMIT 1";
+            $stmt = $this -> db -> prepare($query) ;
             $stmt -> execute();
             $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
             foreach($result as $res){
-                if($res["quantita"] == NULL){
-                    return $res["Base_asta"];
-                } else {
-                    return $res["quantita"];
-                }
+                return $res["quantita"];
+            }
+            $query = "SELECT p.Base_asta FROM asta a, prodotto p WHERE a.IdAsta = ".$auctionId." AND a.CodProdotto = p.IdProdotto";
+            $stmt = $this -> db -> prepare($query) ;
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $res){
+                return $res["Base_asta"];
             }
         }
 
@@ -259,7 +263,7 @@
         }
 
         public function raise($auctionid, $bet, $user){
-            $query = "SELECT * FROM puntata WHERE IdPuntata=? ORDER BY quantita DESC LIMIT 1";
+            $query = "SELECT * FROM puntata WHERE IdAsta=? ORDER BY quantita DESC LIMIT 1";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('i',$auctionid);
             $stmt->execute();

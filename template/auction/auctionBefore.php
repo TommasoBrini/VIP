@@ -8,7 +8,7 @@
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
     <button class='grey'><?php echo number_format($asta["Base_asta"]);?> €</button>
-    <button class='grey'>INIZIERA' A BREVE</button>
-    <button class='last grey'>VEDI IL PRODOTTO</button>
+    <button class='grey'>START SOON</button>
+    <button class='last grey'>PRODUCT INFO</button>
     <?php require($templateParams['timer']);?>   
 </div>

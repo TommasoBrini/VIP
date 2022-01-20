@@ -8,6 +8,6 @@
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
     <button class='green'><?php echo $asta["quantita"] == NULL ? number_format($asta["Prezzo"]) : number_format($asta["quantita"]);?> €</button>
-    <button class='green'>HAI VINTO!</button>
-    <button class='last green'>VEDI IL PRODOTTO</button>
+    <button class='green'>YOU WIN!</button>
+    <button class='last green'>PRODUCT INFO</button>
 </div>
