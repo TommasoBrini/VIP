@@ -29,7 +29,7 @@
                 <?php if($check): ?>
                 <button type="button" onclick="window.location.href='index_cart.php'">AGGIUNGI AL CARRELLO</button>
                 <?php else: ?>
-                <button><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"]); ?></button>
+                <button type="button"><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"]); ?></button>
                 <?php endif; ?>
             </li>
         </ul>

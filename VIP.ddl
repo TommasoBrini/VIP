@@ -33,6 +33,17 @@ create table ASTA (
      CodVincitore varchar(50),
      constraint ID_ASTA_ID primary key (IdAsta));
 
+create table NOTIFICA (
+     Email varchar(50) not null,
+     Text varchar(140) not null,
+     IdNotifica int(1) not null auto_increment,
+     IdAsta int,
+     IdOrdine int,
+     IDProdotto int,
+     TimeStamp varchar(30) not null,
+     constraint IDNOTIFICA primary key (IdNotifica));
+
+
 create table ORDINE (
      IdOrdine int not null auto_increment,
      Pagato boolean not null,
@@ -83,6 +94,28 @@ alter table ASTA add constraint REF_ASTA_USER_FK
      foreign key (CodVincitore)
      references USER (email);
 
+alter table NOTIFICA add constraint FKriceve_FK
+     foreign key (Email)
+     references USER (email);
+
+alter table NOTIFICA add constraint FKriferito
+     foreign key (IdOrdine)
+     references ORDINE (IdOrdine);
+
+alter table NOTIFICA add constraint FKriferito1
+     foreign key (IDProdotto)
+     references PRODOTTO (IDProdotto);
+
+alter table NOTIFICA add constraint FKriferito2
+     foreign key (IdAsta)
+     references ASTA (IdAsta);
+
+alter table NOTIFICA add constraint GRNOTIFICA
+     check((IdAsta is not null and IdOrdine is null and IDProdotto is null)
+           or (IdAsta is null and IdOrdine is not null and IDProdotto is null)
+           or (IdAsta is null and IdOrdine is null and IDProdotto is not null)); 
+
+
 alter table ORDINE add constraint REF_ORDIN_USER_FK
      foreign key (CodCliente)
      references USER (email);
@@ -124,6 +157,9 @@ create index EQU_ASTA_PRODO_IND
 
 create index REF_ASTA_USER_IND
      on ASTA (CodVincitore);
+
+create index FKriceve_IND
+     on NOTIFICA (Email);
 
 create unique index ID_ORDINE_IND
      on ORDINE (IdOrdine);

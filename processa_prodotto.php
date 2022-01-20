@@ -31,12 +31,11 @@ if($_POST["azione"]==1){
             $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg);
         }
         if($id!=false){
-            $mex="Inserimento Completato";
-            header("location: index.php?$mex");
+            echoMessage("Il tuo prodotto è stato inserito!", "index_products.php");
+
         }
         else{
-            $mex="Inserimento Rifiutato";
-            header("location: index.php?$mex");
+            echoMessage("OPS! Qualcosa è andato storto", "index_products.php");
         }
     }
 }
@@ -61,8 +60,7 @@ if($_POST["azione"]==2){
     
     $check=count($dbh->checkProduct($id));
     $dbh->updateProduct($id, $nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg, $check);
-    $mex="Modifica Completata";
-    header("location: index.php?$mex");
+    echoMessage("Modifica effettuata con successo!", "index_products.php");
 }
 
 //CANCELLAZIONE
@@ -70,11 +68,7 @@ if($_POST["azione"]==3){
     $id = $_POST["id"];
     $check=count($dbh->checkProduct($id));
     $bol = $dbh->deleteProduct($id, $check);
-    if($bol){
-        $msg = "Cancellazione completata";
-    } else {
-        $msg = "Cancellazione Rifiutata";
-    }
-    header("location: index.php?formmsg=".$msg);
+    echoMessage("Il tuo prodotto è stato eliminato!", "index_products.php");
 }
 
+?>
