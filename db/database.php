@@ -319,7 +319,19 @@
             $stmt->bind_param('s',$_SESSION['email']);
             $stmt -> execute();
             $result = $stmt -> get_result();
+
             return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function checkOrderExist() {
+            $query = "SELECT COUNT(*) AS numRows FROM riga R, ordine O, prodotto P WHERE O.IdOrdine = R.CodOrdine AND P.IDProdotto = R.CodProdotto AND O.CodCliente= ? AND O.Pagato=0";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$_SESSION['email']);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $cont) {
+                return $cont['numRows'];
+            }
         }
 
         public function deleteRow($idRow) {
@@ -327,9 +339,6 @@
             $stmt = $this -> db -> prepare($query);
             $stmt->bind_param('i',$idRow);
             $stmt -> execute();
-            $result = $stmt -> get_result();
-            
-            return $result -> fetch_All(MYSQLI_ASSOC);
         }
     }    
 

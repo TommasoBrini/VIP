@@ -1,5 +1,8 @@
 <h1>CART</h1>
 <table>
+    <?php if($templateParams["orderExist"]==0): ?>
+        <p class="noOrder">Go back to the products screen to fill in the cart!</p>
+    <?php else: ?>
     <thead>
         <tr>
             <th id="selected"></th>
@@ -20,7 +23,7 @@
         <td id="unitPrice" class="cell_unitPrice"><?php echo $row["Prezzo"]?></td>
         <td id="quantity" class="cell_quantity"><input type='number' id='quantity' name='quantity' min=1 max='<?php echo $row["Disponibilita"]?>' value='<?php echo $row["Quantita"]?>'></td>
         <td id="total" class="cell_total"><?php echo $row["Quantita"] * $row["Prezzo"]?></td>
-        <td id="trash"><img type="button" src="./img/trash.png" id="trash" onClick="deleteRow(<?php echo $row["IdRiga"]?>)"/><br>
+        <td id="trash"><img type="button" src="./img/trash.png" id="trash" onclick="window.location.href='deleteRow.php?id='<?php $row['IdRiga']?>"/><br>
         </tr>
     <?php endforeach; ?>
     </tbody>
@@ -32,4 +35,5 @@
             <td colspan="2">Funzione in js per calcolo totale, solo selezionate</td>
         </tr>
     </tfoot>
+    <?php endif; ?>
 </table>

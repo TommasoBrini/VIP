@@ -161,6 +161,11 @@ td.cell_trash {
     margin-right: 20%;
 }
 
+p.noOrder {
+    color: #FFBF49;
+    text-align: center;
+}
+
 /*******/
 /*Tommi*/
 /*******/
