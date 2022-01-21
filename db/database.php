@@ -353,6 +353,24 @@
             $stmt->bind_param('i',$idRow);
             $stmt -> execute();
         }
+
+        public function checkQuantity($idRow) {
+            $query = "SELECT Quantita FROM riga R WHERE IdRiga = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$idRow);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $cont) {
+                return $cont['Quantita'];
+            }
+        }
+
+        public function updateQuantity($actual, $idRow) {
+            $query = "UPDATE riga SET Quantita = ? WHERE IdRiga = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('is',$actual, $idRow);
+            $stmt -> execute();
+        }
     }    
 
     //End
