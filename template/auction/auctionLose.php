@@ -7,7 +7,7 @@
         <button class='timer' id="timer<?php echo $asta["IDProdotto"]?>">00:00:00</button>
         <textarea readonly class='description'><?php echo $asta["DescrizioneBreve"];?></textarea>
     </div>
-    <button class='red'><?php echo $asta["quantita"] == NULL ? number_format($asta["Prezzo"]) : number_format($asta["quantita"]);?> €</button>
+    <button class='red'><?php echo $asta["quantita"] == NULL ? number_format($asta["Prezzo"], 0, ",", ".") : number_format($asta["quantita"], 0, ",", ".");?> €</button>
     <button class='red'>YOU LOST!</button>
     <button class='last red'>PRODUCT INFO</button>
 </div>
