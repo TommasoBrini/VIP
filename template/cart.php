@@ -40,13 +40,12 @@
                         $.ajax({
                             url: "<?php echo $templateParams['updateQuantity']?>?idRiga=" + <?php echo $row['IdRiga'] ?> + "&quantity=" + document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value
                         }).done(function( msg ) {
-                            //window.location.href = "index_cart.php";
                         });
 
                 }
             }
             document.getElementById('down<?php echo $row['IdRiga'] ?>').onclick = function(event){  
-                if( document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value > 0) {
+                if( document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value > 1) {
                     if (!event) event = window.event;
                     event.stopPropagation(); 
                     document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value = document.getElementById('quantity<?php echo $row['IdRiga'] ?>').valueAsNumber-1;
@@ -56,7 +55,6 @@
                         $.ajax({
                             url: "<?php echo $templateParams['updateQuantity']?>?idRiga=" + <?php echo $row['IdRiga'] ?> + "&quantity=" + document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value
                         }).done(function( msg ) {
-                            //window.location.href = "index_cart.php";
                         });
                     }   
                 }

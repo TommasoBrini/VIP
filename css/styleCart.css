@@ -61,12 +61,10 @@ body > main > h1 {
     color: #FFBF49;
 }
 
-#quantity {
-    width:20%;
-}
-
-#up, #down {
-    width:10%;
+input[type=number]{
+    background-color: #FFFFFF;
+    width: 35%;
+    text-align: center;
 }
 
 input[type=button]{
@@ -89,6 +87,18 @@ input[type=button]{
 
 #foo img[src="./img/trash.png"] {
     background-image: #707070;
+}
+
+img[src="./img/up.png"] {
+    position:absolute;
+    background-image: #707070;
+    margin-bottom: 1px;
+}
+
+img[src="./img/down.png"] {
+    position: absolute;
+    background-image: #707070;
+    margin-top: 20px;
 }
 
 ul {
