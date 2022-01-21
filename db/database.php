@@ -379,7 +379,7 @@
         public function updateQuantity($actual, $idRow) {
             $query = "UPDATE riga SET Quantita = ? WHERE IdRiga = ?";
             $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('is',$actual, $idRow);
+            $stmt->bind_param('ii',$actual, $idRow);
             $stmt -> execute();
         }
     }    

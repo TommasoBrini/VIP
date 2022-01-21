@@ -8,8 +8,7 @@ $templateParams["slider"] = FALSE;
 $templateParams["css"] = "./css/styleCart.css";
 $templateParams["rows"] = $dbh->getRows();
 $templateParams["orderExist"] = $dbh->checkOrderExist();
-$templateParams["checkUpdate"] = "js/checkUpdateCart.php";
-$templateParams["update"] = "ajax/updateCart.php";
+$templateParams["updateQuantity"] = "ajax/updateQuantity.php";
 
 define("JS_DIR", "./js/home.js");
 

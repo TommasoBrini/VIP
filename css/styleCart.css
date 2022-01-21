@@ -61,9 +61,12 @@ body > main > h1 {
     color: #FFBF49;
 }
 
-input[type=number]{
-    width: 50%;
-    margin-left: 20%;
+#quantity {
+    width:20%;
+}
+
+#up, #down {
+    width:10%;
 }
 
 input[type=button]{
