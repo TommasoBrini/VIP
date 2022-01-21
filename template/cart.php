@@ -17,7 +17,17 @@
     <tbody>
     <?php foreach($templateParams["rows"] as $row): ?>
         <tr class="border_bottom">
-        <td id="selected" class="cell_selected"><input type='checkbox' id='selected'></td>
+        <td id="selected" class="cell_selected"><input type='checkbox' id='selected<?php echo $row['IdRiga'] ?>' onclick="updateTotal($(this))"></td>
+        <script>
+            function updateTotal(row) {
+                var totalCart;
+                if (row.is(':checked')) {
+                    totalCart+= $('td#total<?php echo $row['IdRiga'] ?>').value;
+                    print = '<?php echo '<td colspan="2" id="totalCart">' ?>'+ totalCart +'<?php echo '</td>' ?>';
+                    $('td#totalCart').replaceWith(print);
+                }
+            }
+        </script>
         <td id="photo" class="cell_photo"><img class="flex" src="<?php echo UPLOAD_DIR.$row["Immagine"];?>"/></td>
         <td id="name" class="cell_name"><?php echo $row["Nome"]?></td>
         <td id="unitPrice" class="cell_unitPrice"><?php echo $row["Prezzo"]?></td>
@@ -66,7 +76,7 @@
             <td colspan="2"><button name="checkOut" id="checkOut">CHECK OUT</button></td>
             <td colspan="2">"Just for you" shipping is free</td>
             <td>TOTAL</td>
-            <td colspan="2">Funzione in js per calcolo totale, solo selezionate</td>
+            <td colspan="2" id='totalCart'>Funzione in js per calcolo totale, solo selezionate</td>
         </tr>
     </tfoot>
     <?php endif; ?>
