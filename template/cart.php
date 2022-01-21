@@ -40,7 +40,6 @@
                         $.ajax({
                             url: "<?php echo $templateParams['updateQuantity']?>?idRiga=" + <?php echo $row['IdRiga'] ?> + "&quantity=" + document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value
                         }).done(function( msg ) {
-                            //window.location.href = "index_cart.php";
                         });
 
                 }
@@ -56,7 +55,6 @@
                         $.ajax({
                             url: "<?php echo $templateParams['updateQuantity']?>?idRiga=" + <?php echo $row['IdRiga'] ?> + "&quantity=" + document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value
                         }).done(function( msg ) {
-                            //window.location.href = "index_cart.php";
                         });
                     }   
                 }
