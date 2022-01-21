@@ -323,6 +323,17 @@
             return false;
         }
 
+        //NOTIFICHE
+        public function getNotify(){
+            $query = "SELECT * FROM notifica N WHERE N.Email = ? ORDER BY TimeStamp";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$_SESSION['email']);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+
         //End
         //Cart
 

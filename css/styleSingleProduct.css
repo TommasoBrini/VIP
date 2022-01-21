@@ -156,3 +156,57 @@ footer > h3 {
     color:  #FFBF49;
     text-align: center;
 }
+
+
+/**
+TABLE
+*/
+table {
+    background-color: #BDBDBD;
+    font-weight: bold;
+    border-spacing: 0;
+}
+
+tr.border_bottom td {
+    border-bottom:1px dashed #707070;
+  }
+  
+th {
+    background-color: #707070;
+    border: thin #707070 ;
+    color: #FFBF49;
+}
+
+td {
+    height: 60px;
+    color: #303030;
+    text-align: center;
+}
+
+td.cell_selected {
+    width: 1%;
+}
+
+td.cell_photo {
+    max-width:90px;
+    max-height:90px;
+}
+td.cell_name {
+    width: 50%;
+}
+
+td.cell_unitPrice {
+    width: 10%;
+}
+
+td.cell_quantity {
+    width: 4%;
+}
+
+td.cell_total {
+    width: 15%;
+}
+
+td.cell_trash {
+    width: 5%;
+}
