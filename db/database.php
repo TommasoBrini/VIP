@@ -327,6 +327,17 @@
             return false;
         }
 
+        //NOTIFICHE
+        public function getNotify(){
+            $query = "SELECT * FROM notifica N WHERE N.Email = ? ORDER BY TimeStamp";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$_SESSION['email']);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+
         //End
         //Cart
 
@@ -355,6 +366,24 @@
             $query = "DELETE FROM riga WHERE IdRiga = ?";
             $stmt = $this -> db -> prepare($query);
             $stmt->bind_param('i',$idRow);
+            $stmt -> execute();
+        }
+
+        public function checkQuantity($idRow) {
+            $query = "SELECT Quantita FROM riga R WHERE IdRiga = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$idRow);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $cont) {
+                return $cont['Quantita'];
+            }
+        }
+
+        public function updateQuantity($actual, $idRow) {
+            $query = "UPDATE riga SET Quantita = ? WHERE IdRiga = ?";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('ii',$actual, $idRow);
             $stmt -> execute();
         }
     }    

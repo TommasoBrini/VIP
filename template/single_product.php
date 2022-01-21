@@ -23,6 +23,7 @@
                 <button disabled><?php echo "AVAIABLE: ".$prodotto["Disponibilita"]; ?> </button>
                 <?php else: ?>
                 <button type="button" onclick="window.location.href='index.php'">PARTECIPA ALL'ASTA!</button>
+                <button id="timer<?php echo $prodotto['IDProdotto']?>">00:00:00</button>
                 <?php endif; ?>
             </li>
             <li>
@@ -38,6 +39,33 @@
     <section>
         <h2>DESCRIZIONE</h2>
         <textarea name="descrizione" id="descrizione" cols="30" rows="10" readonly><?php echo $prodotto["Descrizione"]; ?></textarea>
+    
+
+    <?php if(!$check): ?>
+    <section>
+    <table>
+    <thead>
+        <tr>
+            <th id="data">DATA</th>
+            <th id="utente">UTENTE</th>
+            <th id="testo">TESTO</th>
+            <th id="puntata">PUNTATA</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+     <!-- foreach per tutte le puntate -->
+        <tr class="border_bottom">
+            <td id="data" class="cell_date">PROVA</td>
+            <td id="utente" class="cell_testo">PROVA</td>
+            <td id="testo" class="cell_date">PROVA</td>
+            <td id="puntata" class="cell_testo">PROVA</td>
+        </tr>
+    </tbody>
+    </table>
+    </section>
+    
+    <?php endif; ?>
     </section>
 
     <?php if(isset($templateParams["venditore"])): ?>
@@ -47,5 +75,9 @@
     </div>
         
     <?php endif; ?>
+
+    <?php 
+    $asta=$prodotto;
+    require($templateParams["timer"]);
+    ?>
 </form>
-<!--"window.location.href='index_cart.php'"-->

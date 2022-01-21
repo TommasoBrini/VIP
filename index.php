@@ -22,7 +22,6 @@ $templateParams["update"] = "ajax/update.php";
 $templateParams["back"] = "ajax/back.php";
 $templateParams["confirmBuyNow"] = "ajax/confirmBuyNow.php";
 $templateParams["confirmRaise"] = "ajax/raise.php";
-$templateParams["timer"] = "js/timer.php";
 $templateParams["checkSeller"] = "js/checkSeller.php";
 $templateParams["checkUpdate"] = "js/checkUpdate.php";
 $templateParams["buyNow"] = "js/buyNow.php";

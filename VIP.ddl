@@ -41,6 +41,7 @@ create table NOTIFICA (
      IdOrdine int,
      IDProdotto int,
      TimeStamp varchar(30) not null,
+     Visualizzata boolean not null,
      constraint IDNOTIFICA primary key (IdNotifica));
 
 
