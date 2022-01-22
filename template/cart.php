@@ -28,7 +28,7 @@
         <td id='total<?php echo $row['IdRiga'] ?>' class="cell_total"><?php echo $row["Quantita"] * $row["Prezzo"]?></td>
         <td id="trash"><img type="button" src="./img/trash.png" id="trash" onclick="window.location.href='deleteRow.php?id=<?php echo $row['IdRiga'] ?>'"/><br>
         </tr>
-        <?php else: $dbh->insertNotify($_SESSION["email"],'The product has been canceled because it is not available!',NULL,NULL,NULL,$row["CodProdotto"]); ?>
+        <?php else: $dbh->insertNotify($_SESSION["email"],'The requested quantity of the product is no longer available!',NULL,NULL,NULL,$row["CodProdotto"]); ?>
         <?php endif; ?>
         <script type='text/javascript'>
             document.getElementById('up<?php echo $row['IdRiga'] ?>').onclick = function(event){ 
