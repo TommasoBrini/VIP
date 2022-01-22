@@ -74,6 +74,10 @@
                 $query = "UPDATE asta SET CodVincitore='".$vincitore."' WHERE IdAsta=".$auctionId;
                 $stmt = $this->db->prepare($query);
                 $stmt->execute();
+            } else {
+                $query = "UPDATE asta SET CodVincitore='".$this->getSeller()."' WHERE IdAsta=".$auctionId;
+                $stmt = $this->db->prepare($query);
+                $stmt->execute();
             }
             return $vincitore;
         }
@@ -246,6 +250,16 @@
             }
         }
 
+        public function getSeller(){
+            $query = "SELECT * FROM user WHERE idvenditore=1 LIMIT 1";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+            foreach($result as $user){
+                return $user['email'];
+            }
+        }
+
         public function getBuyNowPrice($auctionId){
             $stmt = $this -> db -> prepare("SELECT a.IdAsta, a.CodProdotto, p.Prezzo FROM asta AS a JOIN prodotto AS p ON a.CodProdotto=p.IDProdotto WHERE a.IdAsta=".$auctionId) ;
             $stmt -> execute();
@@ -257,12 +271,12 @@
 
         public function buyNow($auctionId, $user){
             $price = $this->getBuyNowPrice($auctionId);
-            $this->raise($auctionId, $price , $user);
+            $this->raise($auctionId, 0, $price , $user);
             $this->setWinner($auctionId);
 
         }
 
-        public function raise($auctionid, $bet, $user){
+        public function raise($auctionid, $actual, $bet, $user){
             $query = "SELECT * FROM puntata WHERE IdAsta=? ORDER BY quantita DESC LIMIT 1";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('i',$auctionid);
@@ -271,12 +285,13 @@
             $oldBid = true;
             foreach($result as $last){
                 $oldBid = false;
-                if($last['quantita'] < $bet){
+                if($last['quantita'] < $actual + $bet){
                     $oldBid = true;
                 }
             }        
             if($oldBid){
-                $query = "INSERT INTO puntata (quantita, IdAsta, CodCliente) VALUES ( ".$bet.", ".$auctionid.", '".$user."')";
+                $query = "INSERT INTO puntata (quantita, IdAsta, CodCliente, Notifica, TimeStamp) VALUES ( ".$actual + $bet.", ".$auctionid.", '".$user."', '".(($actual == 0) ? buyMessage($bet) : raiseMessage($bet))."', '".time()."')";
+                echo $query;
                 $stmt = $this->db->prepare($query);
                 $stmt->execute();
                 return true;

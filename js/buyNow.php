@@ -19,7 +19,7 @@
                 $.ajax({
                     type: "POST",
                     url: "<?php echo $templateParams['confirmBuyNow']?>",
-                    data: { id: <?php echo $asta['IdAsta'] ?> }
+                    data: { idAsta: <?php echo $asta['IdAsta'] ?>, idProdotto: <?php echo $asta['IDProdotto'] ?>, nome: "<?php echo $asta['Nome'] ?>", prezzo: <?php echo $asta['Prezzo'] ?> }
                 }).done(function( msg ) {
                     alert("Hai acquistato <?php echo $asta["Nome"]?> al prezzo di <?php echo number_format($asta["Prezzo"]); ?> €.");
                     document.location.reload(true);

@@ -182,5 +182,21 @@ function echoMessage($msg, $redirect) {
     window.location.href = "'.$redirect.'"
     </script>';
 }
+
+function winnerMessage($productName, $price){
+    return "You have won '".$productName."' at an auction for ".number_format($price, 0, ",", ".")." €.";
+}
+
+function buyNowMessage($productName, $price){
+    return "You finished the auction by buying '".$productName."' for ".number_format($price, 0, ",", ".")." €.";
+}
+
+function buyMessage(){
+    return "Buy Now";
+}
+
+function raiseMessage($bet){
+    return "Raise of ".number_format($bet, 0, ",", ".")." €";
+}
 ?>
 
