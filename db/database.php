@@ -337,6 +337,14 @@
             return $result -> fetch_All(MYSQLI_ASSOC);
         }
 
+        public function insertNotify($codUtente, $text, $idAsta, $idOrdine, $totaleOrdine, $idProdotto){
+            $query = "INSERT INTO notifica (Email, Text, IdAsta, IdOrdine, TotaleOrdine, IDProdotto, TimeStamp) VALUES (?,?,?,?,?,?,?)";
+            $stmt = $this -> db -> prepare($query);
+            $timestamp = time();
+            $stmt->bind_param('ssiiiis',$codUtente, $text, $idAsta, $idOrdine, $totaleOrdine, $idProdotto, $timestamp);
+            $stmt->execute();
+        }
+
 
         //End
         //Cart

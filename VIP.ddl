@@ -39,6 +39,7 @@ create table NOTIFICA (
      IdNotifica int(1) not null auto_increment,
      IdAsta int,
      IdOrdine int,
+     TotaleOrdine int,
      IDProdotto int,
      TimeStamp varchar(30) not null,
      Visualizzata boolean not null,
@@ -65,6 +66,8 @@ create table PRODOTTO (
 
 create table PUNTATA (
      quantita int not null,
+     TimeStamp varchar(30) not null,
+     Notifica varchar(140) not null,
      IdPuntata int not null auto_increment,
      IdAsta int not null,
      CodCliente varchar(50) not null,

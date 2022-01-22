@@ -31,6 +31,7 @@ if($_POST["azione"]==1){
             $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg);
         }
         if($id!=false){
+            $dbh->insertNotify($_SESSION["email"], "Il tuo prodotto è stato inserito correttamente!", null, null, null, $id);
             echoMessage("Il tuo prodotto è stato inserito!", "index_products.php");
 
         }
