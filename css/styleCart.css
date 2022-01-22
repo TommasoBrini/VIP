@@ -85,7 +85,7 @@ input[type=button]{
     font-weight: bold;
 }
 
-#foo img[src="./img/trash.png"] {
+img[src="./img/trash.png"] {
     background-image: #707070;
 }
 
@@ -132,7 +132,7 @@ td {
     text-align: center;
 }
 
-td.cell_selected {
+td.cell_selection {
     width: 1%;
 }
 
@@ -160,8 +160,12 @@ td.cell_trash {
     width: 5%;
 }
 
+.cell_totalCart {
+    margin-right: 25%;
+}
+
 .flex {
-    max-width: 60%;
+    max-width: 20%;
     margin-top:2%;
 }
 

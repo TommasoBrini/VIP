@@ -1,15 +1,3 @@
-<script type="text/javascript">
-function updateTotal() {
-        var totalCart = 0;
-        if ($("input[id^='selected']").filter(":checked").each(function() {
-            id = $(this).attr('id');
-            console.log(this);
-            console.log(id);
-            totalCart += parseFloat($('td#total'+ id.substr(8)).first().text());
-        }));  
-        $('td#totalCart').text(totalCart);
-}
-</script>
 <h1>CART</h1>
 <table>
     <?php if($templateParams["orderExist"]==0): ?>
@@ -28,17 +16,20 @@ function updateTotal() {
     </thead>
     <tbody>
     <?php foreach($templateParams["rows"] as $row): ?>
+        <?php if($row["Disponibilita"]>=$row["Quantita"]): ?>
         <tr class="border_bottom">
-        <td class="cell_selected"><input type='checkbox' id='selected<?php echo $row['IdRiga'] ?>' onclick="updateTotal()"></td>
+        <td id= "selection" class="cell_selection"><input type='checkbox' id='selected<?php echo $row['IdRiga'] ?>' onclick="updateTotal()" /></td>
         <td id="photo" class="cell_photo"><img class="flex" src="<?php echo UPLOAD_DIR.$row["Immagine"];?>"/></td>
         <td id="name" class="cell_name"><?php echo $row["Nome"]?></td>
         <td id="unitPrice" class="cell_unitPrice"><?php echo $row["Prezzo"]?></td>
-        <td id="quantity" class="cell_quantity"><input type='number' id='quantity<?php echo $row['IdRiga'] ?>' name='quantity' min=0 max='<?php echo $row["Disponibilita"]?>' value='<?php echo $row["Quantita"]?>' readonly>
+        <td id="quantity" class="cell_quantity"><input type='number' id='quantity<?php echo $row['IdRiga'] ?>' name='quantity' min=0 max='<?php echo $row["Disponibilita"]?>' value='<?php echo $row["Quantita"]?>' readonly />
         <img type='button' id='up<?php echo $row['IdRiga'] ?>' name='up' src="./img/up.png" />
         <img type='button' id='down<?php echo $row['IdRiga'] ?>' name='down' src="./img/down.png" /></td>
         <td id='total<?php echo $row['IdRiga'] ?>' class="cell_total"><?php echo $row["Quantita"] * $row["Prezzo"]?></td>
         <td id="trash"><img type="button" src="./img/trash.png" id="trash" onclick="window.location.href='deleteRow.php?id=<?php echo $row['IdRiga'] ?>'"/><br>
         </tr>
+        <?php else: $dbh->insertNotify($_SESSION["email"],'The product has been canceled because it is not available!',NULL,NULL,NULL,$row["CodProdotto"]); ?>
+        <?php endif; ?>
         <script type='text/javascript'>
             document.getElementById('up<?php echo $row['IdRiga'] ?>').onclick = function(event){ 
                 max=<?php echo $row["Disponibilita"]?>;
@@ -70,6 +61,15 @@ function updateTotal() {
                         });
                     }   
                 }
+
+                function updateTotal() {
+                    var totalCart = 0;
+                    if ($("input[id^='selected']").filter(":checked").each(function() {
+                        id = $(this).attr('id');
+                        totalCart += parseFloat($('td#total'+ id.substr(8)).first().text());
+                    }));  
+                    $('td#totalCart').text(totalCart+'€');
+            }
         </script>
     <?php endforeach; ?>
     </tbody>
@@ -77,8 +77,8 @@ function updateTotal() {
         <tr>
             <td colspan="2"><button name="checkOut" id="checkOut">CHECK OUT</button></td>
             <td colspan="2">"Just for you" shipping is free</td>
-            <td>TOTAL</td>
-            <td colspan="2" id='totalCart'>Funzione in js per calcolo totale, solo selezionate</td>
+            <td class="titleTotal">TOTAL</td>
+            <td colspan="2" class="cell_totalCart" id='totalCart'>0€</td>
         </tr>
     </tfoot>
     <?php endif; ?>
