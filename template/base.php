@@ -20,10 +20,10 @@
         <?php 
         if(isset($_SESSION['email'])){
             echo '<img src="'.IMG_DIR.'logout.png" alt="Log-out" onclick="logout()"/>';
-            echo '<img src="'.IMG_DIR.'notifica0.jpg" alt="Pannello Notifiche" onclick="window.location.href='."'index_notify.php'".'"/>';
+            echo '<img src="'.IMG_DIR.'notifica0.png" alt="Pannello Notifiche" onclick="window.location.href='."'index_notify.php'".'"/>';
         } else {
             echo '<img src="'.IMG_DIR.'account.png" alt="Log-in" onclick="window.location.href='."'index_login.php'".'"/>';
-            echo '<img src="'.IMG_DIR.'notifica0.jpg" alt="Pannello Notifiche" onclick="window.location.href='."'index_login.php'".'"/>';
+            echo '<img src="'.IMG_DIR.'notifica0.png" alt="Pannello Notifiche" onclick="window.location.href='."'index_login.php'".'"/>';
         }
         if($dbh->checkSeller()){
             echo '<img src="'.IMG_DIR.'add.png" alt="Add product" onclick="window.location.href='."'index_gestione_product.php?action=1'".'"/>';
