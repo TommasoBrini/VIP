@@ -1,3 +1,15 @@
+<script type="text/javascript">
+function updateTotal() {
+        var totalCart = 0;
+        if ($("input[id^='selected']").filter(":checked").each(function() {
+            id = $(this).attr('id');
+            console.log(this);
+            console.log(id);
+            totalCart += parseFloat($('td#total'+ id.substr(8)).first().text());
+        }));  
+        $('td#totalCart').text(totalCart);
+}
+</script>
 <h1>CART</h1>
 <table>
     <?php if($templateParams["orderExist"]==0): ?>
@@ -17,17 +29,7 @@
     <tbody>
     <?php foreach($templateParams["rows"] as $row): ?>
         <tr class="border_bottom">
-        <td id="selected" class="cell_selected"><input type='checkbox' id='selected<?php echo $row['IdRiga'] ?>' onclick="updateTotal($(this))"></td>
-        <script>
-            function updateTotal(row) {
-                var totalCart;
-                if (row.is(':checked')) {
-                    totalCart+= $('td#total<?php echo $row['IdRiga'] ?>').value;
-                    print = '<?php echo '<td colspan="2" id="totalCart">' ?>'+ totalCart +'<?php echo '</td>' ?>';
-                    $('td#totalCart').replaceWith(print);
-                }
-            }
-        </script>
+        <td class="cell_selected"><input type='checkbox' id='selected<?php echo $row['IdRiga'] ?>' onclick="updateTotal()"></td>
         <td id="photo" class="cell_photo"><img class="flex" src="<?php echo UPLOAD_DIR.$row["Immagine"];?>"/></td>
         <td id="name" class="cell_name"><?php echo $row["Nome"]?></td>
         <td id="unitPrice" class="cell_unitPrice"><?php echo $row["Prezzo"]?></td>
