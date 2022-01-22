@@ -112,7 +112,7 @@ alter table NOTIFICA add constraint FKriferito1
 
 alter table NOTIFICA add constraint FKriferito2
      foreign key (IdAsta)
-     references ASTA (IdAsta);
+     references PRODOTTO (IDProdotto);
 
 alter table NOTIFICA add constraint GRNOTIFICA
      check((IdAsta is not null and IdOrdine is null and IDProdotto is null)

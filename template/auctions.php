@@ -21,10 +21,13 @@
                 $vincitore = $dbh->setWinner($asta["IdAsta"]);
                 if($vincitore != NULL){
                     $asta["CodVincitore"]=$vincitore;
+                    $dbh -> insertNotify($vincitore, winnerMessage($asta['Nome'], $asta['quantita']), $asta['IDProdotto'], NULL, NULL, NULL);
+                } else {
+
                 }
             }
             if($endDate->getTimeStamp() > $oneWeekAgo->getTimeStamp()){
-                if(((isset($_SESSION["email"]) ? $asta["CodVincitore"] == $_SESSION["email"] : FALSE)) || ($asta['CodVincitore'] == NULL && $dbh->checkSeller())){
+                if(isset($_SESSION["email"]) && $asta["CodVincitore"] == $_SESSION["email"]){
                     require($templateParams["auctionWin"]);
                 } else {
                     require($templateParams["auctionLose"]);
