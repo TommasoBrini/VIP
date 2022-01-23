@@ -22,7 +22,9 @@ $templateParams["slider"] = FALSE;
 $templateParams["notify"] = "auctionNotify.php";
 $templateParams["loadNotify"] = "./js/checkNewNotify.php";
 $templateParams["checkNotify"] = "./ajax/newNotify.php";
-
+$templateParams["confirmAddCart"] = "ajax/addCart.php";
+$templateParams["addCart"] = "js/addCart.php";
+$templateParams["back"] = "ajax/backProduct.php";
 
 $check=count($dbh->checkProduct($_GET["id"]));
 if($check == 0){
@@ -35,6 +37,7 @@ $risultato = $dbh->getProductById($_GET["id"], $check);
 foreach($risultato as $ris):
     $templateParams["prodotto"] = $ris;
 endforeach;
+
 
 require("template/base.php");
 ?>

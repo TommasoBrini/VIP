@@ -28,7 +28,7 @@
             </li>
             <li>
                 <?php if($check): ?>
-                <button type="button" onclick="window.location.href='index_cart.php'">ADD CART</button>
+                <button id="addCart<?php echo $prodotto['IDProdotto']?>">ADD CART</button>
                 <?php else: ?>
                 <button type="button"><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?></button>
                 <?php endif; ?>
@@ -72,12 +72,15 @@
     <?php endif; ?>
 
     <?php 
-    if($prodotto['CodVincitore'] == NULL){
-        $asta=$prodotto;
-        require($templateParams["timer"]);
-    }
-    ?>
-    <?php
+    if($check){
+        $product = $prodotto;
+        require($templateParams['addCart']);
+    } else {
+        if($prodotto['CodVincitore'] == NULL){
+            $asta=$prodotto;
+            require($templateParams["timer"]);
+        }
         require($templateParams['loadNotify']);
+    }
     ?>
 </form>

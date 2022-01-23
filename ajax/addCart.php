@@ -5,5 +5,5 @@
     $quantity = $_POST['addCart'];
 
     $dbh->addCart($id, $quantity, $_SESSION['email']);
-    header("Location: ../index_products.php");
+    header("Location: ../index_cart.php");
 ?>
