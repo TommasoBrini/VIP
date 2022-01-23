@@ -19,7 +19,9 @@ $templateParams["nome"] = "single_product.php";
 $templateParams["bg"] = "white";
 $templateParams["css"] = "./css/styleSingleProduct.css";
 $templateParams["slider"] = FALSE;
-
+$templateParams["notify"] = "auctionNotify.php";
+$templateParams["loadNotify"] = "./js/checkNewNotify.php";
+$templateParams["checkNotify"] = "./ajax/newNotify.php";
 
 
 $check=count($dbh->checkProduct($_GET["id"]));

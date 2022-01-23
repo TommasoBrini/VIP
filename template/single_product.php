@@ -15,7 +15,7 @@
                 <?php if($check): ?>
                 <button disabled><?php echo number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?> </button>
                 <?php else: ?>
-                <button disabled><?php echo number_format($prodotto["Base_asta"], 0, ",", ".")." €"; ?></button>
+                <button id="price" disabled><?php echo number_format($prodotto["Base_asta"], 0, ",", ".")." €"; ?></button>
                 <?php endif; ?>
             </li>            
             <li>
@@ -53,16 +53,9 @@
             <th> </th>
         </tr>
     </thead>
-    <tbody>
-     <!-- foreach per tutte le puntate -->
-        <?php foreach($dbh->getBidsOfAuction($dbh->getAuctionFromProduct($prodotto['IDProdotto'])) as $bid): ?>
-            <tr class="border_bottom">
-                <td id="data" class="cell_date"><?php echo date('m/d/Y H:i:s', $bid['TimeStamp']) ?></td>
-                <td id="utente" class="cell_testo"><?php echo isset($_SESSION['email']) && $_SESSION['email'] == $bid['CodCliente'] ? "YOU" : preg_replace('/[^@]+@([^\s]+)/', '***@$1', $bid['CodCliente']) ?></td>
-                <td id="testo" class="cell_date"><?php echo $bid['Notifica'] ?></td>
-                <td id="puntata" class="cell_testo"><?php echo number_format($bid['quantita'], 0, ",", ".") ?></td>
-            </tr>
-        <?php endforeach; ?>
+    <tbody id="notify">
+        <?php $notificationNumber = 0; 
+        require($templateParams["notify"]) ?>
     </tbody>
     </table>
     </section>
@@ -83,5 +76,8 @@
         $asta=$prodotto;
         require($templateParams["timer"]);
     }
+    ?>
+    <?php
+        require($templateParams['loadNotify']);
     ?>
 </form>

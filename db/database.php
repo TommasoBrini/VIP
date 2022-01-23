@@ -393,8 +393,16 @@
             $stmt -> execute();
         }
 
-
-
+        public function getNumberOfBids($auctionId){
+            $query = "SELECT COUNT(*) AS numRows FROM puntata WHERE IdAsta = ".$auctionId." GROUP BY IdAsta";
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $cont) {
+                return $cont['numRows'];
+            }
+        }
+        
         //End
         //Cart
 
