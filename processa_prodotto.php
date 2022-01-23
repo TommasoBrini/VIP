@@ -17,7 +17,7 @@ if($_POST["azione"]==1){
     list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["Immagine"]);
 
     if($nomeProdotto=="" || $descrizione=="" || $descrizioneBreve=="" || $prezzo=="" || ($baseAsta=="" && $disponibilità=="")){
-        $mex="Inserire tutti i campi";
+        $mex="Enter all values";
         header("location: index_gestione_product.php?action=1&$mex");
     } else {
         if(isset($_POST["checkbox"])){
@@ -31,12 +31,12 @@ if($_POST["azione"]==1){
             $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg);
         }
         if($id!=false){
-            $dbh->insertNotify($_SESSION["email"], "Il tuo prodotto è stato inserito correttamente!", null, null, null, $id);
-            echoMessage("Il tuo prodotto è stato inserito!", "index_products.php");
+            $dbh->insertNotify($_SESSION["email"], "You have uploaded your product correctly!", null, null, null, $id);
+            echoMessage("Your product has been uploaded!", "index_products.php");
 
         }
         else{
-            echoMessage("OPS! Qualcosa è andato storto", "index_products.php");
+            echoMessage("OPS! Something went wrong!", "index_products.php");
         }
     }
 }
@@ -61,7 +61,7 @@ if($_POST["azione"]==2){
     
     $check=count($dbh->checkProduct($id));
     $dbh->updateProduct($id, $nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg, $check);
-    echoMessage("Modifica effettuata con successo!", "index_products.php");
+    echoMessage("Edit successful!", "index_products.php");
 }
 
 //CANCELLAZIONE
@@ -69,7 +69,7 @@ if($_POST["azione"]==3){
     $id = $_POST["id"];
     $check=count($dbh->checkProduct($id));
     $bol = $dbh->deleteProduct($id, $check);
-    echoMessage("Il tuo prodotto è stato eliminato!", "index_products.php");
+    echoMessage("Your product has been deleted!", "index_products.php");
 }
 
 ?>

@@ -360,6 +360,22 @@
             $stmt->execute();
         }
 
+        public function getNotifyDaVisualizzare(){
+            $query = "SELECT * FROM notifica N WHERE N.Email = ? AND N.Visualizzata=0 ORDER BY TimeStamp";
+            $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$_SESSION['email']);
+            $stmt -> execute();
+            $result = $stmt -> get_result();
+            return $result -> fetch_All(MYSQLI_ASSOC);
+        }
+
+        public function visualizzaNotify(){
+            $query = "UPDATE notifica SET Visualizzata = 1";
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+        }
+
+
 
         //End
         //Cart

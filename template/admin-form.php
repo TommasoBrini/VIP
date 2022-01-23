@@ -53,11 +53,11 @@
                     ?>/>
                 </li>
                 <li>
-                    <label for="Disponibilita">Disponibilità:</label><input type="number" id="Disponibilita" name="Disponibilita" value="<?php echo floatval($prodotto["Disponibilita"]); ?>"/>
+                    <label for="Disponibilita">Avaiable:</label><input type="number" id="Disponibilita" name="Disponibilita" value="<?php echo floatval($prodotto["Disponibilita"]); ?>"/>
                 </li>
                 <li>
                     <?php if($templateParams["azione"]!=3): ?>
-                    <label for="Immagine">Immagine Prodotto:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" value="<?php echo $prodotto["Immagine"] ?>" 
+                    <label for="Immagine">Product's Image:</label><input type="file" id="Immagine" name="Immagine" accept="image/png , image/jpeg" value="<?php echo $prodotto["Immagine"] ?>" 
                     <?php if($templateParams["azione"]!=2){
                         echo "required='required'";
                     }
@@ -68,14 +68,14 @@
                     <?php if($templateParams["azione"]!=1): ?>
                         <img src="<?php echo UPLOAD_DIR.$prodotto["Immagine"];?>" id="imgshow" alt="prodotto"/>
                     <?php else: ?>
-                    <img src="./img/account.png" id="imgshow" alt="prodotto"/>
+                    <img src="./img/add.png" id="imgshow" alt="prodotto"/>
                     <?php endif; ?>
                 </li>
                 <li>
-                    <label for="Descrizione">Descrizione:</label><textarea type="text" id="Descrizione" name="Descrizione" required="required"><?php echo $prodotto["Descrizione"]; ?></textarea>
+                    <label for="Descrizione">Description:</label><textarea type="text" id="Descrizione" name="Descrizione" required="required"><?php echo $prodotto["Descrizione"]; ?></textarea>
                 </li>
                 <li>
-                    <label for="DescrizioneBreve">Descrizione Breve:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve" required="required"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
+                    <label for="DescrizioneBreve">Short Description:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve" required="required"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
                 </li>
                 <li>
                     <input type="submit" id="insert" name="insert" value="<?php echo $azione; ?>"/>

@@ -8,5 +8,10 @@
     $templateParams['doLogout'] = "ajax/logout.php";
     $templateParams['logout'] = "js/logout.php";
     $templateParams["timer"] = "js/timer.php";
-    
+    $notify=$dbh->getNotifyDaVisualizzare();
+    if(count($notify)==0){
+        $templateParams["notifica"]=false;
+    } else {
+        $templateParams["notifica"]=true;
+    }
 ?>

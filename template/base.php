@@ -20,7 +20,12 @@
         <?php 
         if(isset($_SESSION['email'])){
             echo '<img src="'.IMG_DIR.'logout.png" alt="Log-out" onclick="logout()"/>';
-            echo '<img src="'.IMG_DIR.'notifica0.png" alt="Pannello Notifiche" onclick="window.location.href='."'index_notify.php'".'"/>';
+            if(!$templateParams["notifica"]){
+                echo '<img src="'.IMG_DIR.'notifica0.png" alt="Pannello Notifiche" onclick="window.location.href='."'index_notify.php'".'"/>';
+            } else{
+                echo '<img src="'.IMG_DIR.'notifica1.png" alt="Pannello Notifiche" onclick="window.location.href='."'index_notify.php'".'"/>';
+            }
+            
         } else {
             echo '<img src="'.IMG_DIR.'account.png" alt="Log-in" onclick="window.location.href='."'index_login.php'".'"/>';
             echo '<img src="'.IMG_DIR.'notifica0.png" alt="Pannello Notifiche" onclick="window.location.href='."'index_login.php'".'"/>';

@@ -8,13 +8,13 @@ function getAction($action){
     $result = "";
     switch($action){
         case 1:
-            $result = "Inserisci";
+            $result = "Insert";
             break;
         case 2:
-            $result = "Modifica";
+            $result = "Update";
             break;
         case 3:
-            $result = "Cancella";
+            $result = "Delete";
             break;
     }
 

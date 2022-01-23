@@ -1,7 +1,7 @@
 <h1>NEWS</h1>
 <table>
     <?php if(isset($templateParams["NoNews"])): ?>
-        <p class="noOrder">Non hai news da leggere. Continua a fare acquisti sul nostro sito, a più tardi!</p>
+        <p class="noOrder">You have no news to read. Keep shopping on our site, see you later!</p>
     <?php else: ?>
     <thead>
         <tr>
@@ -21,7 +21,7 @@
                         echo $news["IdAsta"];
                     } else {
                         echo $news["IDProdotto"];
-                    }?>">VEDI PRODOTTO</a>
+                    }?>">PRODUCT INFO</a>
                 <?php } else{ 
                     echo $news["TotaleOrdine"]."€";
                 }
