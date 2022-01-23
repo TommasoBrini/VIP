@@ -7,7 +7,9 @@ if(!isset($_GET["id"])){
 
 if(isUserLoggedIn()){
     $result = $dbh->checkSeller();
-    $templateParams["venditore"]=$result;
+    if($result){
+        $templateParams["venditore"]=$result;
+    }
 } else {
     $templateParams["js"] = "./js/single_product.js";
 }
