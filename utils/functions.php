@@ -191,6 +191,10 @@ function buyNowMessage($productName, $price){
     return "You finished the auction by buying '".$productName."' for ".number_format($price, 0, ",", ".")." €.";
 }
 
+function endedWithoutBidMessage($productName){
+    return "The '".$productName."' auction ended without bids";
+}
+
 function buyMessage(){
     return "Buy Now";
 }

@@ -61,6 +61,24 @@
             }
         }
 
+        function getBidsOfAuction($auctionId){
+            $query = "SELECT * FROM puntata p WHERE IdAsta = ".$auctionId." ORDER BY quantita DESC";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            return $result;
+        }
+
+        function getAuctionFromProduct($productId){
+            $query = "SELECT IdAsta FROM asta WHERE CodProdotto = ".$productId;
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $res){
+                return $res['IdAsta'];
+            }
+        }
+
         public function setWinner($auctionId){
             $query = "SELECT * FROM puntata WHERE IdAsta=".$auctionId." ORDER BY quantita DESC LIMIT 1";
             $stmt = $this->db->prepare($query);
@@ -380,6 +398,17 @@
 
         //End Notifications 
 
+        public function getNumberOfBids($auctionId){
+            $query = "SELECT COUNT(*) AS numRows FROM puntata WHERE IdAsta = ".$auctionId." GROUP BY IdAsta";
+            $stmt = $this -> db -> prepare($query);
+            $stmt -> execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach($result as $cont) {
+                return $cont['numRows'];
+            }
+        }
+        
+        //End
         //Cart
 
         public function getRows(){

@@ -13,9 +13,9 @@
             </li>
             <li>
                 <?php if($check): ?>
-                <button disabled><?php echo number_format($prodotto["Prezzo"])."€"; ?> </button>
+                <button disabled><?php echo number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?> </button>
                 <?php else: ?>
-                <button disabled><?php echo number_format($prodotto["Base_asta"])."€"; ?></button>
+                <button id="price" disabled><?php echo number_format($prodotto["Base_asta"], 0, ",", ".")." €"; ?></button>
                 <?php endif; ?>
             </li>            
             <li>
@@ -28,9 +28,9 @@
             </li>
             <li>
                 <?php if($check): ?>
-                <button type="button" onclick="window.location.href='index_cart.php'">ADD CART</button>
+                <button id="addCart<?php echo $prodotto['IDProdotto']?>">ADD CART</button>
                 <?php else: ?>
-                <button type="button"><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"]); ?></button>
+                <button type="button"><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?></button>
                 <?php endif; ?>
             </li>
         </ul>
@@ -53,14 +53,9 @@
             <th> </th>
         </tr>
     </thead>
-    <tbody>
-     <!-- foreach per tutte le puntate -->
-        <tr class="border_bottom">
-            <td id="data" class="cell_date">PROVA</td>
-            <td id="utente" class="cell_testo">PROVA</td>
-            <td id="testo" class="cell_date">PROVA</td>
-            <td id="puntata" class="cell_testo">PROVA</td>
-        </tr>
+    <tbody id="notify">
+        <?php $notificationNumber = 0; 
+        require($templateParams["notify"]) ?>
     </tbody>
     </table>
     </section>
@@ -77,7 +72,15 @@
     <?php endif; ?>
 
     <?php 
-    $asta=$prodotto;
-    require($templateParams["timer"]);
+    if($check){
+        $product = $prodotto;
+        require($templateParams['addCart']);
+    } else {
+        if($prodotto['CodVincitore'] == NULL){
+            $asta=$prodotto;
+            require($templateParams["timer"]);
+        }
+        require($templateParams['loadNotify']);
+    }
     ?>
 </form>
