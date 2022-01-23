@@ -276,6 +276,12 @@ body > main.products > div.product > div.topright > textarea.description{
 /*******/
 /*ADMIN FORM*/
 /*******/
+p{
+    color: #FFBF49;
+    width: 100%;
+    font-size: large;
+}
+
 main > form > h2 {
     text-align: center;
 }
