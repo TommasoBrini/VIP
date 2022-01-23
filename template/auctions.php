@@ -23,7 +23,7 @@
                     $asta["CodVincitore"]=$vincitore;
                     $dbh -> insertNotify($vincitore, winnerMessage($asta['Nome'], $asta['quantita']), $asta['IDProdotto'], NULL, NULL, NULL);
                 } else {
-
+                    $dbh -> insertNotify($dbh->getSeller(), endedWithoutBidMessage($asta['Nome']), $asta['IDProdotto'], NULL, NULL, NULL);
                 }
             }
             if($endDate->getTimeStamp() > $oneWeekAgo->getTimeStamp()){
