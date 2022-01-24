@@ -12,24 +12,6 @@ body.black{
 }
 
 /********/
-/*HEADER*/
-/********/
-header > img{
-    height: 100px;
-}
-
-header {
-    display: inline-block;
-}
-
-header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
-    padding: 15px;
-    max-height: 70px;
-    float: right;
-
-}
-
-/********/
 /*SLIDER*/
 /********/
 header > div.slider {
@@ -61,31 +43,6 @@ header > div.slider > button.unset{
 /******/
 body > main.products {
     text-align: center;
-}
-
-/*************/
-/*DIV_PRODUCT*/
-/*************/
-body > main.products > div {
-    margin: 1%;
-    width: 200px;
-    height: 250px;
-    background-color: #303030;
-    border-radius: 5px;
-    vertical-align: middle;
-    display: inline-block;
-}
-
-/********/
-/*HEADER*/
-/********/
-body > main.products > div > header {
-    margin: 2.5% 5% 0 5%;
-    width: 90%;
-    height: 14%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 
@@ -253,9 +210,8 @@ body > main.products > div.auction > div.topright > textarea.description{
     padding: 0px;
     border: 0px;
     background-color: #303030;
-    resize: none;
-    font-size: 53%;
     color: #FFBF49;
+    resize: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -269,8 +225,9 @@ body > main.products > div.product > div.topright > textarea.description{
     margin: 7% 25% 7% 5%;
     padding: 0px;
     border: 0px;
+    background-color: #303030;
+    color: #FFBF49;
     resize: none;
-    font-size: 50%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -337,7 +294,7 @@ form > ul > li > img{
 /********/
 header, footer{
     width: 100%;
-    height: 10%;
+    height: 3%;
     background-color: #303030;
 }
 
@@ -347,17 +304,135 @@ footer > h3 {
     text-align: center;
 }
 
+
 /***************/
-/*SCHERMO MEDIO*/
+/*SCHERMO PICCOLO*/
+/*****************/
+/********/
+/*HEADER*/
+/********/
+header > img{
+    height: 50px;
+}
+
+header {
+    display: inline-block;
+}
+
+header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
+    height: 30px;
+    padding: 10px;
+    float: right;
+}
+
+/*************/
+/*DIV_PRODUCT*/
+/*************/
+body > main.products > div {
+    margin: 1%;
+    height: 350px;
+    width: 280px;
+    background-color: #303030;
+    border-radius: 5px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/********/
+/*HEADER*/
+/********/
+body > main.products > div > header {
+    margin: 1% 5% 0 5%;
+    width: 90%;
+    height: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body > main.products > div  button, body > main.products > div.auction > select.raise, body > main.products > div > header > label , body > main.products > div > div.topright > textarea{
+        font-size: medium;
+}
+
+
+/*GRANDE*/
+@media screen and (min-width: 900px){
+    header {
+        width: 100%;
+        height: 3%;
+    }
+    
+    header > img{
+        height: 100px;
+    }
+    
+    header {
+        display: inline-block;
+    }
+    
+    header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
+        padding: 15px;
+        height: 70px;
+        float: right;
+    
+    }
+
+    body > main.products > div > header {
+        margin: 2.5% 5% 0 5%;
+    }
+
+    body > main.products > div {
+            height: 250px;
+            width: 200px;
+        }
+
+    body > main.products > div  button, body > main.products > div.auction > select.raise, body > main.products > div > header > label , body > main.products > div > div.topright > textarea{
+        font-size: small;
+    }
+}
+
+/*MEDIO GRANDE*/
+@media screen and (min-width: 550px) and (max-width: 899px) {
+    header {
+        width: 100%;
+        height: 3%;
+    }
+    
+    header > img{
+    	height: 80px;
+    }
+    
+    header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
+        padding: 15px;
+        height: 50px;
+        float: right;
+    }
+
+    body > main.products > div > header {
+    margin: 2.5% 5% 0 5%;
+    }
+
+    body > main.products > div {
+        height: 200px;
+    	width: 160px;
+    }
+    
+    body > main.products > div  button, body > main.products > div.auction > select.raise, body > main.products > div > header > label , body > main.products > div > div.topright > textarea{
+        font-size: x-small;
+    }
+}
+
 /***************/
-@media screen and (max-width: 550px) {
+/*MEDIO PICCOLO*/
+/***************/
+@media screen and (min-width: 380px) and (max-width: 549px) {
     header {
         width: 100%;
         height: 3%;
         background-color: #303030;
     }
     
-    header > img{
+    header > img:nth-child(1){
         height: 60px;
     }
     
@@ -365,9 +440,9 @@ footer > h3 {
         display: inline-block;
     }
     
-    header > img:nth-child(2), header > img:nth-child(3){
-        padding: 8px;
-        height: 44px;
+    header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
+        padding: 10px;
+        height: 40px;
         float: right;
     
     }
@@ -376,52 +451,9 @@ footer > h3 {
         margin: 1%;
         width: 175px;
         height: 225px;
-        background-color: #303030;
-        border-radius: 5px;
-        vertical-align: middle;
     }
 
-    body > main.products > div > button, body > main.products > div.auction > select.raise, body > main.products > div > header > label {
-        font-size: xx-small;
-    }
-}
-
-@media screen and (max-width: 380px) {
-    header {
-        width: 100%;
-        height: 3%;
-        background-color: #303030;
-    }
-    
-    header > img{
-        height: 50px;
-        padding: 8px;
-    }
-    
-    header {
-        display: inline-block;
-    }
-    
-    header > img:nth-child(2), header > img:nth-child(3){
-        height: 44px;
-        float: right;
-    
-    }
-
-    body > main.products > div > header {
-        margin: 1% 5% 0 5%;
-    }
-
-    body > main.products > div {
-        margin: 1%;
-        height: 280px;
-        width: 95%;
-        background-color: #303030;
-        border-radius: 5px;
-        vertical-align: middle;
-    }
-
-    body > main.products > div > button, body > main.products > div.auction > select.raise, body > main.products > div > header > label {
-        font-size: xx-small;
+    body > main.products > div  button, body > main.products > div.auction > select.raise, body > main.products > div > header > label , body > main.products > div > div.topright > textarea{
+        font-size: x-small;
     }
 }
