@@ -28,7 +28,9 @@
             </li>
             <li>
                 <?php if($check): ?>
-                <button id="addCart<?php echo $prodotto['IDProdotto']?>">ADD CART</button>
+                <button id="addCart<?php echo $prodotto['IDProdotto']?>" <?php if(isset($templateParams["venditore"])) {
+                    echo "disabled"; 
+                } ?> >ADD CART</button>
                 <?php else: ?>
                 <button type="button"><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?></button>
                 <?php endif; ?>

@@ -365,7 +365,7 @@
         //Notifications
 
         public function getNotify(){
-            $query = "SELECT * FROM notifica N WHERE N.Email = ? ORDER BY TimeStamp";
+            $query = "SELECT * FROM notifica N WHERE N.Email = ? ORDER BY TimeStamp DESC";
             $stmt = $this -> db -> prepare($query);
             $stmt->bind_param('s',$_SESSION['email']);
             $stmt -> execute();
@@ -391,8 +391,9 @@
         }
 
         public function visualizzaNotify(){
-            $query = "UPDATE notifica SET Visualizzata = 1";
+            $query = "UPDATE notifica SET Visualizzata = 1 WHERE Email = ?";
             $stmt = $this -> db -> prepare($query);
+            $stmt->bind_param('s',$_SESSION['email']);
             $stmt -> execute();
         }
 
@@ -457,58 +458,64 @@
             $stmt -> execute();
         }
 
-        public function createNewOrder() {
-            $query = "INSERT INTO ordine (Pagato, CodCliente) VALUES (?,?)";
+        public function checkOut($idOrdine,$prodottiOut,$prodottiIn){
+            $query = "UPDATE ordine SET Pagato = 1 WHERE IdOrdine = ?";
             $stmt = $this -> db -> prepare($query);
-            $value = 0;
-            $email = $_SESSION['email'];
-            $stmt->bind_param('is', $value, $email);
+            $stmt->bind_param('i', $idOrdine);
             $stmt->execute();
+            $newOrder=$this->getLastOrder($_SESSION['email']);
+            foreach($prodottiOut as $product) {
+                $this->updateRow($newOrder,$product);
+            }
+            foreach($prodottiIn as $product) {
+                $query="SELECT CodProdotto, Quantita FROM riga WHERE IdRiga= ?";
+                $stmt = $this -> db -> prepare($query);
+                $stmt->bind_param('i', $product);
+                $stmt->execute();
+                $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+                foreach($result as $res){
+                    $query = "SELECT Disponibilita FROM prodotto WHERE IDProdotto = ?";
+                    $stmt = $this -> db -> prepare($query);
+                    $stmt->bind_param('i', $res['CodProdotto']);
+                    $stmt->execute();
+                    $resultBis = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+                    foreach($resultBis as $disp) {
+                        if ($res['Quantita'] <= $disp['Disponibilita']) {
+                            $this->updateQuantityAvailableProduct($res['CodProdotto'],$disp['Disponibilita']-$res['Quantita']);
+                        }
+                    }
+                }
+            }
+            return $this->totalCart($idOrdine);
         }
 
-        public function getFirstUnpaidOrder() {
-            $query = "SELECT IdOrdine FROM ordine WHERE Pagato = 0 AND CodCliente = ?";
+        public function totalCart($idOrdine) {
+            $query = "SELECT P.Prezzo, R.Quantita FROM riga R, prodotto P WHERE R.CodOrdine = ? AND R.CodProdotto = P.IDProdotto";
             $stmt = $this -> db -> prepare($query);
-            $email = $_SESSION['email'];
-            $stmt->bind_param('s', $email);
+            $stmt->bind_param('i', $idOrdine);
             $stmt->execute();
-            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-            foreach($result as $user){
-                return $user['IdOrdine'];
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            $somma = 0;
+            foreach($result as $total) {
+                $somma += ($total['Quantita']*$total['Prezzo']);
             }
-        }
-
-        public function getSecondUnpaidOrder() {
-            $query = "SELECT IdOrdine FROM ordine WHERE Pagato = 0 AND CodCliente = ? ORDER BY IdOrdine DESC LIMIT 1";
-            $stmt = $this -> db -> prepare($query);
-            $email = $_SESSION['email'];
-            $stmt->bind_param('s', $email);
-            $stmt->execute();
-            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-            foreach($result as $user){
-                return $user['IdOrdine'];
-            }
+            return $somma;
         }
 
         public function updateRow($newOrder, $idRow) {
-            $query = "UPDATE riga SET CodOrdine = ? WHERE IdRiga IN (?)";
+            $query = "UPDATE riga SET CodOrdine = ? WHERE IdRiga = ?";
             $stmt = $this -> db -> prepare($query);
             $stmt->bind_param('ii', $newOrder, $idRow);
             $stmt->execute();
         }
 
-        public function updateOrder($idOrder) {
-            $query = "UPDATE ordine SET Pagato = 1 WHERE IdOrdine IN (?)";
-            $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('i', $newOrder);
-            $stmt->execute();
-        }
-
         public function updateQuantityAvailableProduct($idProduct, $quantity) {
-            $query = "UPDATE prodotto SET Quantita = ?  WHERE IDProdotto IN (?)";
+            $query = "UPDATE prodotto SET Disponibilita = ".$quantity."  WHERE IDProdotto = ".$idProduct."";
             $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('ii', $idProduct, $quantity);
             $stmt->execute();
+            if ($quantity == 0) {
+                $this->insertNotify($this->getSeller(),"The product is finished!", NULL, NULL, NULL, $idProduct);
+            }
         }
 
          //End Cart
