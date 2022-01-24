@@ -51,7 +51,7 @@
         ?>
     </main>
     <footer>
-        <h3><?php echo isset($_SESSION["email"]) ? $_SESSION["email"] : "Registrati o accedi per poter acquistare o rilanciare.";?></h3>
+        <h3><?php echo isset($_SESSION["email"]) ? $_SESSION["email"] : "Register or login to buy or raise.";?></h3>
     </footer>
     <?php require($templateParams["logout"]);?>
 </body>
