@@ -22,7 +22,7 @@ header {
     display: inline-block;
 }
 
-header > img:nth-child(2), header > img:nth-child(3){
+header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4) {
     padding: 15px;
     max-height: 70px;
     float: right;
@@ -165,7 +165,8 @@ td.cell_trash {
 }
 
 .flex {
-    max-width: 20%;
+    max-width: 60px;
+    max-height: 50px;
     margin-top:2%;
 }
 
