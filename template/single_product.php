@@ -28,7 +28,7 @@
             </li>
             <li>
                 <?php if($check): ?>
-                <button id="addCart<?php echo $prodotto['IDProdotto']?>" <?php if(isset($templateParams["venditore"])) {
+                <button type="button" id="addCart<?php echo $prodotto['IDProdotto']?>" <?php if(isset($templateParams["venditore"]) || !isset($templateParams["loggato"])) {
                     echo "disabled"; 
                 } ?> >ADD CART</button>
                 <?php else: ?>
