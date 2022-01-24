@@ -49,6 +49,7 @@
                         });
 
                 }
+                updateTotal();
             }
             document.getElementById('down<?php echo $row['IdRiga'] ?>').onclick = function(event){  
                 if( document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value > 1) {
@@ -62,7 +63,8 @@
                             url: "<?php echo $templateParams['updateQuantity']?>?idRiga=" + <?php echo $row['IdRiga'] ?> + "&quantity=" + document.getElementById('quantity<?php echo $row['IdRiga'] ?>').value
                         }).done(function( msg ) {
                         });
-                    }   
+                    }
+                updateTotal();   
             }
         </script>
     <?php endforeach; ?>
