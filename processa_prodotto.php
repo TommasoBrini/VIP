@@ -27,11 +27,12 @@ if($_POST["azione"]==1){
             $dataFine = getAnnoMeseGiorno($fine["date"]);
             $oraFine = $fine["time"];
             $id = $dbh->insertAuction($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $baseAsta, $oraInizio, $dataInizio["anno"], $dataInizio["mese"], $dataInizio["giorno"], $oraFine, $dataFine["anno"], $dataFine["mese"], $dataFine["giorno"], $msg);
-        } else {
+            $dbh->insertNotify($_SESSION["email"], "You have uploaded your auction correctly!", null, null, null, $id);
+	} else {
             $id = $dbh->insertProduct($nomeProdotto, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $msg);
-        }
-        if($id!=false){
             $dbh->insertNotify($_SESSION["email"], "You have uploaded your product correctly!", null, null, null, $id);
+	}
+        if($id!=false){
             echoMessage("Your product has been uploaded!", "index_products.php");
 
         }
