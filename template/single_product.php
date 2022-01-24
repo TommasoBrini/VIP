@@ -15,7 +15,7 @@
                 <?php if($check): ?>
                 <button disabled><?php echo number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?> </button>
                 <?php else: ?>
-                <button id="price" disabled><?php echo number_format($prodotto["Base_asta"], 0, ",", ".")." €"; ?></button>
+                <button id="price" disabled>BASE PRICE: <?php echo number_format($prodotto["Base_asta"], 0, ",", ".")." €"; ?></button>
                 <?php endif; ?>
             </li>            
             <li>
