@@ -72,10 +72,10 @@
                     <?php endif; ?>
                 </li>
                 <li>
-                    <label for="Descrizione">Description:</label><textarea type="text" id="Descrizione" name="Descrizione" required="required"><?php echo $prodotto["Descrizione"]; ?></textarea>
+                    <label for="Descrizione">Description:</label><textarea id="Descrizione" name="Descrizione" required="required"><?php echo $prodotto["Descrizione"]; ?></textarea>
                 </li>
                 <li>
-                    <label for="DescrizioneBreve">Short Description:</label><textarea type="text" id="DescrizioneBreve" name="DescrizioneBreve" required="required"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
+                    <label for="DescrizioneBreve">Short Description:</label><textarea id="DescrizioneBreve" name="DescrizioneBreve" required="required"><?php echo $prodotto["DescrizioneBreve"]; ?></textarea>
                 </li>
                 <li>
                     <input type="submit" id="insert" name="insert" value="<?php echo $azione; ?>"/>

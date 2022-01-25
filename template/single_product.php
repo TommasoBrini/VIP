@@ -40,13 +40,13 @@
     </section>
     <section id="descrizione">
         <h2>DESCRIPTION</h2>
-        <textarea name="descrizione" id="descrizione" cols="30" rows="10" readonly><?php echo $prodotto["Descrizione"]; ?></textarea>
+        <textarea name="descrizione" id="desc" cols="30" rows="10" readonly><?php echo $prodotto["Descrizione"]; ?></textarea>
     
 
     <?php if(!$check): ?>
     <section>
         <div id='table'>
-    <table id="table">
+    <table id="tab">
     <thead>
         <tr>
             <th id="data">DATE</th>

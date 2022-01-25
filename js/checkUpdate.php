@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
     $( document ).ready(function(){
         var actual = document.getElementById("price<?php echo $asta["IDProdotto"]?>").value;
         var id = <?php echo $asta['IdAsta']?>;

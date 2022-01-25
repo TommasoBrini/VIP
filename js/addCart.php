@@ -1,4 +1,4 @@
-<script type='text/javascript'>
+<script>
         document.getElementById('addCart<?php echo $product["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();

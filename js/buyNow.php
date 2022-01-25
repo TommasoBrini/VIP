@@ -1,4 +1,4 @@
-<script type='text/javascript'>
+<script>
         document.getElementById('buyNow<?php echo $asta["IDProdotto"]?>').onclick = function(event) {
             if (!event) event = window.event;
             event.stopPropagation();

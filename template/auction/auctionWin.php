@@ -1,6 +1,6 @@
 <div id='auction<?php echo $asta['IdAsta']?>' class='auction win'  onclick="<?php echo "window.location.href='index_single_product.php?id=".$asta["IDProdotto"]."'"; ?>">
     <header>
-        <label for="title"><?php echo $asta["Nome"]?></label>
+        <label><?php echo $asta["Nome"]?></label>
     </header>
     <img class='img' src="<?php echo UPLOAD_DIR.$asta["Immagine"];?>" alt='product photo'/>
     <div class='topright'>

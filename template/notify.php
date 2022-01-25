@@ -1,8 +1,8 @@
 <h1>NEWS</h1>
-<table>
     <?php if(isset($templateParams["NoNews"])): ?>
         <p class="noOrder">You have no news to read. Keep shopping on our site, see you later!</p>
     <?php else: ?>
+<table>
     <thead>
         <tr>
             <th id="date">DATE</th>
@@ -30,6 +30,7 @@
         </tr>
     <?php endforeach; ?>
     </tbody>
+    </table>
     <?php endif; ?>
-</table>
+
 

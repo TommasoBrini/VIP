@@ -9,7 +9,7 @@
         <li>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Password"/>
-            <img type="button" src="./img/eye.png" id="showHidePwd"/>
+            <img type="button" alt="Show or hide password" src="./img/eye.png" id="showHidePwd"/>
         </li>
     </ul>
     <button type="submit" name="login" id="login">LOGIN</button>

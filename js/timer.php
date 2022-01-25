@@ -1,4 +1,4 @@
-<script type='text/javascript'>
+<script>
     $( document ).ready(function(){
         var startDate = new Date("<?php echo getMounth($asta["MeseInizio"])." ".$asta["GiornoInizio"].", ".$asta["AnnoInizio"]." ".$asta["OraInizio"].":00" ?>").getTime();
         

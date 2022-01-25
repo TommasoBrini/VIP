@@ -1,5 +1,5 @@
 <button class="<?php 
-    if($templateParams["class1"]){
+    if($templateParams["class1"]) {
         echo "selected";   
     } else {
         echo "unset";

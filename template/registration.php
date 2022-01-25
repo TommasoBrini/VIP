@@ -11,7 +11,7 @@
         </li>
         <li>
             <input type="password" id="password" name="password" placeholder="Password"/>
-            <img type="button" src="./img/eye.png" id="showHidePwd"/><br>
+            <img type="button" alt="show or hide password" src="./img/eye.png" id="showHidePwd"/><br>
         </li>
     </ul>
     <ul>

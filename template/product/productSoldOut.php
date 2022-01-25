@@ -8,5 +8,5 @@
     </div>
     <button class='red'><?php echo number_format($product["Prezzo"]);?> €</button>
     <button class='red'>SOLD OUT</button>
-    <button class='last red'>NOTIFY ME</button>
+    <button class='last red'>PRODUCT INFO</button>
 </div>
