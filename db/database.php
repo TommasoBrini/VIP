@@ -324,7 +324,6 @@
             }        
             if($oldBid){
                 $query = "INSERT INTO puntata (quantita, IdAsta, CodCliente, Notifica, TimeStamp) VALUES ( ".$actual + $bet.", ".$auctionid.", '".$user."', '".(($actual == 0) ? buyMessage($bet) : raiseMessage($bet))."', '".time()."')";
-                echo $query;
                 $stmt = $this->db->prepare($query);
                 $stmt->execute();
                 return true;
@@ -537,7 +536,6 @@
             $query  ="SELECT CodProdotto FROM riga WHERE IdRiga = ".$row;
             $stmt = $this -> db -> prepare($query);
             $stmt->execute();
-            echo $query;
             $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
             foreach ($result as $res){
                 return $res['CodProdotto'];
@@ -548,7 +546,6 @@
             $productId = $this -> getProductFromRow($productRow);
             $query  ="SELECT Nome FROM prodotto WHERE IDProdotto = ".$productId;
             $stmt = $this -> db -> prepare($query);
-            echo $query;
             $stmt->execute();
             $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
             foreach ($result as $res){
@@ -560,7 +557,6 @@
             $query  ="SELECT Quantita FROM riga WHERE IdRiga = ".$product;
             $stmt = $this -> db -> prepare($query);
             $stmt->execute();
-            echo $query;
             $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
             foreach ($result as $res){
                 return $res['Quantita'];

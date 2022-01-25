@@ -18,5 +18,9 @@ require "../bootstrap.php";
         }
         $dbh->insertNotify($email, orderCompleted($productsIn, $idOrdine), NULL, $idOrdine, $somma , NULL);
         $dbh->insertNotify($emailSeller, orderCarriedOut($productsIn, $idOrdine),NULL, $idOrdine, $somma, NULL);
+        echo json_encode(1);
+    } else {
+        echo json_encode(0);
+
     }
 ?>
