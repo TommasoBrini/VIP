@@ -241,12 +241,27 @@
 
         public function deleteProduct($idProdotto, $isAsta){
             if($isAsta>0){
+                $query="DELETE FROM notifica WHERE IdAsta=?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('i',$idProdotto);
+                $stmt->execute();
+                $query="DELETE FROM puntata WHERE IdAsta=?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('i',$idProdotto);
+                $stmt->execute();
                 $query="DELETE FROM asta WHERE asta.CodProdotto=?";
                 $stmt = $this->db->prepare($query);
                 $stmt->bind_param('i',$idProdotto);
                 $stmt->execute();
             }
-            
+            $query="DELETE FROM riga WHERE CodProdotto=?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt->execute();
+            $query="DELETE FROM notifica WHERE IDProdotto=?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i',$idProdotto);
+            $stmt->execute();
             $query="DELETE FROM prodotto WHERE prodotto.IDProdotto=?";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('i',$idProdotto);
