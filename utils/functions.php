@@ -1,5 +1,4 @@
 <?php
-
 function getEmptyProduct(){
     return array("Nome" => null, "Descrizione" => null, "DescrizioneBreve" => null, "Prezzo" => null, "Base_asta" => null, "Disponibilita" => null, "Immagine" => null);
 }
@@ -208,7 +207,32 @@ function unaviableProductMessage($productName){
 }
 
 function unaviableProductSellerMessage($productName){
-    return "The '".$productName"' product is finished."
+    return "The '".$productName."' product is finished.";
 }
+
+function orderCompleted($products, $orderId){
+    $message = "Your order containing:";
+    foreach($products as $prod){
+        $message = $message." ".$prod['quantita']."x '".$prod['nome']."',";
+    }
+    $time = intval(time());
+    $time += 172800;
+    $time = date("Y-m-d", $time);
+    $message = $message." has been successfully placed. Delivery is estimated for ".$time." at the address 'Via dell'Università 50, Cesena (FC), 47522'.";
+    return $message;
+}
+
+function orderCarriedOut($products, $orderId){
+    $message = "Your products:";
+    foreach($products as $prod){
+        $message = $message." ".$prod['quantita']."x '".$prod['nome']."',";
+    }
+    $time = intval(time());
+    $time += 172800;
+    $time = date("Y-m-d", $time);
+    $message = $message." has been sold. Ship the products to the following address: 'Via dell'Università 50, Cesena (FC), 47522'.";
+    return $message;
+}
+
 ?>
 

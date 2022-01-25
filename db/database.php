@@ -459,10 +459,9 @@
         }
 
         public function checkOut($idOrdine,$prodottiOut,$prodottiIn){
-            $query = "UPDATE ordine SET Pagato = 1, Data = ? WHERE IdOrdine = ?";
+            $query = "UPDATE ordine SET Pagato = 1 WHERE IdOrdine = ?";
             $stmt = $this -> db -> prepare($query);
-            $timestamp = time();
-            $stmt->bind_param('si', $timestamp, $idOrdine);
+            $stmt->bind_param('i', $idOrdine);
             $stmt->execute();
             $newOrder=$this->getLastOrder($_SESSION['email']);
             foreach($prodottiOut as $product) {
@@ -515,10 +514,43 @@
             $stmt = $this -> db -> prepare($query);
             $stmt->execute();
             if ($quantity == 0) {
-                $this->insertNotify($this->getSeller(),"The product is finished!", NULL, NULL, NULL, $idProduct);
+                $this->insertNotify($this->getSeller(), unaviableProductSellerMessage($this->getProductName($idProduct)), NULL, NULL, NULL, $idProduct);
             }
         }
 
+        public function getProductFromRow($row){
+            $query  ="SELECT CodProdotto FROM riga WHERE IdRiga = ".$row;
+            $stmt = $this -> db -> prepare($query);
+            $stmt->execute();
+            echo $query;
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach ($result as $res){
+                return $res['CodProdotto'];
+            }
+        }
+
+        public function getProductName($productRow){
+            $productId = $this -> getProductFromRow($productRow);
+            $query  ="SELECT Nome FROM prodotto WHERE IDProdotto = ".$productId;
+            $stmt = $this -> db -> prepare($query);
+            echo $query;
+            $stmt->execute();
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach ($result as $res){
+                return $res['Nome'];
+            }
+        }
+
+        public function getQuantityOfOrder($product){
+            $query  ="SELECT Quantita FROM riga WHERE IdRiga = ".$product;
+            $stmt = $this -> db -> prepare($query);
+            $stmt->execute();
+            echo $query;
+            $result = $stmt -> get_result() -> fetch_All(MYSQLI_ASSOC);
+            foreach ($result as $res){
+                return $res['Quantita'];
+            }
+        }
          //End Cart
     }    
 ?>
