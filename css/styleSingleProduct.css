@@ -97,17 +97,26 @@ form > h1{
 
 form > section{
     display: inline-block;
-    width: 40%;
     height: 100%;
-    margin: 2% 4% 2% 4%;
+    margin: 2% 2% 2% 2%;
     float: left;
 }
+
+form > section#immagine{
+    width: 35%;
+}
+
+form > section#descrizione{
+    width: 55%;
+}
+
 
 form > section > textarea{
     text-align: center;
     width: 100%;
     height: 100%;
     resize: none;
+    padding: 0%;
 }
 
 form > div{
@@ -124,64 +133,59 @@ form > div > button{
 /**
 TABLE
 */
+
+form > section > section, form > section > section> table{
+    width: 100%;
+}
+
+tbody{
+    height: 85%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+}
+
 table {
+    width: 100%;
+    height: 170px;
     background-color: #BDBDBD;
     font-weight: bold;
     border-spacing: 0;
 }
-
-tr.border_bottom td {
-    border-bottom:1px dashed #707070;
-  }
   
 th {
+    text-align: center;
     background-color: #707070;
     border: thin #707070 ;
     color: #FFBF49;
 }
 
 td {
-    height: 60px;
+    height: 50%;
     color: #303030;
     text-align: center;
+    border-bottom: 1px solid;
 }
 
-td.cell_selected {
-    width: 1%;
+#data{
+    width: 20%;
 }
 
-td.cell_photo {
-    max-width:90px;
-    max-height:90px;
-}
-td.cell_name {
-    width: 50%;
+#utente{
+    width: 25%;
 }
 
-td.cell_unitPrice {
-    width: 10%;
+#testo{
+    width: 40%;
 }
 
-td.cell_quantity {
-    width: 4%;
-}
-
-td.cell_total {
+#puntata{
     width: 15%;
-}
-
-td.cell_trash {
-    width: 5%;
 }
 
 /********/
 /*FOOTER*/
 /********/
-header, footer{
-    width: 100%;
-    height: 3%;
-    background-color: #303030;
-}
 
 footer > h3 {
     padding: 0% 30%;
@@ -199,7 +203,10 @@ header > img{
     height: 50px;
 }
 
-header {
+header, footer{
+    width: 100%;
+    height: 3%;
+    background-color: #303030;
     display: inline-block;
 }
 
@@ -230,25 +237,7 @@ header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
         float: right;
     
     }
-
-    body > main.products > div > header {
-        margin: 2.5% 5% 0 5%;
-    }
-
-    body > main.products > div {
-            height: 250px;
-            width: 200px;
-        }
-
-    body > main.products > div  button, body > main.products > div.auction > select.raise, body > main.products > div > header > label , body > main.products > div > div.topright > textarea{
-        font-size: small;
-    }
-
-    form > ul{
-        list-style: none;
-        width: 70%;
-        margin: 0 12%;
-    }
+    
 }
 
 /*MEDIO GRANDE*/
@@ -268,24 +257,6 @@ header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
         float: right;
     }
 
-    body > main.products > div > header {
-    margin: 2.5% 5% 0 5%;
-    }
-
-    body > main.products > div {
-        height: 200px;
-    	width: 160px;
-    }
-    
-    body > main.products > div  button, body > main.products > div.auction > select.raise, body > main.products > div > header > label , body > main.products > div > div.topright > textarea{
-        font-size: x-small;
-    }
-
-    form > ul{
-        list-style: none;
-        width: 70%;
-        margin: 0 10%;
-    }
 }
 
 /***************/
@@ -313,19 +284,4 @@ header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
     
     }
 
-    body > main.products > div {
-        margin: 1%;
-        width: 175px;
-        height: 225px;
-    }
-
-    body > main.products > div  button, body > main.products > div.auction > select.raise, body > main.products > div > header > label , body > main.products > div > div.topright > textarea{
-        font-size: x-small;
-    }
-
-    form > ul{
-        list-style: none;
-        width: 70%;
-        margin: 0 6%;
-    }
 }

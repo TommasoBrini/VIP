@@ -6,7 +6,7 @@
 
 <form action='#' method='POST' enctype="multipart/form-data">
     <h1><?php echo strtoupper($prodotto["Nome"]);?></h1>
-    <section>
+    <section id="immagine">
         <ul>
             <li>
             <img src="<?php echo UPLOAD_DIR.$prodotto["Immagine"];?>" id="imgshow" alt="Prodotto"/>
@@ -22,7 +22,7 @@
                 <?php if($check): ?>
                 <button disabled><?php echo "AVAIABLE: ".$prodotto["Disponibilita"]; ?> </button>
                 <?php else: ?>
-                <button type="button" onclick="window.location.href='index.php'"><?php echo "PRICE BUY NOW: ".number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?></button>
+                <button disabled><?php echo "PRICE BUY NOW: ".number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?></button>
                 <button type="button" onclick="window.location.href='index.php'">JOIN IN THE AUCTION!</button>
                 <?php endif; ?>
             </li>
@@ -38,14 +38,14 @@
         </ul>
         
     </section>
-    <section>
+    <section id="descrizione">
         <h2>DESCRIPTION</h2>
         <textarea name="descrizione" id="descrizione" cols="30" rows="10" readonly><?php echo $prodotto["Descrizione"]; ?></textarea>
     
 
     <?php if(!$check): ?>
     <section>
-    <table>
+    <table id="table">
     <thead>
         <tr>
             <th id="data">DATE</th>
@@ -86,3 +86,13 @@
     }
     ?>
 </form>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#table").DataTable({
+            "scrollY": "10px",
+            "scrollCollapse": true,
+            "paging": false
+        });
+    });
+</script>

@@ -6,8 +6,8 @@ if(!isset($_GET["id"])){
 }
 
 if(isUserLoggedIn()){
-    $result = $dbh->checkSeller();
     $templateParams["loggato"]=true;
+    $result = $dbh->checkSeller();
     if($result){
         $templateParams["venditore"]=$result;
     }

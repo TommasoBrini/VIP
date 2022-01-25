@@ -291,23 +291,14 @@ form > ul > li > img{
     width: 200px;
 }
 
-
-
 /********/
 /*FOOTER*/
 /********/
-header, footer{
-    width: 100%;
-    height: 3%;
-    background-color: #303030;
-}
-
 footer > h3 {
     padding: 0% 30%;
     color:  #FFBF49;
     text-align: center;
 }
-
 
 /***************/
 /*SCHERMO PICCOLO*/
@@ -319,7 +310,10 @@ header > img{
     height: 50px;
 }
 
-header {
+header, footer{
+    width: 100%;
+    height: 3%;
+    background-color: #303030;
     display: inline-block;
 }
 
