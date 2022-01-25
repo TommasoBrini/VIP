@@ -66,7 +66,7 @@ create table prodotto (
 create table puntata (
      quantita int not null,
      TimeStamp varchar(30) not null,
-     Notifica varchar(140) not null,
+     Notifica varchar(300) not null,
      IdPuntata int not null auto_increment,
      IdAsta int not null,
      CodCliente varchar(50) not null,
