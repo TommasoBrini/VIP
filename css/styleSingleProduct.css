@@ -91,6 +91,24 @@ form > section > ul > li > button{
     font-weight: bold;
 }
 
+form > section > ul > li > form > button{
+    margin: 3% 10%;
+    color: #000000;
+    width: 50%;
+    height: 14%;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+form > section > ul > li > form > select{
+    margin: 3% 10%;
+    color: #000000;
+    width: 50%;
+    height: 14%;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
 form > h1{
     text-align: center;
     color: #FFBF49;
