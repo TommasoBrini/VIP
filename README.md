@@ -3,11 +3,14 @@
  
  Successivamente si potrà accedere con:
 
- VENDITORE: Email:    admin@icloud.com
-            Password: dragorosso90
+ VENDITORE: Email:    admin@icloud.it
+            Password: admin123
 
- CLIENTE: Email:    customer@icloud.com
-          Password: dragoblu95 
+ CLIENTE 1: Email:    user1@icloud.it
+          Password: user1234
+
+ CLIENTE 2: Email:    user2@icloud.it
+          Password: user1234
 
  Ovviamente ci si potrà anche registrare per conto proprio.
 
