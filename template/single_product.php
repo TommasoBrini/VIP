@@ -58,7 +58,13 @@
     </thead>
     <tbody id="notify">
         <?php $notificationNumber = 0; 
-        require($templateParams["notify"]) ?>
+        require($templateParams["notify"]);
+        if($notificationNumber == 0): ?>
+            <tr class="border_bottom">
+                <td colspan=4 style="border: 5px solid #707070">No bet has been made yet.</td>
+            </tr>
+        <?php endif;?>
+
     </tbody>
     </table>
     </div>
