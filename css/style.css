@@ -289,6 +289,8 @@ form > ul > li > img{
     width: 200px;
 }
 
+
+
 /********/
 /*FOOTER*/
 /********/
@@ -321,7 +323,7 @@ header {
 
 header > img:nth-child(2), header > img:nth-child(3), header > img:nth-child(4){
     height: 30px;
-    padding: 10px;
+    padding: 5px;
     float: right;
 }
 
@@ -392,7 +394,7 @@ body > main.products > div  button, body > main.products > div.auction > select.
 }
 
 /*MEDIO GRANDE*/
-@media screen and (min-width: 550px) and (max-width: 899px) {
+@media screen and (min-width: 550px) and (max-width: 900px) {
     header {
         width: 100%;
         height: 3%;
@@ -425,7 +427,7 @@ body > main.products > div  button, body > main.products > div.auction > select.
 /***************/
 /*MEDIO PICCOLO*/
 /***************/
-@media screen and (min-width: 380px) and (max-width: 549px) {
+@media screen and (min-width: 383px) and (max-width: 550px) {
     header {
         width: 100%;
         height: 3%;
