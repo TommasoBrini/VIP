@@ -99,7 +99,7 @@
                 url: "<?php echo $templateParams["checkOut"]?>",
                 data: { idOrdine: <?php echo $row['IdOrdine'] ?>, idProdottiOut: prodottiOut , idProdottiIn: prodottiIn, email: "<?php echo $_SESSION['email'] ?>"},
                 success: function() {
-                    document.location.reload(true);
+                    document.location="index_pagamento.php";
                 }
             });
         }
