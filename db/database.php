@@ -220,7 +220,7 @@
             $giornoF = intval($giornofine);
             $stmt->bind_param('iiiisiiis', $id, $annoI, $meseI,$giornoI, $oraInizio, $annoF, $meseF,$giornoF, $oraFine);
             $stmt->execute();
-            return $stmt->insert_id;
+            return $id;
         }
 
         public function updateProduct($idProdotto, $nome, $descrizione, $descrizioneBreve, $prezzo, $disponibilità, $immagine, $check){
