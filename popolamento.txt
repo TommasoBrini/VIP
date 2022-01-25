@@ -1,116 +1,32 @@
-
 INSERT INTO `prodotto` (`Nome`, `Descrizione`, `DescrizioneBreve`, `Prezzo`, `IDProdotto`, `Base_asta`, `Disponibilita`, `Immagine`) VALUES
-('Pacchetto Merit di Sarri', 'Pacchetto di sigarette Merit appartenute all&#039;allenatore Maurizio Sarri', 'Pacchetto di sigarette Merit di Maurizio Sarri', 5000, 1, 50, NULL, 'merit.jpg'),
-('Scarpetta di Cenerentola', 'Scarpetta di Cenerentola', 'Scarpetta di Cenerentola', 100000, 3, 1000, NULL, 'scarpetta.jpg'),
-('Radiografia Marilyn Monroe', 'Radiografia Marilyn Monroe', 'Radiografia Marilyn Monroe', 25000, 5, 2000, NULL, 'radiografia-marilyn.png'),
-('Copia dell&#039;anello del sig. degli anelli', 'Copia dell&#039;anello del sig. degli anelli', 'Copia dell&#039;anello del sig. degli anelli', 50, 6, NULL, 0, 'anello.jpg'),
-('Codino ibra', 'Codino di Zlatan Ibrahimovic', 'Codino di Zlatan Ibrahimovic', 30000, 7, 5000, NULL, 'codino_ibra.jpg'),
-('Gommina di Britney Spears', 'Gommina di Britney Spears', 'Gommina di Britney Spears', 10000, 8, 1000, NULL, 'gommina_britney_spears.jpg'),
-('Acqua Evian Chiara Ferragni', 'Acqua Evian di Chiara Ferragni', 'Acqua Evian di Chiara Ferragni', 50, 9, NULL, 100, 'evian.png'),
-('Cappello di Mussolini', 'Cappello di Benito Mussolini', 'Cappello del Duce', 1000000, 10, 100000, NULL, 'cappello.jpg'),
-('Bacchetta di sambuco', 'Bacchetta di Sambuco (uno dei doni della morte) utilizzata per le riprese della collezione di fil Harry Potter.', 'Bacchetta di sambuco utilizzata nelle riprese di Harry Potter.', 1000000000, 11, 1000000, NULL, 'bacchetta.jpg');
+('Garpez', 'Con 30 mila lire il mio falegname lo faceva meglio', 'Gamba del Garpez', 1000, 1, 100, NULL, 'garpez.png'),
+('Anello di Padron Frodo', 'Anello di Frodo Baggins', 'Anello', 1500, 2, 150, NULL, 'anello.jpg'),
+('Bici Pantani', 'Bici di Marco Pantani', 'Bici Pantani', 2000, 3, 200, NULL, 'bici_pantani.jpeg'),
+('Gomma di Britney Spears', 'Gomma di Britney Spears', 'Gomma di Britney', 10, 4, NULL, 30, 'gommina_britney_spears.jpg'),
+('Subaru Baracca', 'Subaru Baracca del trio', 'Subaru Baracca', 100, 5, NULL, 40, 'subaru_baracca.png'),
+('Copia della Gioconda', 'Copia della Gioconda', 'Falso', 500, 6, NULL, 50, 'gioconda.jpeg'),
+('Scopa Harry Potter', 'Scopa di Harry Potter', 'Scopa Harry Potter', 1000, 7, 200, NULL, 'scopa_harry_potter.jpg');
+
+
 
 INSERT INTO `user` (`email`, `password`, `idvenditore`) VALUES
-('gus.mazza99@gmail.com', '$2y$10$q3TYr11ptd2Mtp9BbYavbOCxxFfokVc91pKzYMGtkZusqfWAnPLD2', 1),
-('gus.mazza@hotmail.it', '$2y$10$FB4neHNpEcweFTz9WdU2wuQ.a/udIt6.Z91mY6cb8gUc8EcPq1NjS', 0),
-('gusgusgus@gusgusgus.it', '$2y$10$vH9IGN0BZ9805lFte.dCsOQJxYoaAmwCJTB8UxPxYosfWTm5QsEvO', 0),
-('gustavo@gmail.com', '$2y$10$9CaRvPp0SgvG8hlMZ9Hrxe2DNkyrj96XzVCLzKRUXXVkH9BsozLA2', 0);
+('admin@icloud.com', '$2y$10$w23jh.oIcUiz/DLzVBXma.Ee8TsANCwOzC3X75VN/Bte9nZHth4si', 1),
+('user1@icloud.com', '$2y$10$4YNZZb6qprgMPKr776BafumoTn0baPUIoQRmWOK4LRaBpeQIAQm9e', 0),
+('user2@icloud.com', '$2y$10$5VM.FN7i2Z/gs9/Yxxe8V.GGs/pkOQUye2rqImNSGQV/5QJxYRBrG', 0);
+
 
 INSERT INTO `asta` (`IdAsta`, `CodProdotto`, `AnnoInizio`, `MeseInizio`, `GiornoInizio`, `OraInizio`, `AnnoFine`, `MeseFine`, `GiornoFine`, `OraFine`, `CodVincitore`) VALUES
-(1, 1, 2022, 1, 22, '16:00', 2022, 1, 22, '22:00', NULL),
-(2, 3, 2022, 1, 21, '18:00', 2022, 1, 22, '00:00', 'gusgusgus@gusgusgus.it'),
-(3, 5, 2022, 1, 23, '16:00', 2022, 1, 23, '22:00', NULL),
-(4, 7, 2022, 1, 21, '21:00', 2022, 1, 22, '03:00', NULL),
-(5, 8, 2022, 1, 20, '18:15', 2022, 1, 21, '00:15', 'gus.mazza@hotmail.it'),
-(6, 10, 2022, 1, 20, '18:15', 2022, 1, 21, '00:15', 'gus.mazza@hotmail.it'),
-(7, 11, 2022, 1, 22, '16:00', 2022, 1, 22, '22:00', NULL);
+(1, 1, 2022, 1, 26, '16:00', 2022, 1, 26, '22:00', NULL),
+(2, 2, 2022, 1, 26, '16:00', 2022, 1, 26, '22:00', NULL),
+(3, 3, 2022, 1, 26, '16:00', 2022, 1, 26, '22:00', NULL),
+(4, 7, 2022, 1, 26, '16:00', 2022, 1, 26, '22:00', NULL);
 
-INSERT INTO `ordine` (`IdOrdine`, `Pagato`, `Data`, `CodCliente`) VALUES
-(1, 0, '', 'gus.mazza@hotmail.it');
 
-INSERT INTO `puntata` (`quantita`, `IdPuntata`, `IdAsta`, `CodCliente`) VALUES
-(1005, 1, 5, 'gus.mazza@hotmail.it'),
-(1010, 2, 5, 'gusgusgus@gusgusgus.it'),
-(100100, 3, 6, 'gusgusgus@gusgusgus.it'),
-(100105, 4, 6, 'gus.mazza@hotmail.it'),
-(100110, 5, 6, 'gusgusgus@gusgusgus.it'),
-(100120, 6, 6, 'gus.mazza@hotmail.it'),
-(100130, 7, 6, 'gusgusgus@gusgusgus.it'),
-(100140, 8, 6, 'gus.mazza@hotmail.it'),
-(100190, 9, 6, 'gusgusgus@gusgusgus.it'),
-(100240, 10, 6, 'gus.mazza@hotmail.it'),
-(100245, 11, 6, 'gustavo@gmail.com'),
-(100250, 12, 6, 'gus.mazza@hotmail.it'),
-(1015, 13, 5, 'gus.mazza@hotmail.it'),
-(1020, 14, 5, 'gusgusgus@gusgusgus.it'),
-(100255, 15, 6, 'gusgusgus@gusgusgus.it'),
-(1025, 16, 5, 'gus.mazza@hotmail.it'),
-(100260, 17, 6, 'gus.mazza@hotmail.it'),
-(100265, 18, 6, 'gusgusgus@gusgusgus.it'),
-(1030, 19, 5, 'gusgusgus@gusgusgus.it'),
-(100270, 20, 6, 'gus.mazza@hotmail.it'),
-(100275, 21, 6, 'gusgusgus@gusgusgus.it'),
-(1035, 22, 5, 'gus.mazza@hotmail.it'),
-(100280, 23, 6, 'gus.mazza@hotmail.it'),
-(100285, 24, 6, 'gusgusgus@gusgusgus.it'),
-(100290, 25, 6, 'gus.mazza@hotmail.it'),
-(1040, 26, 5, 'gusgusgus@gusgusgus.it'),
-(1045, 27, 5, 'gus.mazza@hotmail.it'),
-(1050, 28, 5, 'gusgusgus@gusgusgus.it'),
-(100295, 29, 6, 'gusgusgus@gusgusgus.it'),
-(100300, 30, 6, 'gus.mazza@hotmail.it'),
-(1055, 31, 5, 'gus.mazza@hotmail.it'),
-(100305, 32, 6, 'gusgusgus@gusgusgus.it'),
-(1060, 33, 5, 'gusgusgus@gusgusgus.it'),
-(1065, 34, 5, 'gus.mazza@hotmail.it'),
-(100310, 35, 6, 'gus.mazza@hotmail.it'),
-(100315, 36, 6, 'gusgusgus@gusgusgus.it'),
-(1070, 37, 5, 'gusgusgus@gusgusgus.it'),
-(1000000, 38, 6, 'gus.mazza@hotmail.it'),
-(10000, 39, 5, 'gus.mazza@hotmail.it'),
-(1010, 40, 2, 'gus.mazza@hotmail.it'),
-(1060, 41, 2, 'gusgusgus@gusgusgus.it'),
-(1070, 42, 2, 'gus.mazza@hotmail.it'),
-(1080, 43, 2, 'gusgusgus@gusgusgus.it'),
-(1090, 44, 2, 'gus.mazza@hotmail.it'),
-(1100, 45, 2, 'gusgusgus@gusgusgus.it'),
-(1200, 46, 2, 'gus.mazza@hotmail.it'),
-(1300, 47, 2, 'gusgusgus@gusgusgus.it'),
-(1400, 48, 2, 'gus.mazza@hotmail.it'),
-(1500, 49, 2, 'gusgusgus@gusgusgus.it'),
-(1505, 50, 2, 'gus.mazza@hotmail.it'),
-(1510, 51, 2, 'gusgusgus@gusgusgus.it'),
-(1515, 52, 2, 'gus.mazza@hotmail.it'),
-(1520, 53, 2, 'gusgusgus@gusgusgus.it'),
-(1525, 54, 2, 'gus.mazza@hotmail.it'),
-(1530, 55, 2, 'gusgusgus@gusgusgus.it'),
-(1535, 56, 2, 'gus.mazza@hotmail.it'),
-(1540, 57, 2, 'gusgusgus@gusgusgus.it'),
-(1545, 58, 2, 'gus.mazza@hotmail.it'),
-(1550, 59, 2, 'gusgusgus@gusgusgus.it'),
-(1555, 60, 2, 'gus.mazza@hotmail.it'),
-(1560, 61, 2, 'gusgusgus@gusgusgus.it'),
-(1565, 62, 2, 'gus.mazza@hotmail.it'),
-(1570, 63, 2, 'gusgusgus@gusgusgus.it'),
-(1580, 64, 2, 'gus.mazza@hotmail.it'),
-(1590, 65, 2, 'gusgusgus@gusgusgus.it'),
-(1600, 66, 2, 'gus.mazza@hotmail.it'),
-(1700, 67, 2, 'gusgusgus@gusgusgus.it'),
-(1800, 68, 2, 'gus.mazza@hotmail.it'),
-(1900, 69, 2, 'gusgusgus@gusgusgus.it'),
-(2000, 70, 2, 'gus.mazza@hotmail.it'),
-(2100, 71, 2, 'gusgusgus@gusgusgus.it'),
-(2200, 72, 2, 'gus.mazza@hotmail.it'),
-(2300, 73, 2, 'gusgusgus@gusgusgus.it'),
-(2400, 74, 2, 'gus.mazza@hotmail.it'),
-(2405, 75, 2, 'gusgusgus@gusgusgus.it'),
-(2410, 76, 2, 'gus.mazza@hotmail.it'),
-(2420, 77, 2, 'gusgusgus@gusgusgus.it'),
-(2430, 78, 2, 'gus.mazza@hotmail.it'),
-(2440, 79, 2, 'gusgusgus@gusgusgus.it'),
-(2450, 80, 2, 'gus.mazza@hotmail.it'),
-(2500, 81, 2, 'gusgusgus@gusgusgus.it');
-
-INSERT INTO `riga` (`CodOrdine`, `Quantita`, `IdRiga`, `CodProdotto`) VALUES
-(1, 24, 7, 9);
-
+INSERT INTO `notifica` (`Email`, `Text`, `IdNotifica`, `IdAsta`, `IdOrdine`, `TotaleOrdine`, `IDProdotto`, `TimeStamp`, `Visualizzata`) VALUES
+('admin@icloud.com', 'You have uploaded your auction \'Garpez\' correctly!', 1, NULL, NULL, NULL, 1, '1643148877', 0),
+('admin@icloud.com', 'You have uploaded your auction \'Anello di Padron Frodo\' correctly!', 2, NULL, NULL, NULL, 2, '1643149028', 0),
+('admin@icloud.com', 'You have uploaded your auction \'Bici Pantani\' correctly!', 3, NULL, NULL, NULL, 3, '1643149087', 0),
+('admin@icloud.com', 'You have uploaded your product \'Gomma di Britney Spears\' correctly!', 4, NULL, NULL, NULL, 4, '1643149155', 0),
+('admin@icloud.com', 'You have uploaded your product \'Subaru Baracca\' correctly!', 5, NULL, NULL, NULL, 5, '1643149190', 0),
+('admin@icloud.com', 'You have uploaded your product \'Copia della Gioconda\' correctly!', 6, NULL, NULL, NULL, 6, '1643149238', 0),
+('admin@icloud.com', 'You have uploaded your auction \'Scopa Harry Potter\' correctly!', 7, NULL, NULL, NULL, 7, '1643149311', 0);
