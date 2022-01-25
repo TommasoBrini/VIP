@@ -368,7 +368,7 @@ footer > h3 {
 /*****************/
 /*PICCOLO(Testato con iPhone 5/SE(320x568))*/
 /*****************/
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 384px) {
     header {
         width: 100%;
         height: 3%;

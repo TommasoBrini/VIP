@@ -22,8 +22,8 @@
                 <?php if($check): ?>
                 <button disabled><?php echo "AVAIABLE: ".$prodotto["Disponibilita"]; ?> </button>
                 <?php else: ?>
+                <button type="button" onclick="window.location.href='index.php'"><?php echo "PRICE BUY NOW: ".number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?></button>
                 <button type="button" onclick="window.location.href='index.php'">JOIN IN THE AUCTION!</button>
-                <button id="timer<?php echo $prodotto['IDProdotto']?>">00:00:00</button>
                 <?php endif; ?>
             </li>
             <li>
@@ -32,7 +32,7 @@
                     echo "disabled"; 
                 } ?> >ADD CART</button>
                 <?php else: ?>
-                <button type="button"><?php echo "BUY NOW: ".number_format($prodotto["Prezzo"], 0, ",", ".")." €"; ?></button>
+                <button id="timer<?php echo $prodotto['IDProdotto']?>">00:00:00</button>
                 <?php endif; ?>
             </li>
         </ul>
