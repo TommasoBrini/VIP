@@ -1,15 +1,16 @@
  # VIP
  Per velocizzare il test abbiamo inserito un file di popolamento.txt
+ ---PRIMA ESEGUIRE IL DDL E POI IL POPOLAMENTO DEL DB---
  
  Successivamente si potrà accedere con:
 
- VENDITORE: Email:    admin@icloud.it
+ VENDITORE: Email:    admin@icloud.com
             Password: admin123
 
- CLIENTE 1: Email:    user1@icloud.it
+ CLIENTE 1: Email:    user1@icloud.com
           Password: user1234
 
- CLIENTE 2: Email:    user2@icloud.it
+ CLIENTE 2: Email:    user2@icloud.com
           Password: user1234
 
  Ovviamente ci si potrà anche registrare per conto proprio.
