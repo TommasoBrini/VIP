@@ -45,6 +45,7 @@
 
     <?php if(!$check): ?>
     <section>
+        <div id='table'>
     <table id="table">
     <thead>
         <tr>
@@ -57,9 +58,16 @@
     </thead>
     <tbody id="notify">
         <?php $notificationNumber = 0; 
-        require($templateParams["notify"]) ?>
+        require($templateParams["notify"]);
+        if($notificationNumber == 0): ?>
+            <tr class="border_bottom">
+                <td colspan=4 style="border: 5px solid #707070">No bet has been made yet.</td>
+            </tr>
+        <?php endif;?>
+
     </tbody>
     </table>
+    </div>
     </section>
     
     <?php endif; ?>
@@ -86,13 +94,3 @@
     }
     ?>
 </form>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#table").DataTable({
-            "scrollY": "10px",
-            "scrollCollapse": true,
-            "paging": false
-        });
-    });
-</script>
