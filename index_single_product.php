@@ -25,7 +25,7 @@ $templateParams["loadNotify"] = "./js/checkNewNotify.php";
 $templateParams["checkNotify"] = "./ajax/newNotify.php";
 $templateParams["confirmAddCart"] = "ajax/addCart.php";
 $templateParams["addCart"] = "js/addCart.php";
-$templateParams["back"] = "ajax/backProduct.php";
+$templateParams["back"] = "ajax/backToSingleProduct.php";
 
 $check=count($dbh->checkProduct($_GET["id"]));
 if($check == 0){

@@ -6,7 +6,7 @@
             for(var i = 1; i <= <?php echo $product["Disponibilita"] ?>; i++){
                 select = select + "<option value='"+ i +"'>"+ i +"</option>";
             }
-            select = select + "</select><button class='last1 grey raise' type='submit'>ADD CART</button><button class='last2 grey back' type='submit' formaction='<?php echo $templateParams['back']?>'>BACK</button></form>";
+            select = select + "</select><button class='last1 grey raise' type='submit'>ADD CART</button><button class='last2 grey back' type='submit' formaction='<?php echo $templateParams['back'].($templateParams['slider']?"":"?id=".$product["IDProdotto"])?>'>BACK</button></form>";
             $(this).prev().replaceWith("");
             $(this).next().replaceWith("");
             $(this).replaceWith(select);
