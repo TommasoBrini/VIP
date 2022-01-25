@@ -145,12 +145,23 @@ tbody{
     width: 100%;
 }
 
+section > div#table {
+    overflow: auto;
+    height: 250px;
+}
+
 table {
+    border-collapse: collapse;
     width: 100%;
-    height: 170px;
+    height: 100%;
     background-color: #BDBDBD;
     font-weight: bold;
     border-spacing: 0;
+}
+
+section > div#table, th {
+    position: sticky;
+    top: 0;
 }
   
 th {

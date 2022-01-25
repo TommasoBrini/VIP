@@ -45,6 +45,7 @@
 
     <?php if(!$check): ?>
     <section>
+        <div id='table'>
     <table id="table">
     <thead>
         <tr>
@@ -60,6 +61,7 @@
         require($templateParams["notify"]) ?>
     </tbody>
     </table>
+    </div>
     </section>
     
     <?php endif; ?>
@@ -86,13 +88,3 @@
     }
     ?>
 </form>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#table").DataTable({
-            "scrollY": "10px",
-            "scrollCollapse": true,
-            "paging": false
-        });
-    });
-</script>
