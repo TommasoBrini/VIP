@@ -34,7 +34,7 @@ create table asta (
 
 create table notifica (
      Email varchar(50) not null,
-     Text varchar(140) not null,
+     Text varchar(300) not null,
      IdNotifica int(1) not null auto_increment,
      IdAsta int,
      IdOrdine int,
