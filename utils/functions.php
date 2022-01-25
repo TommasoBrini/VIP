@@ -202,5 +202,13 @@ function buyMessage(){
 function raiseMessage($bet){
     return "Raise of ".number_format($bet, 0, ",", ".")." €";
 }
+
+function unaviableProductMessage($productName){
+    return "The availability requested for '".$productName."' is insufficient, the product has been removed from the cart.";
+}
+
+function unaviableProductSellerMessage($productName){
+    return "The '".$productName"' product is finished."
+}
 ?>
 

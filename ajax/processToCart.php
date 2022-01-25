@@ -14,5 +14,4 @@ require "../bootstrap.php";
     } else {
         header("Location: ../index_cart.php");
     }
-    
 ?>
