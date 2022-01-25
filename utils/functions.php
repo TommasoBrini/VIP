@@ -234,5 +234,13 @@ function orderCarriedOut($products, $orderId){
     return $message;
 }
 
+
+function insertProductMessage($productName){
+    return "You have uploaded your product '".$productName."' correctly!";
+}
+
+function insertAuctionMessage($productName){
+    return "You have uploaded your auction '".$productName."' correctly!";
+}
 ?>
 
