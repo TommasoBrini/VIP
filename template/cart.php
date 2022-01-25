@@ -29,7 +29,7 @@
         <td id="trash"><img type="button" src="./img/trash.png" id="trash" onclick="window.location.href='deleteRow.php?id=<?php echo $row['IdRiga'] ?>'"/><br>
         </tr>
         <?php else: 
-            $dbh->insertNotify($_SESSION["email"],'The requested quantity of the product is no longer available!',NULL,NULL,NULL,$row["CodProdotto"]); 
+            $dbh->insertNotify($_SESSION["email"],unaviableProductMessage($row['Nome']) ,NULL,NULL,NULL,$row["CodProdotto"]); 
             $dbh->deleteRow($row["IdRiga"]);    
         ?>
         <?php endif; ?>

@@ -8,10 +8,15 @@ require "../bootstrap.php";
     $emailSeller = $dbh->getSeller();
     if (count($prodottiIn) > 1){
         $somma = $dbh->checkOut($idOrdine, $prodottiOut, $prodottiIn);
-        $dbh->insertNotify($email, "The order has been successfully!", NULL, $idOrdine, $somma , NULL);
-        $dbh->insertNotify($emailSeller, "è stato eff un'ordine",NULL, $idOrdine, $somma, NULL);
-        header("Location: ../index_pagamento.php");
-    } else {
-        header("Location: ../index_cart.php");
+        $productsIn = array();
+        foreach($prodottiIn as $product){
+            if($product != 0){
+                $prod['nome'] = $dbh->getProductName($product);
+                $prod['quantita'] = $dbh->getQuantityOfOrder($product);
+                array_push($productsIn, $prod);
+            }
+        }
+        $dbh->insertNotify($email, orderCompleted($productsIn, $idOrdine), NULL, $idOrdine, $somma , NULL);
+        $dbh->insertNotify($emailSeller, orderCarriedOut($productsIn, $idOrdine),NULL, $idOrdine, $somma, NULL);
     }
 ?>
