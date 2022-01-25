@@ -184,9 +184,6 @@ p.noOrder {
     text-align: center;
 }
 
-/*******/
-/*GRANDE(Desktop)*/
-/*******/
 main > form {
     text-align: center;
     color: #FFBF49;
@@ -214,10 +211,11 @@ footer > h3 {
     text-align: center;
 }
 
+
 /***************/
 /*MEDIO GRANDE(Testato con iPad Air(820x1180))*/
 /***************/
-@media screen and (min-width: 550px) and (max-width: 899px) {
+@media screen and (min-width: 550px) and (max-width: 900px) {
     header {
         width: 100%;
         height: 3%;
@@ -248,7 +246,7 @@ footer > h3 {
 /***************/
 /*MEDIO PICCOLO(Testato con iPhone XR(414x896))*/
 /***************/
-@media screen and (min-width: 380px) and (max-width: 549px) {
+@media screen and (min-width: 383px) and (max-width: 550px) {
     header {
         width: 100%;
         height: 3%;
@@ -274,13 +272,33 @@ footer > h3 {
         max-width: 90%;
         margin-top: 4%;
     }
-}
 
+    th {
+        background-color: #707070;
+        border: thin #707070 ;
+        color: #FFBF49;
+        font-size: x-small;
+    }
+
+    td {
+        height: 60px;
+        color: #303030;
+        text-align: center;
+        font-size: x-small;
+    }
+
+    input[type=number]{
+        background-color: #FFFFFF;
+        width: 35%;
+        text-align: center;
+        font-size: x-small;
+    }
+}
 
 /*****************/
 /*PICCOLO(Testato con iPhone 5/SE(320x568))*/
 /*****************/
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 382px) {
     header {
         width: 100%;
         height: 3%;
@@ -304,5 +322,26 @@ footer > h3 {
     .flex {
         max-width: 90%;
         margin-top: 10%;
+    }
+
+    th {
+        background-color: #707070;
+        border: thin #707070 ;
+        color: #FFBF49;
+        font-size: x-small;
+    }
+
+    td {
+        height: 60px;
+        color: #303030;
+        text-align: center;
+        font-size: x-small;
+    }
+
+    input[type=number]{
+        background-color: #FFFFFF;
+        width: 35%;
+        text-align: center;
+        font-size: x-small;
     }
 }
