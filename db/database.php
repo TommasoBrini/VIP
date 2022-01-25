@@ -459,9 +459,10 @@
         }
 
         public function checkOut($idOrdine,$prodottiOut,$prodottiIn){
-            $query = "UPDATE ordine SET Pagato = 1 WHERE IdOrdine = ?";
+            $query = "UPDATE ordine SET Pagato = 1, Data = ? WHERE IdOrdine = ?";
             $stmt = $this -> db -> prepare($query);
-            $stmt->bind_param('i', $idOrdine);
+            $timestamp = time();
+            $stmt->bind_param('si', $timestamp, $idOrdine);
             $stmt->execute();
             $newOrder=$this->getLastOrder($_SESSION['email']);
             foreach($prodottiOut as $product) {

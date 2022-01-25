@@ -49,7 +49,7 @@ create table NOTIFICA (
 create table ORDINE (
      IdOrdine int not null auto_increment,
      Pagato boolean not null,
-     Data varchar(10) not null,
+     Data varchar(30) not null,
      CodCliente varchar(50) not null,
      constraint ID_ORDINE_ID primary key (IdOrdine));
 
