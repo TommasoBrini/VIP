@@ -1,8 +1,8 @@
 <h1>CART</h1>
-<table>
     <?php if($templateParams["orderExist"]==0): ?>
         <p class="noOrder">Go back to the products screen to fill in the cart!</p>
     <?php else: ?>
+    <table>
     <thead>
         <tr>
             <th id="selected"></th>
@@ -116,5 +116,5 @@
             
         }
     </script>
+    </table>
     <?php endif; ?>
-</table>
